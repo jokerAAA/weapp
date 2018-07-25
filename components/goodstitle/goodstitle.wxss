@@ -1,0 +1,79 @@
+.goods {
+    background: #fff;
+    padding: 20rpx 24rpx 0;
+    color: #999;
+    margin-bottom: 20rpx;
+}
+
+.goods-title {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 20rpx;
+}
+
+.goods-info {
+    margin-bottom: 10rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+    display: flex;
+}
+
+.goods-info-left {
+    flex: 1;
+    display: flex;
+}
+
+.goods-info-left-price {
+    margin-right: 20rpx;
+    font-size: 16px;
+    color: #FF3434;
+}
+
+.goods-info-left-sellmode {
+    margin-right: 10rpx;
+    font-size: 10px;
+    border: 1rpx solid #999;
+    border-radius: 4rpx;
+    color: #999;
+    line-height: 22rpx;
+    height: 26rpx;
+    margin-top: 23rpx;
+    padding-left: 4rpx;
+    padding-right: 4rpx;
+}
+
+.goods-info-left-insurance {
+    font-size: 10px;
+    color: #09bb07;
+    border: 1rpx solid #09bb07;
+    border-radius: 4rpx;
+    line-height: 22rpx;
+    height: 26rpx;
+    margin-top: 23rpx;
+    padding-left: 4rpx;
+    padding-right: 4rpx;
+}
+
+.goods-info-right {
+    width: 140rpx;
+    font-size: 10px;
+}
+
+.goods-area {
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 10px;
+}
+
+.goods-area-text {
+    line-height: 20rpx;
+}
+
+.goods-area-text:nth-of-type(1) {
+    padding-right: 20rpx;
+    margin-right: 20rpx;
+    border-right: 1rpx solid #999;
+}
+
+.goods-area-text:nth-of-type(2) {}

@@ -1,0 +1,102 @@
+<!--index.wxml-->
+<view class='container'>
+  <view class='head-view'>
+    <navigator url='/pages/search/search' hover-class='none' class='gosearch'>
+      <view class='search-content'>
+        <image src='/img/search-pic.png' class='search-icon'></image>
+        <input type='text' placeholder='请输入游戏名称' class='search-input' disabled='true'></input>
+      </view>
+    </navigator>
+    <view class='p-center'>
+      <navigator url='/pages/center/center'>
+        <image src='/img/user.png' class='user-icon'></image>
+      </navigator>
+    </view>
+  </view>
+  <view class='swiper-container'>
+    <swiper class='swiper_box' autoplay='true' bindchange='swiperchange'>
+      <block wx:for='{{banners}}' wx:key='id'>
+        <swiper-item>
+          <navigator url='{{picHosts}}{{item.mobileurl}}'>
+            <image src='{{picHosts}}{{item.mobilesrc}}' class='slide-image'></image>
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='dots'>
+      <block wx:for='{{banners}}' wx:key='unique'>
+        <view class='dot{{index == swiperCurrent ? " active" : ""}}'></view>
+      </block>
+    </view>
+  </view>
+
+  <view class="swiper-tab">
+      <view class="swiper-tab-item {{currentTab==0?'active-tab-col':''}}" data-current="0" bindtap="clickTab">
+        性价比推荐 
+        <view class="{{currentTab==0?'active-tab':''}}">
+
+        </view>
+      </view>
+      <view class="swiper-tab-item {{currentTab==1?'active-tab-col':''}}" data-current="1" bindtap="clickTab">
+        热门游戏
+        <view class="{{currentTab==1?'active-tab':''}}">
+
+        </view>  
+      </view>
+  </view>
+
+  <swiper current="{{currentTab}}" duration="300"  bindchange="swiperTab" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+      <swiper-item>
+      <!-- <view class='goods-content'> -->
+        <view class="goods-container">
+        <view class="goods-box" wx:for-items="{{highList}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+          <navigator url='/pages/goodsdetail/goodsdetail?id={{item.tradeid}}'>
+            <view class="img-box">
+                <image src="{{picHosts}}{{item.pic}}" class="image" mode="aspectFill" lazy-load="true"/>
+            </view>
+            <view class="goods-title">{{item.tradename}}</view>
+            <view style='display:flex;padding:12rpx 0;'>
+              <view class="goods-price">¥ {{item.trades.price}}</view>
+              
+              <view class='sellmode' wx:if="{{item.sellmode == 1}}">
+                寄售
+              </view>
+              <view class='sellmode' wx:if="{{item.sellmode == 2}}">
+                担保
+              </view>
+              <view class='sellmode' wx:if="{{item.sellmode == 3}}">
+                约定
+              </view>
+              
+              <view class='toubao'>{{item.insuranceState}}</view>
+            </view> 
+            <view class='otherinfo'>
+              {{item.belongstoclientname}} | {{item.belongstoserviceareaname}}
+            </view>   
+          </navigator>       
+        </view>
+          
+        </view>
+      <!-- </view> -->
+        
+      </swiper-item>
+      <swiper-item>
+        <view class='game-container'>
+          <view class='games-box' wx:for-items="{{hotGame}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+            <navigator url='/game/{{item.spelling}}-{{item.id}}-20-1'>
+              <view class="img-game">
+                  <image src="{{picHosts}}{{item.pic}}" class="image" mode="aspectFill" lazy-load="true"/>
+              </view>
+              <view class="game-title">{{item.name}}</view>
+            </navigator>
+          </view>
+          <view class='games-box'>
+            <navigator url='/pages/gamelist/gamelist?letter=hot' class='moregame'>
+              更多游戏
+            </navigator>
+          </view>
+        </view>
+        
+      </swiper-item>
+  </swiper>
+</view>

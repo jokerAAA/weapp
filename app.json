@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/myorder/myorder",
+    "pages/logs/logs",
+    "pages/search/search",
+    "pages/gamelist/gamelist",
+    "pages/goodslist/goodslist",
+    "pages/goodsdetail/goodsdetail",
+    "pages/orderconfirm/orderconfirm",
+    "pages/paymentorder/paymentorder",
+    "pages/center/center",
+    "pages/statement/statement",
+    "pages/payresult/payresult",
+    "pages/orderstate/orderstate",
+    "pages/login/login",
+    "pages/cert/cert",
+    "pages/gamesearch/gamesearch",
+    "pages/notfound/notfound",
+    "pages/certpic/certpic",
+    "pages/statementinfo/statementinfo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

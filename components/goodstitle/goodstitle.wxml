@@ -1,0 +1,17 @@
+<view class="goods">
+    <view class="goods-title">{{item.name}}</view>
+    <view class="goods-info">
+        <view class="goods-info-left">
+            <text class="goods-info-left-price">￥{{item.price}}</text>
+            <text class="goods-info-left-sellmode">{{item.sellmode == 1 ? '寄售' : '担保'}}</text>
+            <text class="goods-info-left-insurance" wx:if="{{item.insurance_status == 1}}">{{item.insurance_type > 1 ? '找回包赔' : '可投保'}}</text>
+        </view>
+        <view class="goods-info-right">
+            <text>{{item.update_time == '刚刚' ? '刚刚' : item.update_time+'前'}}更新</text>
+        </view>
+    </view>
+    <view class="goods-area">
+        <text class="goods-area-text">{{item.clientname}}</text>
+        <text class="goods-area-text">{{item.areaname}}</text>
+    </view>
+</view>

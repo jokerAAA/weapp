@@ -1,0 +1,25 @@
+<!--pages/gamesearch/gamesearch.wxml-->
+<view class='container'>
+  <view class='head-view'>
+    <view class='search-content' bindtap='gosearch'>
+      <image src='/img/search-pic.png' class='search-icon'></image>
+      <input type='text' class='search-input' value='{{keyvalue}}' bindinput='searchGame' disabled='disabled'></input>
+    </view>
+  </view>
+
+  <view class="searching">
+    <!--有游戏-->
+    <view class="searching-game-list game-list" wx:for="{{gamelist}}" wx:key="{{item.id}}">
+      <view class="game-wrap clearfix">
+        <navigator class="game-name-wrap first-click" url="/pages/goodslist/goodslist?goodsid=1&gameid={{item.id}}">
+          <image src='{{item.pic}}'></image>
+          <view>{{item.name}}</view>
+        </navigator>
+      </view>
+    </view>
+     <block wx:if="{{gameName}}"> 
+      <view class="more-relative" bindtap='searchClick'>更多与“{{gameName}}”相关的游戏<image src="/img/arrow-right.png"></image></view>
+     </block> 
+  </view>
+</view>
+

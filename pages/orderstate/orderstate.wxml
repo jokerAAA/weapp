@@ -1,0 +1,190 @@
+<!--pages/orderstate/orderstate.wxml-->
+<view class='container'>
+    <view class="message"></view>
+
+    <!-- 服务器时间 -->
+    <!-- <input type="hidden" name='time' value=''> -->
+    <!-- $userType为1表示买家，2表示卖家 -->
+    
+    <view class="all-main order">
+        <!-- <input type="hidden" id="mobile" value=""> -->
+
+        <view class="order-tips clearfix">
+            <view class="order-tips-status">
+               <image src='/img/order.png'></image>
+               {{models.detailStatus.statustitle}}
+            </view>
+
+            <block wx:for='{{models.detailStatus.description}}' wx:key=''>
+              <view class="order-tips-content">
+                {{item}}
+              </view>
+            </block>
+            <view class="order-tips-content" wx:if='{{models.detailStatus.leftTime}}'>
+              {{leftTime}}{{models.detailStatus.afterLeftTime}}
+            </view>
+
+            <block wx:if='{{models.closereason}}'>
+              <view class="order-tips-reason">关闭原因:{{models.closereason}}</view>
+            </block>
+        </view>
+
+        
+        <!-- <view class="trade-complaint clearfix">
+            <p class="trade-complaint-contact" >
+            
+                若客服<view id="timecount" data-now="" class="trade-complaint-contact-time"></view>后未联系您，您可以<view class="trade-complaint-off" >投诉客服</view>
+         
+                若客服未联系您，您可以<view class="trade-complaint-on red" id="complain">投诉客服</view>
+            
+            </p>
+            <p data-id='' data-tradelogno='' id="contacted" class="trade-complaint-kefu">客服已联系我</p>
+        </view> -->
+        
+        <!-- 当前订单状态 -->
+        <view class="order-status clearfix" bindtap='showNode'>
+            <image src='/img/up.png' wx:if='{{showStatePic}}'></image>
+            <image src='/img/down.png' wx:else></image>
+            <view class="order-status-view">
+                <block wx:for='{{models.procedureNodes}}' wx:key='' wx:if='{{item.status == 2}}'>
+                  <block wx:if='{{item.status == 2}}'>
+                    <view class="order-status-name">{{item.flag}}</view>
+                    <view class="order-status-time">{{item.datetime}}</view>
+                  </block> 
+                </block>  
+            </view>
+            <block wx:if='{{models["status"] == 7}}'>
+            <view class="order-status-tips">
+                <view class='order-status-tips-p'>1.使用余额支付，退款将立即退还到淘手游余额；使用在线支付，退款可能会因第三方支付原因导致有延迟，最迟将在3个工作日内退款到账</view>
+                <view class='order-status-tips-p'>2.若使用支付宝、微信余额支付，请查看相应余额是否退款到账；若在支付宝、微信内因余额不足而选择银行卡支付，请您查看相应银行卡退款记录</view>
+            </view>
+            </block>
+        </view>
+        <!-- 订单状态点亮图 -->
+        <view class="order-flow" hidden='{{showStatePic}}'>
+            <view>
+              <block wx:for='{{models.procedureNodes}}' wx:key=''>
+                <view class="order-flow-list {{item.status == 0 ? 'next' : item.status ==1 ? 'prev' : 'cur'}}">
+                    <view class="order-flow-list-status next">{{item.flag}}</view>
+                    <block wx:if='{{item.datetime}}'>
+                      <view class="order-flow-list-time">{{item.datetime}}</view>
+                    </block>
+                </view>
+              </block>
+            </view>
+        </view>
+       
+
+        <view class="order-main">
+            <view class="order-content p15" >
+                <view class="order-content-img">
+                    <image src="{{models.picurl}}" class="order-content-img-img"></image>
+                </view>
+                <view class="order-content-title">
+                    <view class="order-content-title-p c3">{{models.tradename}}</view>
+                    <view class="order-content-title-info c9">
+                        <view>{{models.goodsname}}</view>
+                        <view>{{models.gamename}}</view>
+                        <view>{{models.clientname}}</view>
+                        <view>{{models.areaname}}</view>
+                    </view>
+                </view>
+                
+                <view class="order-content-price">
+                    <!-- <p class="order-content-price-one c3"></p> -->
+                    <view class="order-content-price-count c9">×{{models.count}}</view>
+                </view>
+             
+            </view>
+        </view>
+    
+        <!-- 提取账号 -->
+<!--         
+        <view class="order-accountinfo">
+            <p class="order-accountinfo-title">账号信息</p>
+            <p class="order-accountinfo-info">账号:</p>
+            <p class="order-accountinfo-pass">密码:</p>
+            <p class='order-accountinfo-tips'>亲，账号为您办理成功，请您收到帐号后确认是否为三无账号，及时登录账号</p>
+            <p class='order-accountinfo-tips'>修改密码并绑定手机。确认账号没有问题之后，请确认收货！</p>
+        </view> -->
+
+        <!-- 买家展示内容end -->
+
+      
+
+        <!-- 订单价钱展示 -->
+        <view class="order-price">
+            <view class="order-price-name">
+                <view class="c9 span">订单号：</view>
+                <view class='ib'> {{models.tradelogno}}</view>
+                <view class='ib copy' bindtap='copyText'>复制</view>
+            </view>
+            <view class="order-price-name order-price-type">
+                <view class="c9 span">支付方式：</view>
+                <view class='ib'>{{models.paytype}}</view>
+            </view>
+            <view class="order-price-list">
+               
+                <view class="order-price-list-li clearfix buyer">
+                    <view class="c9 fl span">商品总额</view>
+                    <view class="fr c3">￥{{models['tradelogreallyprice']}}</view>
+                </view>
+                <view class="order-price-list-li clearfix buyer">
+                    <view class="c9 fl span">客服费</view>
+                    <view class="fr">￥{{models['customserviceprice']}}</view>
+                </view>
+
+                <block wx:if='{{models.insurance_money == 0 && models.policy_type == 2}}'>
+                <view class="order-price-list-li clearfix buyer">
+                    <view class="c9 fl span">保险费</view>
+                    <view class="fr">
+                        <block wx:if='{{models.policy_type == 1}}'>
+                        {{models['insurance_money']}}
+                        </block>
+                        <block wx:else>
+                        免费
+                        </block>
+                    </view>
+                </view>
+                </block>
+              
+            </view>
+            <view class="order-price-money clearfix">
+                <view class="fr order-price-money-view">
+                    <view class="c3 ib">实付款：</view>
+                    <view class="red ib" id="order-money-final">
+                        <block wx:if='{{models.policy_type == 1}}'>
+                        ￥{{models['tradelogreallyprice']+models['customserviceprice']+models['insurance_money']}}
+                        </block>
+                        <block wx:else>
+                        ￥{{models['tradelogreallyprice']+models['customserviceprice']}}
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- <view style="height:.4rem"></view> -->
+        <buttons item="{{models}}" bind:senddata="onGetBtnData" styleclass='{{positionfixed}}' bind:myevent="onGetCode" reason='{{reason}}' showDialog='{{showDialog}}' tradelogid='{{tradelogid}}'></buttons>
+    </view>
+
+    <dialog insuranceId='{{insuranceId}}' insuranceArray='{{insuranceArray}}' bind:myevent="onGetCode" reason='{{reason}}' showDialog='{{showDialog}}' tradelogid='{{tradelogid}}'></dialog>
+
+    <!-- <input type="hidden" id="money" value="">
+    <input type="hidden" id="tradelogid" value="">
+    <input type="hidden" name="page" value=""> -->
+    
+     <view class="payGetmessageError"></view>
+
+     <!-- 投诉客服 -->
+     <!-- <view class="tsy-mask" id="complaint-box">
+        <view class="complaint-box">
+            <p class="complaint-box-title">投诉客服</p>
+            <textarea id="content" class="complaint-box-area" placeholder="亲，最多可以输入140个字符哦~" maxlength="140" onchange="this.value=this.value.substring(0, 140)" data-no="{$models['id']}" data-tradelogno="{$models['tradelogno']}"></textarea>
+            <view class="complaint-box-btn clearfix">
+                <view id="close" class="complaint-box-btn-cancel fl">取消</view>
+                <view id="submit" class="complaint-box-btn-ensure fl">确认</view>
+            </view>
+        </view>
+     </view> -->
+</view>

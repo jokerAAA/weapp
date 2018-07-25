@@ -1,0 +1,79 @@
+<!--pages/statementinfo/statementinfo.wxml-->
+<view class="container" id="container"> 
+<!-- 订单 -->
+  <view class="state">
+      <view class="state-p">理赔状态</view>
+      <view class="state-info">
+        <view class='state-info-up'>
+        <block wx:if="{{tradelogList.insurance_status == 0 || tradelogList.insurance_status == 1}}">
+          客服已介入您的申赔，请耐心等待客服联系！
+        </block>
+        <block wx:elif="{{tradelogList.insurance_status == 2}}">
+          亲，您的理赔申诉已经通过申请，保险公司会在24小时内将保险赔付金转至您所提供的银行卡内，请注意查收~
+        </block>
+        <block wx:elif="{{tradelogList.insurance_status == 3}}">
+          亲，您的理赔申诉未通过，原因：{{tradelogList.refuse_desc}}。如有疑问，请联系淘手游客服咨询
+        </block>
+        </view>
+        <view class='tips'>淘手游提醒您：办理保障服务期间，请保证您的QQ及手机联系畅通,以便我们客服与您联系。</view>
+      </view>
+  </view>
+  <!-- 订单 -->
+  <view class="title">
+      <view class="title-p">订单详情</view>
+      <view class="title-info">
+          <view class="title-info-left">
+              <image src="{{tradelogList.gamepic}}" alt=""></image>
+          </view>
+          <view class="title-info-center">
+              <view class="title">
+                  {{tradelogList.tradename}}
+              </view>
+              <view class="info clearfix">
+                  <view>{{tradelogList.goodsname}}</view>
+                  <view>{{tradelogList.gamename}}</view>
+                  <view>{{tradelogList.clientname}}</view>
+                  <view>{{tradelogList.areaname}}</view>
+              </view>
+          </view>
+      </view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="order">
+      <view class="order-list flex">
+          <view class="order-list-left left">
+              订单号
+          </view>
+          <view class="order-list-right right">
+             {{tradelogList.tradelogno}}
+          </view>
+      </view>
+      <view class="order-list flex">
+          <view class="order-list-left left">
+              申保时间
+          </view>
+          <view class="order-list-right right">
+              {{tradelogList.addtime}}
+          </view>
+      </view>
+      <view class="order-list flex">
+          <view class="order-list-left left">
+              商品金额
+          </view>
+          <view class="order-list-right right">
+              ￥{{tradelogList.price}}
+          </view>
+      </view>
+      <view class="order-list flex">
+          <view class="order-list-left left">
+              保费
+          </view>
+          <view class="order-list-right right">
+              ￥{{tradelogList.insurance_money}}
+          </view>
+      </view>
+  </view>
+
+</view>
+

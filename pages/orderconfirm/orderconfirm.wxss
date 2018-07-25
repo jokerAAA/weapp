@@ -1,0 +1,365 @@
+/* pages/orderconfirm/orderconfirm.wxss */
+@import "/lib/animate.wxss";
+
+.orderconfirm-container {
+    background:#f5f5f5;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.left {
+    width:160rpx;
+    color:#333;
+    font-size: 15px;
+}
+
+.right {
+    flex:1;
+    text-align: right;
+    height:100%;
+    font-size: 14px;
+}
+
+/* 商品标题 */
+.title {
+    background:#fff;
+    padding:16rpx 24rpx;
+}
+
+.title-text {
+    font-size: 16px;
+    color:#333;
+    line-height: 44rpx;
+    height:88rpx;
+    margin-bottom:20rpx;
+}
+
+.title-price {
+    font-size: 17px;
+}
+
+.text {
+    padding-left: 24rpx;
+    font-size: 12px;
+    color:#999;
+    height:70rpx;
+    line-height: 70rpx;
+}
+
+/* 必填信息 */
+.info {
+    padding-left: 24rpx;
+    margin-bottom:20rpx;
+    background:#fff;
+}
+
+.info-item {
+    display: flex;
+    height:103rpx;
+    line-height: 102rpx;
+    border-bottom: 1rpx solid #f2f3f6;
+    padding-right: 24rpx;
+}
+
+.info-item-input {
+    color:#333;
+    font-size: 14px;
+}
+
+.info-item-input::-webkit-input-placeholder {
+    color:#999;
+}
+
+/* 价格 */
+.price {
+    background:#fff;
+    padding:0 24rpx;
+}
+
+.price-item {
+    display: flex;
+    height:80rpx;
+    line-height: 80rpx;
+}
+
+.tips {
+    color:#999;
+    font-size: 12px;
+    line-height: 17px;
+    padding:20rpx 24rpx ;
+}
+
+.btn {
+    background:#fff;
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:100rpx;
+    line-height: 100rpx;
+    display: flex;
+}
+
+.btn-price {
+    flex:1;
+    text-align: right;
+    font-size: 14px;
+    color:#333;
+    padding-right:20rpx;
+}
+
+.btn-submit {
+    width:250rpx;
+    text-align: center;
+    background:#FF3434;
+    color:#fff;
+    font-size: 16px;
+}
+
+/* 客服选择 */
+.kefu {
+    background:#f7f7f7;
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    color:#333;
+    animation:bounceInUp .2s linear;
+}
+
+.kefu-title {
+    height:90rpx;
+    line-height: 90rpx;
+    background:#fff;
+    text-align: center;
+}
+
+.kefu-score {
+    height:190rpx;
+    font-size: 12px; 
+    padding:20rpx 24rpx 0 ;
+}
+
+.kefu-score-title {
+    display: flex;
+    height:42rpx;
+    line-height: 42rpx;
+}
+
+.kefu-score-title-left {
+    color:#333;
+    margin-right:20rpx;
+}
+
+.kefu-score-title-right {
+    color:#999;
+}
+
+.kefu-score-items {
+    display: flex; 
+    flex-wrap: wrap;
+   
+}
+
+.kefu-score-item {
+    width:50%;
+    text-align: center;
+    display: flex;
+    height:64rpx;
+    line-height: 64rpx;
+    justify-content: center;
+}
+
+.kefu-score-item-left {
+    width:72rpx;
+    margin-right:20rpx;
+}
+
+.kefu-score-item-center {
+    width:140rpx;
+    margin-right:20rpx;
+}
+
+.kefu-score-item-right {
+    width:54rpx;
+}
+
+.list {
+    height:540rpx;
+    display: flex;
+}
+
+.list-left {
+    width:188rpx;
+    font-size: 15px;
+    text-align: center;
+}
+
+.list-left-item {
+    height:88rpx;
+    line-height: 88rpx;
+    border-bottom: 1rpx solid #fff;
+}
+
+.list-left-active {
+    background:#fff;
+    color:#FF3434 ;
+}
+
+.list-right {   
+    flex:1;
+}
+
+.list-right-items {
+    height:176rpx;
+    padding:12rpx;
+}
+
+.list-right-item {
+    display: flex;
+    border-radius: 8rpx;
+    padding:12rpx;
+}   
+
+.activeService {
+    background:#fff;
+    border:1rpx solid #FF3434;
+    position: relative;
+}
+
+.activeService::after {
+    content: "";
+    position: absolute;
+    bottom: 16rpx;
+    right: 16rpx;
+    width: 30rpx;
+    height: 18rpx;
+    /* path.png */
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAbCAYAAADoOQYqAAAAAXNSR0IArs4c6QAAAkZJREFUWAnNmL9PFEEUx98sgslRUFgYbGxp7O44IRhpjCSKFpRUGBMLjX+F/gEaLUiUHhMqCT8KCwMJd0AnBX8AgWssaEiEZJ/f79zswoLr7d7tLvuSnXnvzdy9z73MvJk9IyUVVTVSr38R338RIvb1PTHN5ooXOkqk/BPY8xak0VglpikRq0WJBW42XxpjtHTQSYBLBZ0UuDTQaYBLAZ0W+NqhuwG+VuhugUNorddvo4h/h8OI6pzZ3d3jYF7SCzCZ2oeL7z8DbA1PFb51HR+/W1bgc2jP40lz7EDvyOnpmo6O3soavNcMBzw20zjPD8SY53D+cQMjyPqyTk9Xgom99lkBkyO8e5idnZ+wZ/H4HAD0fWm1FnVy8oa1e2iyBCZGCE0DG3AJ3VvqVlSfysnJfGB202cNTIYINB0A/4zuPXUruBpqtfouMNP0eQAzfuwtDxvxa+QuK/LG/aBE3HkBM/iVTIdElcorbM7l0Bb5iIzPXLBj1TyBGTQ20xy01aPV+mE3JR2sLsY8dpu27bnU5g3McP+F5gRbr31/E+oIbcix9Pc/MFtbv9rmeVsEMKPFLw/HYra3f8vAwBTMQ+cakrOztcunZlHAZOiYaQcqOjZ2D7AbsIecb188b4I/qkhgxk4Mzclaqz3E+l6HepM21ndDBgcfoZZ/iFQavoReeKezczNsUkEzrqsg36AGS+sI+jDHrOQMzBipofkhgL9G94l6RAoAZrwgW5HYnYwrp6b9pnyXRCemxOM8NZF1tT3/ESpI/gIbK2pWQYu4hAAAAABJRU5ErkJggg==) no-repeat;
+    background-size: contain;
+}
+
+.list-right-item-left {
+    margin-right:20rpx;
+}
+
+.list-right-item-left-img {
+    width:128rpx;
+    height:128rpx;
+    border-radius: 12rpx;
+}
+
+.list-right-item-right {
+    flex:1;
+    font-size: 12px;
+}
+
+.list-right-item-right-name {
+    height:40rpx;
+    line-height: 40rpx;
+    margin-bottom:8rpx;
+    font-size: 14px;
+    display: flex;
+}   
+
+.list-right-item-right-name-l {
+    margin-right:20rpx;
+}
+
+.list-right-item-right-name-r {
+    width:68rpx;
+    height:28rpx;
+    text-align: center;
+    border-radius: 76rpx;
+    font-size: 10px;
+    color:#fff;
+    background:#09BB07;
+    margin-top:6rpx;
+    line-height: 28rpx;
+}
+
+.busy {
+    background:#666;
+}
+
+.list-right-item-right-rate {
+    height:34rpx;
+    margin-bottom:14rpx;
+}
+
+.list-right-item-right-info {
+    height:34rpx;
+    line-height: 34rpx;
+}
+
+/* 保险选择 */
+.insurance {
+    background:#fff;
+    text-align: center;
+    color:#333;
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    animation:bounceInUp .2s linear;
+}
+
+.insurance-title {
+    height:88rpx;
+    line-height: 88rpx;
+    font-size: 18px;
+}
+
+.insurance-items {
+    font-size: 15px;
+}
+
+.insurance-item {
+    height:100rpx;
+    line-height: 100rpx;
+    border-top:1rpx solid #f2f3f6;
+}
+
+.active-insurance {
+    color:#FF4800;
+}
+
+/* 卖家险提示 */
+.notice {
+    background:#fff;
+    padding-top: 40rpx;
+    border-radius: 14rpx;
+    text-align: center;
+    animation:fadeIn .2s linear;
+}   
+
+.notice-title {
+    padding: 0 50rpx;
+    font-size: 18px;
+    line-height: 50rpx;
+    color: #333;
+    margin-bottom: 20rpx;
+}
+
+.notice-info {
+    color: #999;
+    font-size: 14px;
+    line-height: 40rpx;
+    padding: 0 50rpx 40rpx;
+}
+
+.notice-btns {
+    font-size: 18px;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-top: 1px solid #F2F2F2;
+    display: flex;
+}
+
+.notice-btn {
+    color: #FF3434;
+    flex:1;
+}

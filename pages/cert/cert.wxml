@@ -1,0 +1,6 @@
+<!--pages/center/center.wxml-->
+<view class="cert-container">
+    
+    <image src="imgUrl" mode="aspectFit" class="cert"></image>
+
+</view>

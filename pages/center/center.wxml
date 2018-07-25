@@ -1,0 +1,23 @@
+<!--pages/center/center.wxml-->
+<view class="center-container">
+    
+    <view class="user">
+        <image class="user-pic" mode="aspectFit" src="{{user.pic}}"></image>
+        <view class="user-name">{{user.name}}</view>
+    </view>
+
+    <view class="info">
+        <view class="info-item">
+            <view class="info-item-text" bindtap="goOrder">我的订单</view>
+        </view>
+        <view class="info-item">
+            <button class="info-item-text button" open-type="contact" session-from="kf_9098_1507537047642" hover-class="button-hover">联系客服</button>
+        </view>
+    </view>
+
+    <view class="ad">
+        <navigator class="">
+
+        </navigator>
+    </view>
+</view>

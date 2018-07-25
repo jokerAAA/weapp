@@ -1,0 +1,225 @@
+<!--pages/statement/statement.wxml-->
+<form class="container" id="container" bindsubmit="submitForm">
+   <input type="text" name="tradelogid" value="{{tradelogList.id}}" hidden='true'></input>
+  <input type="text" name="tradelogno" value="{{tradelogList.tradelogno}}" hidden='true'></input> 
+  <input type="text" name="tradelogno" value="{{tradelogList.tradeid}}" hidden='true'></input> 
+  <!-- 订单 -->
+  <view class="title">
+      <p class="title-p">订单详情</p>
+      <view class="title-info">
+          <view class="title-info-left">
+              <image src="{{tradelogList.pic}}" alt=""></image>
+          </view>
+          <view class="title-info-center">
+              <view class="title">
+                  {{tradelogList.tradename}}
+              </view>
+              <view class="info clearfix">
+                  <view>{{tradelogList.goodsname}}</view>
+                  <view>{{tradelogList.gamename}}</view>
+                  <view>{{tradelogList.clientname}}</view>
+                  <view>{{tradelogList.areaname}}</view>
+              </view>
+          </view>
+      </view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="order">
+      <view class="order-list flex">
+          <view class="order-list-left left">
+              订单号
+          </view>
+          <view class="order-list-right right">
+             {{tradelogList.tradelogno}}
+          </view>
+      </view>
+      <view class="order-list flex">
+          <view class="order-list-left left">
+              申保时间
+          </view>
+          <view class="order-list-right right">
+              {{tradelogList.addtime}}
+          </view>
+      </view>
+      <view class="order-list flex">
+          <view class="order-list-left left">
+              商品金额
+          </view>
+          <view class="order-list-right right">
+              ￥{{tradelogList.price}}
+          </view>
+      </view>
+      <view class="order-list flex">
+          <view class="order-list-left left">
+              保费
+          </view>
+          <view class="order-list-right right">
+              ￥{{tradelogList.insurance_money}}
+          </view>
+      </view>
+  </view>
+
+  <!-- 资料 -->
+  <p class="info-title">
+      <span class="info-title-title">申请资料</span>
+      <span class="info-title-tips">
+          请准确填写您的申诉资料，以便客服及时作出处理
+      </span>
+  </p>
+  <view class="info">
+      
+      <view class="flex">
+          <span class="left">
+              手机号
+          </span>
+          <input type="tel" class="right" placeholder="请输入" id="tel" name="bind_mobile" maxlength="11" value='{{form.mobile}}'></input>
+      </view>
+      <view class="flex">
+          <span class="left">
+              游戏账号
+          </span>
+          <input type="text" class="right" placeholder="请输入" name="bind_account" id="account" maxlength="30" value='{{form.account}}'></input>
+      </view>
+      <view class="flex">
+          <span class="left">
+              角色名称
+          </span>
+          <input type="text" class="right" placeholder="请输入" name="bind_game_role" id="rolename" maxlength="30" value='{{form.game_role}}'></input>
+      </view>
+      <view class="flex arrow">
+          <span class="left">
+              被找回的时间
+          </span>
+          
+          <span class="right" id="js-find-time">
+              <view class="section">  
+                <picker mode="date" value="{{form.date}}" start="2015-01-01" bindchange="bindDateChange">  
+                  <view class="picker"> 
+                    <view wx:if="{{form.dateTime}}"><input type="text" name="bind_time_one" id="find-time" value='{{form.dateTime}}'></input></view> 
+                    <view wx:else>请选择</view>    
+                  </view>  
+                </picker>  
+              </view> 
+          </span>
+          <image src='/img/arrow-right.png'></image>
+          <!-- <input type="hidden" name="bind_time_one" id="find-time"></input> -->
+      </view>
+  </view>
+
+  <!-- 银行信息 -->
+  <p class="bank-title">
+      银行信息
+  </p>
+  <view class="bank">
+      <view class="bank-list flex arrow">
+          <span class="left">
+              银行归属地
+          </span>
+          <span class="right chooseArea" id="chooseArea">
+              <view class="section">
+                <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                  <view class="picker">
+                    <view wx:if="{{form.region}}">
+                      <input type="text" value='{{form.region}}' id='country' disabled='disabled'></input>
+                    </view> 
+                    <view wx:else>请选择</view>   
+                  </view>
+                </picker>
+              </view>
+          </span>
+          <image src='/img/arrow-right.png'></image>
+          <input type="text" name="province" value='{{form.region[0]}}' id='province' hidden='true'></input>
+          <input type="text" name="city" value='{{form.region[1]}}' id='city' hidden='true'></input> 
+      </view>
+      <view class="bank-list flex">
+          <span class="left">
+              开户行名称
+          </span>
+          <input type="text" class="right" placeholder="请输入" name="bind_bank_name" id="bankname" maxlength="30" value='{{form.bank_name}}'></input>
+      </view>
+      <view class="bank-list flex">
+          <span class="left">
+              银行卡号
+          </span>
+          <input type="tel" class="right" placeholder="请输入" maxlength="19" name="bind_bank" id="cardnumber" value='{{form.bank}}'></input>
+      </view>
+      <view class="bank-list flex">
+          <span class="left">
+              真实姓名
+          </span>
+          <input type="text" class="right" placeholder="请输入" name="bind_bank_user" id="username" maxlength="30" value='{{form.bank_user}}'></input>
+      </view>
+      <view class="bank-list flex">
+          <span class="left">
+              身份证号
+          </span>
+          <input type="tel" class="right" placeholder="请输入" maxlength="18" name="bind_bank_userid" id="userid" value='{{form.bank_userid}}'></input>
+      </view>
+      <view class="bank-list flex arrow " >
+          <span class="left">
+              身份证有效期
+          </span>
+           <span class="right" id="js-userid-time">
+              <view class="section">  
+                <picker mode="date" value="{{date}}" start="2015-01-01" bindchange="bindIdDateChange">  
+                  <view class="picker"> 
+                    <view wx:if="{{form.dateId}}"><input type="text" name="bind_userid_time" id="userid-time" value='{{form.dateId}}'></input></view> 
+                    <view wx:else>请选择</view>    
+                  </view>  
+                </picker>  
+              </view> 
+          </span> 
+          <image src='/img/arrow-right.png'></image>
+          <!-- <input type="hidden" name="bind_userid_time" id="userid-time"></input> -->
+      </view>
+      <view class="bank-list bank-pic">
+          <view class="bank-pic-p">身份证正面照</view>
+          <view class="bank-pic-ul clearfix">
+              <view class="bank-pic-ul-list fl" style="margin-right:30rpx;">
+                  <image src="/img/shenfen.png" alt="" class="content" id="userid-pic"></image>
+                   <input type="text" name="shenfenpic" hidden='true' value='{{IdPaths}}'></input> 
+                  <view>示例</view>
+              </view>
+              <view class="bank-pic-ul-list fl">
+                  <view class="bank-pic-ul-list-div content" bindtap="chooseidimage">
+                      <view for="choose-userid-pic" class="label"></view>
+                      <!-- <input type="file" id="choose-userid-pic" class="input"></input> -->
+                      <image src="{{IdPaths}}" alt="" wx:if="{{IdPaths}}" class='uppicid'></image>
+                      <image src="/img/add.png" alt="" wx:else></image>
+                  </view>
+                  <view class="c9">添加身份证正面照片</view>
+              </view>
+          </view>
+      </view>
+      <view class="bank-list bank-pic">
+          <view class="bank-pic-p">银行卡照片</view>
+          <view class="bank-pic-ul clearfix">
+              <view class="bank-pic-ul-list fl" style="margin-right:30rpx;;">
+                  <image src="/img/bank.png" alt="" class="content" id="bank-pic"></image>
+                   <input type="text" name="jietuImg" hidden='true'  value='{{bankPaths}}'></input> 
+                  <view>示例</view>
+              </view>
+              <view class="bank-pic-ul-list fl ">
+                  <view class="bank-pic-ul-list-div content"  bindtap="choosebankimage">
+                      <view for="choose-bank-pic" class="label"></view>
+                      <!-- <input type="file" id="choose-bank-pic" class="input"></input> -->
+                      <image src="{{bankPaths}}" alt="" wx:if="{{bankPaths}}" class='uppicid'></image>
+                      <image src="/img/add.png" alt="" wx:else></image>
+                  </view>
+                  <view class="c9">添加银行卡正面照片</view>
+              </view>
+          </view>
+      </view>
+  </view>
+
+  <!--  说明 -->
+  <view class="explain">
+      <view class="explain-title">理赔说明</view>
+      <textarea class="explain-textarea" name="explain" id="explain" cols="30" rows="10" placeholder="可选填（200字以内）" maxlength="200"></textarea> 
+  </view>
+
+  <view class="submit" id="submit">
+      <button formType="submit">提交申请</button>
+  </view>
+</form>

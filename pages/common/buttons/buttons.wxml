@@ -1,0 +1,65 @@
+<!--pages/common/buttons/buttons.wxml-->
+<view class='order-buttons p30 clearfix {{styleclass ? "positionfixed" : ""}}'>
+  <block wx:if="{{item.buttons.length > 3}}">
+    <block wx:for="{{item.buttons}}" wx:for-item="buttons" wx:for-index="buttonsindex" wx:if="{{buttonsindex < 3}}" wx:key="{{item.id}}">
+      <block wx:if="{{buttons.href}}">
+        <navigator class='order-buttons-text fr' url='{{buttons.href}}' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
+          {{buttons.text}}
+        </navigator>
+      </block>
+      <block wx:elif="{{buttons.flag-1 == 2 || buttons.flag-1 == 5}}">
+        <button class='order-buttons-text fr' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
+          {{buttons.text}}
+        </button>
+      </block>
+      <block wx:else>
+        <view class='order-buttons-text fr' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
+          {{buttons.text}}
+        </view>
+      </block>
+    </block>
+    <view class="order-buttons-text fr order-buttons-more" id="order-buttons-more">更多</view> 
+    <block wx:if="{{buttonsindex >= 3}}">
+      <view class="order-buttons-container">
+        <block wx:for="{{item.buttons}}" wx:for-item="buttons" wx:for-index="buttonsindex" wx:key="{{item.id}}">
+          <block wx:if="{{buttons.href}}">
+            <navigator class='order-buttons-container-a' url='{{buttons.href}}' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
+              {{buttons.text}}
+            </navigator>
+          </block>
+          <block wx:elif="{{buttons.flag-1 == 2 || buttons.flag-1 == 5}}">
+            <button class='order-buttons-text fr' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
+              {{buttons.text}}
+            </button>
+          </block>
+          <block wx:else>
+            <view class='order-buttons-container-a' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
+              {{buttons.text}}
+            </view>
+          </block>
+        </block>
+      </view>
+    </block>
+    
+  </block>
+    
+  <block wx:else>
+    <block wx:for="{{item.buttons}}" wx:for-item="buttons" wx:for-index="buttonsindex" wx:key="{{item.id}}">
+      <block wx:if="{{buttons.href}}">
+        <navigator class='order-buttons-text fr' url='/{{buttons.href}}' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
+          {{buttons.text}}
+        </navigator>
+      </block>
+      <block wx:elif="{{buttons.flag-1 == 2 || buttons.flag-1 == 5}}">
+        <button class='order-buttons-text fr' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
+          {{buttons.text}}
+        </button>
+      </block>
+      <block wx:else>
+        <view class='order-buttons-text fr' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
+          {{buttons.text}}
+        </view>
+      </block>
+    </block>
+  </block>
+</view>

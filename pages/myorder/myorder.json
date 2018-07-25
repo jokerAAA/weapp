@@ -1,0 +1,8 @@
+{
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 0,
+  "usingComponents": {
+    "dialog": "/pages/common/dialog/dialog",
+    "buttons": "/pages/common/buttons/buttons"
+  }
+}

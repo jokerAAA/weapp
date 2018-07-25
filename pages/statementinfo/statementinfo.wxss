@@ -1,0 +1,128 @@
+/* pages/statementinfo/statementinfo.wxss */
+.container {
+  height: 100%;
+  background: #f5f5f5;
+  position: absolute;
+  width: 100%;
+  overflow-y: auto;
+}
+.flex {
+  display: flex;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.left {
+  width: 200rpx;
+  color: #333;
+  font-size: 15px;
+}
+.right {
+  flex: 1;
+  color: #999;
+  font-size: 14px;
+  text-align: right;
+}
+input {
+  border: none;
+  height: auto;
+}
+.arrow {
+  position: relative;
+  padding-right: 30rpx;
+}
+.arrow>image {
+  content: "";
+  position: absolute;
+  width: 14rpx;
+  height: 28rpx;
+  top: 36rpx;
+  right: 0;
+  background-size: contain;
+  z-index: 10;
+}
+.state .state-p {
+  font-size: 14px;
+  color: #999;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 24rpx;
+}
+.state .state-info {
+  padding: 22rpx 22rpx 18rpx 24rpx;
+  background: #fff;
+}
+.state-info-up{
+  font-family: PingFangSC-Regular;
+  font-size: 15px;
+  color: #333333;
+  letter-spacing: 0.05px;
+  margin-bottom:16rpx;
+}
+.tips{
+  ont-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #999999;
+  letter-spacing: 0.04px;
+}
+.title .title-p {
+  font-size: 14px;
+  color: #999;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 24rpx;
+}
+.title .title-info{
+  padding: 22rpx 22rpx 18rpx 24rpx;
+  display: flex;
+  background: #fff;
+}
+.title .title-info-left {
+  margin-right: 20rpx;
+  width: 140rpx;
+  text-align: center;
+}
+.title .title-info-left image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 20rpx;
+}
+.title .title-info-center {
+  flex: 1;
+}
+.title .title-info-center > .title {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 40rpxm;
+  line-height: 42rpx;
+}
+.title .title-info-center > .info {
+  font-size: 12px;
+  color: #999;
+  line-height: 24rpx;
+  padding: 0;
+}
+.title .title-info-center > .info > view {
+  border-right: 1px solid #999;
+  float: left;
+  margin-right: 10rpx;
+  padding-right: 10rpx;
+  margin-bottom: 10rpx;
+}
+.title .title-info-center > .info > view:nth-last-of-type(1) {
+  border-right: none;
+}
+.order {
+  background: #fff;
+  padding: 0 24rpx;
+  margin-top: 20rpx;
+}
+.order .order-list {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.order .order-list .order-list-left {
+  color: #999;
+}
+.order .order-list .order-list-right {
+  color: #333;
+}

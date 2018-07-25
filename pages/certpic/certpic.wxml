@@ -1,0 +1,4 @@
+<!--pages/certpic/certpic.wxml-->
+<view class="cert">
+    <image class="cert-img" src="{{hosts}}/user/trade/cert-pic?tradelogid={{tradelogid}}" alt="" mode='aspectFit'></image>
+</view>

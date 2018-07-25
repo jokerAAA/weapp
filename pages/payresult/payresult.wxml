@@ -1,0 +1,46 @@
+<!--pages/payresult/payresult.wxml-->
+<view class="result-controller">
+
+
+    <view class="status">
+    </view>
+
+    <view class="info">
+        <view class="info-item">
+            <view class="info-item-left">
+                订单号
+            </view>
+            <view class="info-item-right">
+                5893548932125698456
+            </view>
+        </view>
+        <view class="info-item">
+            <view class="info-item-left">
+                商品
+            </view>
+            <view class="info-item-right">
+                王者荣耀【安卓qq】30级账号 18个英王者荣耀【安卓qq】30级账号 18个英王者荣耀【安卓qq】30级账号 18个英...
+            </view>
+        </view>
+        <view class="info-item">
+            <view class="info-item-left">
+                数量
+            </view>
+            <view class="info-item-right">
+                1件
+            </view>
+        </view>
+        <view class="info-item">
+            <view class="info-item-left">
+                价格
+            </view>
+            <view class="info-item-right red">
+                ￥43.35
+            </view>
+        </view>
+    </view>
+
+    <view class="tips">
+        温馨提示：亲，我们的客服会尽快认领订单为您办理交易，请留意查收手机短信或客服消息哦~
+    </view>
+</view>

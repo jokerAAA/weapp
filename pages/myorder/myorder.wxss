@@ -1,0 +1,316 @@
+/* pages/myorder/myorder.wxss */
+
+.module {
+    padding-bottom: 0;
+}
+
+.tips-info {
+    background: #FF9402;
+    color: #fff;
+    font-size: 14px;
+    padding-left: 12px;
+    height: 36px;
+    line-height: 36px;
+}
+
+
+
+.module .check {
+    width: 100%;
+    padding-bottom: 0px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    border-bottom: 1px solid #f2f3f6;
+    display: flex;
+}
+
+.module .check .check_title {
+    flex: 1;
+    text-align: center;
+    height: 100%;
+    line-height: 45px;
+}
+
+.module .check .check_title_nowtitle {
+    color: #de421b;
+    position: relative;
+}
+
+.module .check .check_title_nowtitle::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 2px;
+    background: #FF3434;
+}
+
+
+.order {
+    background: #fff;
+    margin-bottom: 10px;
+    padding-bottom: 14rpx;
+}
+
+.order-nodata {
+    background: #fff;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.order-title {
+    height: 40px;
+    line-height: 40px;
+    padding-right: 150px;
+    position: relative;
+}
+
+.order-title-left {
+    font-size: 14px;
+    color: #999;
+    margin-left: 30rpx;
+}
+
+.order-title-left>span {
+    color: #151515;
+}
+
+.order-title-right {
+    font-size: 14px;
+    width: 150px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    text-align: right;
+}
+
+.order-content {
+    padding: 12px 12px 12px 75px;
+    position: relative;
+    display: block;
+    background: #f8f8f8;
+}
+
+.order-content-img {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    width: 70px;
+}
+
+.order-content-img-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.order-content-title {
+    width: 100%;
+}
+
+.order-content-title-p {
+    margin-bottom: 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.order-content-title-info {
+    display: flex;
+    height: 21px;
+}
+
+
+
+.order-content-title-info>view:nth-of-type(1) {
+    width: 120px;
+    font-size: 14px;
+    color: #333;
+}
+
+.order-content-title-info>view:nth-of-type(2) {
+    flex: 1;
+    color: #999;
+    font-size: 12px;
+    text-align: right;
+    line-height: 21px;
+}
+
+
+.order-money {
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    font-size: 12px;
+    border-bottom: 1px solid #f2f3f6;
+}
+
+.order-money>view {
+    font-size: 15px;
+}
+
+.all-main {
+    clear: both;
+    background: #eee;
+    width: 100%;
+    position: absolute;
+    top: 45px;
+}
+
+.content-info {
+    margin-top: 7px;
+    width: 100%;
+    background: #fff;
+}
+
+.content-info ul {
+    width: 100%;
+    padding-left: 0px;
+    margin: 0;
+    color: #666;
+}
+
+.content-info ul li {
+    height: 25px;
+    line-height: 25px;
+    margin-left: 2px;
+    padding-left: 11px;
+}
+
+#demandlist li {
+    display: inline-block;
+    width: 93%;
+    /* height: 25px; */
+    line-height: 25px;
+    margin-left: 2px;
+    padding-left: 11px;
+    word-break: break-all;
+}
+
+.line {
+    width: 100%;
+    height: 5px;
+    background: #eee;
+}
+
+.content-info .title {
+    font-size: 15px;
+    margin: 13px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.order-main {
+    width: 100%;
+    height: 200px;
+    background-color: #fff;
+}
+
+.order-main .order-info {
+    width: 100%;
+    height: 95px;
+    font-size: 12px;
+    color: #B5AEAE;
+}
+
+.order-main .order-info .trade-img {
+    width: 73px;
+    height: 73px;
+    margin-left: 13px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: 1px solid rgb(211, 199, 199);
+    float: left;
+}
+
+.order-main .order-info img {
+    width: 73px;
+    height: 73px;
+}
+
+.order-main .order-info .trade-name {
+    padding-top: 9px;
+    color: #333;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+.order-main .order-price {
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid #f1f1f1;
+}
+
+.order-main .order-price .trade-price {
+    margin: 8px auto auto 15px;
+    font-size: 10px;
+    color: #B5AEAE;
+}
+
+.order-main .order-price .trade-price span {
+    font-size: 10px;
+    color: red;
+    float: right;
+    margin-right: 20px;
+}
+
+.order-main .order-price .trade-status {
+    margin: 10px auto auto 15px;
+    font-size: 15px;
+    color: #E86F18;
+    font-weight: bolder
+}
+
+.all-main .order-btn {
+    font-size: 12px;
+    background: #fff;
+    padding-bottom: 40px;
+}
+
+.order-btn .close_reasion {
+    height: 35px;
+    line-height: 35px;
+    width: 97%;
+    text-align: right;
+}
+
+.all-main .order-btn a {
+    margin-right: 9px;
+    float: right;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid rgb(211, 199, 199);
+    background-color: rgba(213, 199, 199, 0.24);
+    border-radius: 5px;
+}
+
+.all-main .order-btn .special_btns {
+    width: 27%;
+}
+
+.all-main .order-btn .order_btns {
+    width: 19%;
+}
+
+.order-list {
+    width: 100%;
+    background-color: #eee;
+}
+
+.order-list .trade-content {
+    width: 100%;
+    margin: 14px auto;
+    border-radius: 7px;
+    background-color: #fff;
+    font-size: 12px;
+}
+
+
+

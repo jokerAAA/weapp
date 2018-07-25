@@ -1,0 +1,17 @@
+<!--pages/notfound/notfound.wxml-->
+<view class='head-view'>
+  <view class='search-content' bindtap='gosearch'>
+    <image src='/img/search-pic.png' class='search-icon'></image>
+    <input type='text' placeholder='请输入游戏名称' class='search-input' value='{{keyvalue}}' bindinput='searchGame' disabled='disabled'></input>
+  </view>
+</view>
+
+<view class="search-no-result-wrap">
+	<view class="search-no-result clearfix" id="nogamename">
+		<image src='/img/no-goods.png' class='pic-notfound'></image>
+		<view class="text">
+			<view>当前没有符合条件的商品ID</view>
+			<view>换个商品ID或者游戏名称试试吧~</view>
+		</view>
+	</view>
+</view>

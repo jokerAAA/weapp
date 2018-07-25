@@ -1,0 +1,187 @@
+<!--pages/goodslist/goodslist.wxml-->
+<view class="container">
+    <view class="menu">
+        <view class="menu-item">
+            <text class="menu-item-text">成品号</text>
+        </view>
+        <view class="menu-item {{showType == 'server'? 'red' : ''}}" bindtap="showMask" data-key="server">
+            <text class="menu-item-text">服务器</text>
+            <image class="menu-item-img" src="{{showType == 'server' ? '/img/arrow-orange-up.png' : '/img/arrow-down.png'}}" mode="aspectFit"></image>
+        </view>
+        <view class="menu-item {{showType == 'sort'? 'red' : ''}} {{sortid != '' ? 'red' : '' }}" bindtap="showMask" data-key="sort">
+            <text class="menu-item-text">{{sortText}}</text>
+            <image class="menu-item-img" src="{{showType == 'sort' ? '/img/arrow-orange-up.png' : '/img/arrow-down.png'}}" mode="aspectFit" hidden="{{sortid != '' ? true : false }}"></image>
+            <image class="menu-item-img" src="/img/arrow-orange-down.png" mode="aspectFit" hidden="{{sortid != '' ? false : true }}"></image>
+        </view>
+        <view class="menu-item {{showType == 'info'? 'red' : ''}}" bindtap="showMask" data-key="info">
+            <text class="menu-item-text">筛选</text>
+            <image class="menu-item-choose" src="/img/choose.png" mode="aspectFit"></image>
+        </view>
+    </view>
+
+    <!-- 选择服务器 -->
+    <view class="mask" hidden="{{showType == 'server' ? false : true}}" bindtap="closeMask">
+        <view class="server" catchtap="stopCloseMask">
+            <scroll-view class="server-left" scroll-y='true' enable-back-to-top='true' scroll-with-animation='true' >
+                <text class="server-left-area {{clientid == item.clientid ? 'active-area red' : ''}}" catchtap="chooseClient" wx:for="{{clientList}}" wx:key="{{item.clientid}}" data-clientid="{{item.clientid}}" >{{item.clientname}}</text>
+            </scroll-view>
+
+            <view class="server-right">
+                <view class="server-right-search">
+                    <image class="server-right-search-icon" src="/img/search.png" alt="" mode="aspectFit"></image>
+                    <input class="server-right-search-input" type="text" confirm-type="search" placeholder="请输入区服名称" bindinput="inputArea"/>
+                    <text class="server-right-search-btn" bindtap="searchArea">搜索</text>
+                </view>
+                <scroll-view class="server-right-client" scroll-y='{{true}}' enable-back-to-top='{{true}}' scroll-with-animation='{{true}}'>
+                    <view class="server-right-client-name" catchtap="chooseArea" wx:for="{{areaList}}" wx:key="{{item.id}}" data-areaid="{{item.id}}">
+                        <text class="server-right-client-name-text" >{{item.name}}</text>
+                    </view>
+
+                    
+                    <image class="server-right-client-pic" src="/img/no-server.png" mode="aspectFit" hidden="{{areaList}}"></image>
+                    
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 选择排序方式 -->
+    <view class="mask" hidden="{{showType == 'sort' ? false : true}}" bindtap="closeMask">
+        <view class="sort">
+            <view class="sort-item {{sortid == 0 ? 'activeSort red' : ''}}" catchtap="chooseSort" data-sortid="0" data-text="默认">
+                <text class="sort-item-name">默认排序</text>
+            </view>
+            <view class="sort-item {{sortid == 2 ? 'activeSort red' : ''}}" catchtap="chooseSort" data-sortid="2" data-text="价格">
+                <text class="sort-item-name">价格从高到低</text>
+            </view>
+            <view class="sort-item {{sortid == 1 ? 'activeSort red' : ''}}" catchtap="chooseSort" data-sortid="1" data-text="价格">
+                <text class="sort-item-name">价格从低到高</text>
+            </view>
+            <view class="sort-item {{sortid == 9 ? 'activeSort red' : ''}}" catchtap="chooseSort" data-sortid="9" data-text="时间">
+                <text class="sort-item-name">发布时间倒序</text>
+            </view>
+            <view class="sort-item {{sortid == 10 ? 'activeSort red' : ''}}" catchtap="chooseSort" data-sortid="10" data-text="时间">
+                <text class="sort-item-name">发布时间正序</text>
+            </view>
+        </view>
+    </view>
+
+    <!-- 筛选项 -->
+    <view class="mask" hidden="{{showType == 'info' ? false : true}}" bindtap="closeMask" id="info">
+        <view class="info {{showType == 'info' ? 'slide' : ''}}" catchtap="stopCloseMask">
+            <scroll-view class="info-top" scroll-y scroll-with-animation='{{true}}'>
+                <view class="info-top-tip">
+                    绑定身份证商品，存在账号被找回风险，请玩家谨慎购买！
+                </view>
+                <view class="info-top-title">
+                    身份证
+                </view>
+                <view class="info-top-content">
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isbindcertificate == 2 ? 'active-info' : ''}}" data-key="isbindcertificate" data-value="2" bindtap="chooseInfo">不限</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isbindcertificate == 1 ? 'active-info' : ''}}" data-key="isbindcertificate" data-value="1" bindtap="chooseInfo">已绑定</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isbindcertificate == 0 ? 'active-info' : ''}}" data-key="isbindcertificate" data-value="0" bindtap="chooseInfo">未绑定</text>
+                    </view>
+                </view>
+                <view class="info-top-title">
+                    手机
+                </view>
+                <view class="info-top-content">
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isbindmobile == 2 ? 'active-info' : ''}}" data-key="isbindmobile" data-value="2" bindtap="chooseInfo">不限</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isbindmobile == 1 ? 'active-info' : ''}}" data-key="isbindmobile" data-value="1" bindtap="chooseInfo">已绑定</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isbindmobile == 0 ? 'active-info' : ''}}" data-key="isbindmobile" data-value="0" bindtap="chooseInfo">未绑定</text>
+                    </view>
+                </view>
+                <view class="info-top-title">
+                    邮箱
+                </view>
+                <view class="info-top-content">
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isbindemail == 2 ? 'active-info' : ''}}" data-key="isbindemail" data-value="2" bindtap="chooseInfo">不限</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isbindemail == 1 ? 'active-info' : ''}}" data-key="isbindemail" data-value="1" bindtap="chooseInfo">已绑定</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isbindemail == 0 ? 'active-info' : ''}}" data-key="isbindemail" data-value="0" bindtap="chooseInfo">未绑定</text>
+                    </view>
+                </view>
+                <view class="info-top-title">
+                    价格
+                </view>
+                <view class="info-top-content">
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{price == 0 ? 'active-info' : ''}}" data-key="price" data-value="0" bindtap="chooseInfo">不限</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{price == 1 ? 'active-info' : ''}}" data-key="price" data-value="1" bindtap="chooseInfo">0-50</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{price == 2 ? 'active-info' : ''}}" data-key="price" data-value="2" bindtap="chooseInfo">50-100</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{price == 3 ? 'active-info' : ''}}" data-key="price" data-value="3" bindtap="chooseInfo">100-500</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{price == 4 ? 'active-info' : ''}}" data-key="price" data-value="4" bindtap="chooseInfo">500-1000</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{price == 5 ? 'active-info' : ''}}" data-key="price" data-value="5" bindtap="chooseInfo">1000-2000</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{price == 6 ? 'active-info' : ''}}" data-key="price" data-value="6" bindtap="chooseInfo">2000以上</text>
+                    </view>
+                </view>
+                <view class="info-top-title">
+                    是否是商家
+                </view>
+                <view class="info-top-content">
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isCertificationShop == 2 ? 'active-info' : ''}}" data-key="isCertificationShop" data-value="2" bindtap="chooseInfo">不限</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isCertificationShop == 1 ? 'active-info' : ''}}" data-key="isCertificationShop" data-value="1" bindtap="chooseInfo">是</text>
+                    </view>
+                    <view class="info-top-content-items">
+                        <text class="info-top-content-items-text {{isCertificationShop == 0 ? 'active-info' : ''}}" data-key="isCertificationShop" data-value="0" bindtap="chooseInfo">否</text>
+                    </view>
+                </view>
+                <view class="info-top-title">
+                    关键词搜索
+                </view>
+                <view class="info-top-content">
+                    <input class="info-top-content-search" type="text" confirm-type="search" value="{{wd}}" bindinput="searchKeyWord" />
+                </view>
+            </scroll-view>
+            <view class="info-bottom">
+                <view class="info-bottom-button" bindtap="resetInfo" id="reset">
+                    重置选项
+                </view>
+                <view class="info-bottom-button" bindtap="confirmInfo">
+                    确定
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 商品列表 -->
+    <view class="list">
+        <navigator url="/pages/goodsdetail/goodsdetail?id={{item.id}}" wx:for="{{goodsList}}" wx:key="{{item.id}}">
+            <goodstitle item="{{item}}"></goodstitle>
+        </navigator>
+    </view>
+    <!-- 商品列表为空 -->
+    <view class="list-blank" hidden="{{goodsList}}">
+        <image class="list-blank-img" src="/img/blank.png" mode="aspectFit"></image>
+        <view class="list-blank-text">当前没有符合条件的商品哦~</view>
+    </view>
+</view>

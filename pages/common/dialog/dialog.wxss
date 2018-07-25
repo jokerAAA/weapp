@@ -1,0 +1,298 @@
+/* pages/common/buyinsurance/buyinsurance.wxss */
+/*购买保险  */
+.insurance {
+    display: none;
+}
+.insurance>.tsy-dialog-content {
+    position: absolute;
+    bottom:0;
+    width:100%;
+    height:568rpx;
+    background:#fff;
+}
+.insurance-header {
+    height:88rpx;
+    line-height: 88rpx;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+.insurance-header-p {
+    width:220rpx;
+    margin:0 auto;
+    line-height: 88rpx;
+    position: relative;
+    padding-left: 56rpx;
+    text-align: left;
+}
+.insurance-icon {
+    position: absolute;
+    width:40rpx;
+    height:40rpx;
+    left:0;
+    top:24rpx;
+    background: #fff;
+}
+.insurance-ul-list {
+    height:120rpx;
+    line-height: 120rpx;
+    padding-right:60rpx;
+    padding:0 84rpx 0 24rpx;
+    position: relative;
+    color:#333;
+    display: flex;
+    border:1px solid #f1f1f1;
+}
+.insurance-ul-list.active {
+    color:#F64B3A;
+    font-size: 15px;
+}
+.insurance-ul-list .check-icon {
+    position: absolute;
+    width:36rpx;
+    height:36rpx;
+    right:24rpx;
+    top:42rpx;
+}
+.insurance-ul-list-left {
+    font-size: 15px;
+    width:160rpx;
+}
+.insurance-ul-list-right {
+    font-size: 12px;
+    flex:1;
+    text-align: right;
+}
+.insurance-btn {
+    width:700rpx;
+    height:88rpx;
+    line-height:88rpx;
+    background:#FF3434;
+    color:#fff;
+    margin:120rpx auto 0;
+    text-align: center;
+    font-size: 18px;
+}
+
+
+.tsy-dialog {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.4);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+}
+
+
+/* 关闭交易弹窗 */
+
+.order-dialog-title {
+    height: 120rpx;
+    line-height: 120rpx;
+    text-align: center;
+    font-size:18px;
+}
+
+.order-dialog-content {}
+
+.order-dialog-content-list {
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 1px solid #f2f3f6;
+    padding: 0 30rpx;
+    position: relative;
+}
+
+.order-dialog-content-list>view {
+    display: block;
+}
+
+.order-dialog-content-list>input {
+    position: absolute;
+    display:none;
+}
+
+.order-dialog-content-list>input:checked {
+    /* right: 30rpx;
+    top: 32rpx;
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 50%;
+    background: url(home:static/img/buyerorderlist/check.png) no-repeat;
+    background-size: contain;
+    outline: none;
+    display:block; */
+}
+.order-dialog-content-list>image{
+    position: absolute;
+    right: 30rpx;
+    top: 32rpx;
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 50%;
+    outline: none;
+    /* display:block; */
+}
+.order-dialog-btns {
+    text-align: center;
+    display: flex;
+}
+
+.order-dialog-btns>view {
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 18px;
+    width: 50%;
+}
+.order-dialog-btns-confirm{
+  color: #f74b3d;
+}
+.order-dialog-btns-cancel {
+    color: #999;
+    border-right: 1px solid #f2f3f6;
+}
+.closetips,.closeorder,.showinsurance{
+   display: block !important;
+}
+
+/*弹框背景*/
+
+.order-dialog {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+     display: none; 
+}
+
+
+/*弹框*/
+
+.order-dialog .order-close {
+    width: 630rpx;
+    background: #fff;
+    border-radius: 7px;
+    border: 1px solid rgb(211, 199, 199);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    min-width:600rpx;
+}
+
+.order-dialog .order-close .dialog-title {
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 18px;
+}
+
+.order-dialog .order-close .dialog-title view {
+    float: right;
+    margin-right: 15px;
+    width: 20px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 27px;
+}
+
+.order-dialog .order-close .dialog-main {
+    text-shadow: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-left: 20px;
+    width: 92%;
+    font-size: 14px;
+}
+
+.order-dialog .order-close .warning {
+    line-height: 34px;
+    color: #333;
+    font-size: 14px;
+}
+
+.order-dialog .order-close .success {
+    height: 35%;
+    line-height: 35%;
+    margin-left: 20px;
+    width: 100%;
+    position: absolute;
+    top: 26%;
+}
+
+.order-dialog .order-close .success .okicon {
+    background: rgba(0, 0, 0, 0) url(home:static/img/buyerorderlist/icon-ok.png) no-repeat scroll 0 6px;
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+}
+
+.order-dialog .order-close .success .welmsg {
+    display: inline-block;
+    line-height: 35px;
+    vertical-align: top;
+}
+
+.order-dialog .order-close .content {
+    line-height: 30px;
+    font-size: 14px;
+}
+
+.order-dialog .order-close .content select {
+    width: 60%;
+}
+
+.order-dialog .order-close .content .account-msg {
+    width: 36%;
+    display: inline-block;
+    margin-left: 300rpx;
+}
+
+.order-dialog .order-close .content input {
+    width: 49%;
+}
+
+.order-dialog .order-close .btn {
+    width: 100%;
+    height: 100rpx;
+    margin-top: 30rpx;
+    border-top: 1px solid #f2f3f6;
+}
+
+.order-dialog .order-close .btn button,
+.order-dialog .order-close .btn a button,
+.order-dialog .order-close .btn input {
+    height: 100rpx;
+    width: 50%;
+    text-align: center;
+    border: 0;
+    outline: none;
+    background: #fff;
+    border-radius: 7px;
+    font-size: 18px;
+}
+
+.order-dialog .order-close .btn button:nth-last-of-type(1) {
+    border-right: 1px solid #f2f3f6;
+}
+
+.order-dialog .order-close .btn .ui-btn {
+    font-size: 14px;
+    display: inline-block;
+    /* position: relative; */
+    /* text-overflow: ellipsis; */
+    /* overflow: hidden; */
+    /* white-space: nowrap; */
+    /* cursor: pointer; */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 34px;
+    padding: 0;
+    margin: 13px 15px;
+    float: right;
+}

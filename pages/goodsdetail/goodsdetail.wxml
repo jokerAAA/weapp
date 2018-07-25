@@ -1,0 +1,163 @@
+<!-- pages/goodsdetail/goodsdetail.wxml -->
+<view class="goodsdetail-container">
+    <!-- 轮播图 -->
+    <swiper class="pics" indicator-dots indicator-active-color="#ffffff" wx:if="{{piclist.length>0}}">
+        <block wx:for="{{piclist}}" wx:key="{{item}}">
+            <swiper-item class="pics-item" bindtap="priviewPics">
+                <image src="{{item.picurl}}" class="pics-item-img" />
+            </swiper-item>
+        </block>
+    </swiper>
+    <!-- 商品标题 -->
+    <goodstitle item="{{trade}}"></goodstitle>
+
+    <!-- tab -->
+    <view class="tab">
+        <view class="tab-item {{activeTab == '0' ? 'active-tab' : ''}}" bindtap="changeTab" data-index="0">
+            商品信息
+        </view>
+        <view class="tab-item {{activeTab == '1' ? 'active-tab' : ''}}" bindtap="changeTab" data-index="1">
+            购买流程
+        </view>
+    </view>
+
+    <!-- 商品信息 -->
+    <view class="info" hidden="{{activeTab ==  '1' ? true : false}}">
+        <view class="info-item">
+            <text class="info-item-left">商品id</text>
+            <text class="info-item-right">{{trade.id}}</text>
+        </view>
+        <view class="info-item">
+            <text class="info-item-left">商品类型</text>
+            <text class="info-item-right">{{goodsname}}</text>
+        </view>
+        <view class="info-item">
+            <text class="info-item-left">所属游戏</text>
+            <text class="info-item-right">{{game.name}}</text>
+        </view>
+        <view class="info-item">
+            <text class="info-item-left">适用系统</text>
+            <text class="info-item-right">{{mobilesystem}}</text>
+        </view>
+        <view class="info-item">
+            <text class="info-item-left">客户端</text>
+            <text class="info-item-right">{{trade.clientname}}</text>
+        </view>
+        <view class="info-item">
+            <text class="info-item-left">服务器</text>
+            <text class="info-item-right">{{trade.areaname}}</text>
+        </view>
+        <view class="info-item">
+            <text class="info-item-left">绑定邮箱</text>
+            <text class="info-item-right">{{trade.isbindemail == 0 ? "未绑定" : "已绑定"}}</text>
+        </view>
+        <view class="info-item">
+            <text class="info-item-left">绑定手机</text>
+            <text class="info-item-right">{{trade.isbindmobile == 0 ? "未绑定" : "已绑定"}}</text>
+        </view>
+        <view class="info-item">
+            <text class="info-item-left">绑定身份证</text>
+            <text class="info-item-right">{{trade.isbindcertificate == 0 ? "未绑定" : "已绑定"}}</text>
+        </view>
+        <view class="info-tips red">提示: 绑定身份证商品,存在账号被找回的风险,请买家谨慎购买！</view>
+
+        <!-- 可配置项 -->
+        <block >
+            <view class="info-item info-attr">
+                <text class="info-item-left">绑定身份证1</text>
+                <text class="info-item-right">未绑定</text>
+            </view>
+            <view class="info-item info-attr">
+                <text class="info-item-left">绑定身份证2</text>
+                <text class="info-item-right">未绑定</text>
+            </view>
+            <view class="info-item info-attr info-attr-last">
+                <text class="info-item-left">绑定身份证3</text>
+                <text class="info-item-right">未绑定</text>
+            </view>
+        </block>
+
+        <!-- 视频 -->
+        <view class="info-item video-title" wx:if="{{trade.videourl}}">
+            <text class="info-item-left">视频介绍</text>
+        </view>
+        <view class="video" wx:if="{{trade.videourl}}">
+            <video class="video-player" id="myVideo" src="{{trade.videourl}}" controls></video>
+        </view>
+    </view>
+
+    <!-- 购买流程 -->
+    <view class="process" hidden="{{activeTab ==  '0' ? true : false}}">
+        <view class="process-list">
+            <view class="process-list-step">
+                <text class="process-list-step-text">挑选商品</text>
+                <text class="process-list-step-text">买家挑选适合自己的商品</text>
+            </view>
+            <view class="process-list-step">
+                <text class="process-list-step-text">下单付款</text>
+                <text class="process-list-step-text">完成下单并成功付款</text>
+            </view>
+            <view class="process-list-step">
+                <text class="process-list-step-text">客服确认</text>
+                <text class="process-list-step-text">收到手机短信后，在个人中心-订单列表，点击'联系客服'，排队等待客服回复，并与客服确认订单信息</text>
+            </view>
+            <view class="process-list-step">
+                <text class="process-list-step-text">买家验号</text>
+                <text class="process-list-step-text">确认订单信息后，客服会联系卖家，将游戏账号、密码发送给买家，等待客服回复后，与客服确认订单信息</text>
+            </view>
+            <view class="process-list-step">
+                <text class="process-list-step-text">解绑换绑</text>
+                <text class="process-list-step-text">买家登陆游戏确认游戏账号是否无误后，由客服协助买卖双方进行游戏账号解绑换绑</text>
+            </view>
+            <view class="process-list-step">
+                <text class="process-list-step-text">买家收货</text>
+                <text class="process-list-step-text">完成解绑换绑后，客服会将游戏的最新账号资料发送给买家，买家收到后及时确认账号是否有问题</text>
+            </view>
+            <view class="process-list-step">
+                <text class="process-list-step-text">交易完成</text>
+                <text class="process-list-step-text">买家确认游戏账号无误后，可以在订单列表操作确认收货，若未操作，系统会在24小时后自动确认收货，淘手游转账给卖家，普通账号24小时自动确认收货，淘手游转账给卖家</text>
+                <text class="process-list-step-text">普通账号24小时自动确认收货，网易账号48小时，腾讯账号7天</text>
+            </view>
+        </view>
+    </view>
+
+    <!-- 相关推荐 -->
+    <view class="rec" hidden="{{activeTab ==  '1' ? true : false}}" wx:if="{{hotTrades.length>0}}">
+        <view class="rec-title">
+            相关推荐
+        </view>
+        <view class="rec-list" wx:for="{{hotTrades}}" wx:key="{{index}}">
+            <view class="rec-list-item">
+                <view class="rec-list-item-title">
+                    {{item.name}}
+                </view>
+                <view class="rec-list-item-price red">
+                    ￥{{item.price}}
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 底部提示 -->
+    <view class="bottom">
+        <view class="bottom-tips">
+            已经到底了
+        </view>
+    </view>
+
+    <view class="btn">
+        
+        <button class="btn-left share" open-type='share'>
+            <image class="btn-left-img" src="/img/share.png" mode="aspectFit"></image>
+            <view class="btn-left-text">分享</view>
+        </button>
+        
+        <button class="btn-left contact" open-type="contact" session-from="kf_9098_1507537047642">
+            <image class="btn-left-img" src="/img/kefu.png" mode="aspectFit"></image>
+            <view class="btn-left-text">客服</view>
+        </button>
+        <view class="btn-buy" bindtap="buyGoods">
+            立即购买
+        </view>
+    </view>
+</view>

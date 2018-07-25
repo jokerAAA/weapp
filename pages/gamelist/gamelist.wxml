@@ -1,0 +1,30 @@
+<!--pages/gamelist/gamelist.wxml-->
+<view class="gamelist-container">
+
+    <!-- 搜索游戏 -->
+    <view class="search">
+        <input class="search-input" type="text" confirm-type="search" placeholder="请输入游戏名称" bindinput="handleInput"></input>
+        <button class="search-button" bindtap="searchGame">搜索</button>
+    </view>
+
+    <view class="main">
+
+        <scroll-view class="letter" scroll-y='true' enable-back-to-top='true' scroll-with-animation='true' scroll-into-view="{{scrollId}}">
+            <view class="letter-list {{item == letter? 'active' : '' }}" wx:for="{{letterArr}}" wx:key="{{item}}" bindtap='changeLetter' data-letter="{{item}}"  id="{{item}}">
+                <text class="letter-list-letter">{{item == 'hot' ? '热' : item}}</text>
+            </view>
+        </scroll-view>
+
+        <scroll-view class="game" scroll-y enable-back-to-top>
+            <view class="game-list" wx:for="{{gameArr}}" wx:key="{{item.id}}" wx:if="{{hasGamelist}}">
+                <view class="game-list-item" bindtap="chooseGame" data-goodsid="{{1}}" data-gameid="{{item.id}}">
+                    <image class="game-list-item-pic" src="{{item.pic}}" lazy-load='true'></image>
+                    <text class="game-list-item-name">{{item.name}}</text>
+                </view>
+            </view>
+            <view class="game-none" wx:if="{{!hasGamelist}}">
+                <image class="game-none-img" src="/img/nogames.png" mode="aspectFit"></image>
+            </view>
+        </scroll-view>
+    </view>
+</view>

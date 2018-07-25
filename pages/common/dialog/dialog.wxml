@@ -1,0 +1,42 @@
+<!--viewages/common/buyinsurance/buyinsurance.wxml--> 
+<!--购买保险  -->
+<view class="tsy-dialog insurance  {{showDialog == 'showinsurance' ? 'showinsurance': ''}}" id="insurance" catchtap='closepop' catchtouchmove="myCatchTouch">
+    <view class="tsy-dialog-content" catchtap='stop'>
+        <view class="insurance-header">
+            <view class="insurance-header-p">
+              <view><image class='insurance-icon' src='/img/insurance.png'></image></view>
+              购买保险
+            </view>
+        </view>
+        <view class="insurance-ul" id="insurance-list">
+            <view id="firstdefault" class="insurance-ul-list {{index == chooseCurrent ? 'active' : ''}}" wx:for="{{insuranceArray}}" bindtap='chooseDay' data-day="{{item.day}}" data-current="{{index}}" wx:key="{{item.day}}" data-defaultday="{{index == 0 ? item.day : ''}}">
+                <view class="insurance-ul-list-left">{{item.day}}天保险</view>
+                <view class="insurance-ul-list-right">服务费:{{item.insuranceMoney}}元</view>
+                <image src='/img/checkcircle.png' class='check-icon' wx:if='{{index == chooseCurrent}}'></image>
+            </view>
+        </view>
+        <view class="insurance-btn" id="insurance-btn" bindtap='buyinsurance'>
+            确认购买
+        </view>
+    </view>
+</view>
+
+      <!-- 关闭交易弹框 -->
+    <view class="order-dialog {{showDialog == 'closeOrder' ? 'closeorder': ''}}" id="closeorder">
+        <view class="order-close">
+            <view class="order-dialog-title">关闭交易</view>
+            <view class="order-dialog-content">
+                
+                <view class="order-dialog-content-list" wx:for="{{reason}}" wx:key=''>
+                    <view class="c3" bindtap='reasonClick' data-val="{{index}}">{{item}}</view>
+                    <!-- <input type="radio" name="closereason" value="{{index}}" id="reason-{{index}}"></input> -->
+                    <image src='/img/check.png' wx:if='{{index == chooseReason}}'></image>
+                </view>
+                
+            </view>
+            <view class="order-dialog-btns clearfix">
+                <view class="fl order-dialog-btns-cancel tsy-dialog-close" bindtap="cancelReason">取消</view>
+                <view class="fl order-dialog-btns-confirm tsy-dialog-success" bindtap='reasonConfirm'>确定</view>
+            </view>
+        </view>
+    </view>

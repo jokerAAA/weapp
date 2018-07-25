@@ -1,0 +1,21 @@
+<!--pages/login/login.wxml-->
+<view class="login-controller">
+
+    <view class="logo">
+        <image class="logo-img" src="/img/login.png" mode="aspectFit"></image>
+    </view>
+
+    <view class="info">
+        <view class="info-item">
+            <input  class="info-item-input" type="tel" placeholder="输入手机号" maxlength="11" bindinput="handleTel"></input>
+        </view>
+        <view class="info-item">
+            <input  class="info-item-input" type="number" placeholder="输入验证码" maxlength="6" bindinput="handleCode"></input>
+            <text class="info-item-btn {{activeCode ? 'activeCode' : ''}}" bindtap="getCode">{{text}}</text>
+        </view>
+    </view>
+
+    <view class="btn {{activeLogin ? 'activeLogin' : ''}}" bindtap="login">
+        登陆    
+    </view>
+</view>

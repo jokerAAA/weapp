@@ -1,0 +1,51 @@
+/* pages/payresult/payresult.wxss */
+
+.result-controller {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#f5f5f5;
+}
+
+.status {
+    height:190rpx;
+    background:#fff;
+    margin-bottom:17rpx;
+}
+
+.info {
+    background:#fff;
+    padding:0 24rpx;
+}
+
+.info-item {
+    display: flex;
+    height:80rpx;
+    line-height: 80rpx;
+    font-size: 15px;
+}
+
+.info-item-left {
+    width:120rpx;
+    margin-right:30rpx;
+    color:#999;
+}
+
+.info-item-right {
+    flex:1;
+    color:#333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.tips {
+    color:#999;
+    font-size: 12px;
+    line-height: 34rpx;
+    padding:0 24rpx;
+    margin-top:20rpx;
+}

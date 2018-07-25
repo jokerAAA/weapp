@@ -1,0 +1,147 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.1.1",
+	"appid": "wxf37eea09f65e9bf2",
+	"projectname": "wx",
+	"svr": "",
+	"client": "",
+	"qcloudRoot": "",
+	"miniprogramRoot": "",
+	"pluginRoot": "",
+	"scripts": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 4,
+			"list": [
+				{
+					"id": 0,
+					"name": "游戏列表页面",
+					"pathName": "pages/gamelist/gamelist",
+					"query": "letter=A"
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "订单列表",
+					"pathName": "pages/myorder/myorder",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "商品列表",
+					"pathName": "pages/goodslist/goodslist",
+					"query": "goodsid=1&gameid=6157"
+				},
+				{
+					"id": 4,
+					"name": "商品详情",
+					"pathName": "pages/goodsdetail/goodsdetail",
+					"query": "id=7450960"
+				},
+				{
+					"id": 5,
+					"name": "确认订单",
+					"pathName": "pages/orderconfirm/orderconfirm",
+					"query": "tradeid=7451160"
+				},
+				{
+					"id": -1,
+					"name": "支付订单",
+					"pathName": "pages/paymentorder/paymentorder",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "支付结果",
+					"pathName": "pages/payresult/payresult",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登陆",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "申述理赔",
+					"pathName": "pages/statement/statement",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "游戏搜索",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": 11,
+					"name": "搜索结果",
+					"pathName": "pages/gamesearch/gamesearch",
+					"query": "page=1&keyword=wnag"
+				},
+				{
+					"id": -1,
+					"name": "未搜索到商品",
+					"pathName": "pages/notfound/notfound",
+					"query": ""
+				},
+				{
+					"id": 13,
+					"name": "订单详情",
+					"pathName": "pages/orderstate/orderstate",
+					"query": ""
+				},
+				{
+					"id": 14,
+					"name": "生成证书",
+					"pathName": "pages/certpic/certpic",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "理赔详情",
+					"pathName": "pages/statementinfo/statementinfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/center/center",
+					"query": ""
+				}
+			]
+		}
+	}
+}

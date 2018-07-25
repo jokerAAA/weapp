@@ -1,0 +1,39 @@
+/* pages/gamesearch/gamesearch.wxss */
+/* pages/search/search.wxss */
+.container{
+  background: transparent;
+}
+.search-content{
+  width: 700rpx;
+}
+.game-wrap{
+  padding: 14rpx 36rpx;
+  border-bottom: 1px solid #F1F1F1;
+} 
+.game-name-wrap{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.game-name-wrap>image{
+  width: 88rpx;
+  height: 88rpx;
+}
+.game-name-wrap>view{
+  line-height: 88rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 15px;
+  color: #222222;
+  letter-spacing: 0;
+  margin-left: 20rpx;
+}
+.more-relative{
+  padding: 10px 15px;
+  border-bottom: 1px solid #F4F4F6;
+  font-size: 15px;
+}
+.more-relative>image{
+  width: 10px;
+  height: 20px;
+  float: right;
+}

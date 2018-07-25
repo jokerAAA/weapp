@@ -1,0 +1,190 @@
+<!--pages/orderconfirm/orderconfirm.wxml-->
+<view class="orderconfirm-container">
+
+    <!-- 商品标题 -->
+    <view class="title">
+        <view class="title-text">
+            {{trades.name}}
+        </view>
+        <view class="title-price red">
+            ￥{{trades.price}}
+        </view>
+    </view>
+
+    <view class="text">
+        订单信息
+    </view>
+
+    <!-- 订单信息 -->
+    <view class="info">
+        <view class="info-item" wx:if="{{insuranceList.insurance_status  == 1}}">
+            <view class="left">
+                交易安全险
+            </view>
+            <view class="right info-item-icon" bindtap="toggleInsurance" wx:if="{{trades.insurance_type == 0}}">
+                {{textInsurance}}
+            </view>
+            <view class="right info-item-icon" bindtap="toggleNotice" wx:else>
+                卖家已投保
+            </view>
+        </view>
+        <view class="info-item">
+            <view class="left">
+                专属客服
+            </view>
+            <view class="right info-item-icon" bindtap="toggleService">
+                {{service.text}}
+            </view>
+        </view>
+        <view class="info-item">
+            <view class="left">
+                联系手机
+            </view>
+            <input class="right info-item-input" type="number" maxlength="11" placeholder='请输入' bindinput="handleInput" data-name="buyermobile"></input>
+        </view>
+        <view class="info-item">
+            <view class="left">
+                联系qq
+            </view>
+            <input class="right info-item-input" type="number" maxlength="10" placeholder='请输入' bindinput="handleInput" data-name="buyerqq"></input>
+        </view>
+    </view>
+
+    <!-- 商品金额 -->
+    <view class="price">
+        <view class="price-item">
+            <view class="left">
+                商品金额
+            </view>
+            <view class="right red">
+                ￥{{price}}
+            </view>
+        </view>
+        <view class="price-item">
+            <view class="left">
+                保险服务费
+            </view>
+            <view class="right red">
+                ￥{{insuranceMoney}}
+            </view>
+        </view>
+        <view class="price-item">
+            <view class="left">
+                客服服务费
+            </view>
+            <view class="right red">
+                ￥{{serviceMoney}}
+            </view>
+        </view>
+    </view>
+
+    <view class="tips">
+        近期有不法诈骗团伙仿冒淘手游客服电话，以账号道具变动、安全保证金等理由，向用户索取钱财及账号密码，请大家注意!
+    </view>
+
+    <view class="btn">
+        <view class="btn-price">
+            实付款:
+            <text class="red">￥{{price + insuranceMoney + serviceMoney}}</text>
+        </view>
+        <view class="btn-submit" bindtap="submitOrder">
+            提交订单
+        </view>
+    </view>
+
+
+    <!-- 客服选择 -->
+    <view class="mask" hidden="{{!isShowService}}" bindtap="toggleService">
+        <view class="kefu" catchtap="stopPropgation">
+            <view class="kefu-title">专属客服</view>
+
+            <block>
+                <view class="kefu-score" wx:for="{{service.info}}" wx:key="{{index}}" hidden="{{!(activeLeftMenu == index)}}">
+                    <view class="kefu-score-title" >
+                        <view class="kefu-score-title-left">该星级客服指标</view>
+                        <view class="kefu-score-title-right">
+                            <text class="red">{{item.selected}}%</text>的本地用户选择
+                            <text class="red">{{index}}元</text>客服进行服务
+                        </view>
+                    </view>
+                    <view class="kefu-score-items">
+                        <view class="kefu-score-item">
+                            <text class="kefu-score-item-left">时效度</text>
+                            <progress class="kefu-score-item-center" percent="{{item.prescription}}" stroke-width="6" activeColor="#FF9402" backgroundColor="#eee" active></progress>
+                            <text class="kefu-score-item-right">{{item.prescription}}%</text>
+                        </view>
+                        <view class="kefu-score-item">
+                            <text class="kefu-score-item-left">专业度</text>
+                            <progress class="kefu-score-item-center" percent="{{item.professional}}" stroke-width="6" activeColor="#FF9402" backgroundColor="#eee" active></progress>
+                            <text class="kefu-score-item-right">{{item.professional}}%</text>
+                        </view>
+                        <view class="kefu-score-item">
+                            <text class="kefu-score-item-left">熟练度</text>
+                            <progress class="kefu-score-item-center" percent="{{item.skilled}}" stroke-width="6" activeColor="#FF9402" backgroundColor="#eee" active></progress>
+                            <text class="kefu-score-item-right">{{item.skilled}}%</text>
+                        </view>
+                        <view class="kefu-score-item">
+                            <text class="kefu-score-item-left">好评度</text>
+                            <progress class="kefu-score-item-center" percent="{{item.praise}}" stroke-width="6" activeColor="#FF9402" backgroundColor="#eee" active></progress>
+                            <text class="kefu-score-item-right">{{item.praise}}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+
+            <view class="list">
+                <view class="list-left">
+                    <view class="list-left-item {{activeLeftMenu == index ? 'list-left-active' : ''}}" data-index='{{index}}' catchtap="chooseType" wx:for="{{service.list}}" wx:key="{{index}}">{{index}}元客服</view>
+                    
+                </view>
+                <scroll-view class="list-right"  scroll-y wx:for="{{service.list}}" wx:for-item="item" wx:for-index="index" wx:key="{{index}}" hidden="{{!(activeLeftMenu == index) }}">
+                    <view class="list-right-items " wx:for="{{item}}" wx:for-item="value" wx:for-index="key" wx:key="{{value.id}}" data-id="{{value.id}}" data-status="{{value.workstatus}}" data-index="{{index}}" bindtap="chooseService" data-text="{{value.nickname}}">
+                        <view class="list-right-item {{activeService == value.id ? 'activeService' : ''}}">
+                            <view class="list-right-item-left">
+                                <image class="list-right-item-left-img" src="{{app.globalData.picHost}}{{value.head_img}}" mode="aspectFit"></image>
+                            </view>
+                            <view class="list-right-item-right">
+                                <view class="list-right-item-right-name">
+                                    <view class="list-right-item-right-name-l">{{value.nickname}}</view>
+                                    <view class="list-right-item-right-name-r {{value.workstatus == 1 ? '' : 'busy'}}">{{value.workstatus == 1 ? "空闲" : "忙碌"}}</view>
+                                </view>
+                                <view class="list-right-item-right-rate">好评率99%</view>
+                                <view class="list-right-item-right-info">{{value.month}}个月服务{{value.order_num}}笔订单</view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 保险选择 -->
+    <view class="mask" hidden="{{!isShowInsurance}}" bindtap="toggleInsurance">
+        <view class="insurance">
+            <view class="insurance-title">请选择保险类别</view>
+            <view class="insurance-items">
+                <view class="insurance-item {{activeInsurance == item.day ? 'active-insurance' : ''}}" data-day="{{item.day}}" bindtap="chooseInsurance" data-rate="{{item.rate}}" wx:for="{{insuranceList.insurance_rate_arr}}" wx:key="{{item.day}}">
+                    {{item.day}}天保险
+                </view>
+                <view class="insurance-item" data-day="0" bindtap="chooseInsurance" data-rate="0">
+                    不购买保险
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="mask" wx:if="{{isShowNotice}}" bindtap="toggleNotice">
+        <view class="notice mask-dialog" catchtap="stopPropgation">
+            <view class="notice-title">
+                卖家已投保账号安全险，买家不用花一分钱。
+            </view>
+            <view class="notice-info">
+                在保险期内您的账号出现找回、封号等情况，最高可赔付您所购买的订单金额。
+            </view>
+            <view class="notice-btns">
+                <view class="notice-btn" bindtap="toggleNotice">关闭</view>
+            </view>
+        </view>
+    </view>
+
+</view>   

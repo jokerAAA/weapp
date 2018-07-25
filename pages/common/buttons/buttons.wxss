@@ -1,0 +1,93 @@
+/* pages/common/buttons/buttons.wxss */
+/* 按钮样式 */
+.order-buttons {
+    height:70rpx;
+    line-height:70rpx;
+    padding-top:14rpx;
+    position: relative;
+}
+.positionfixed{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background: #fff;
+    height: 100rpx;
+    padding-top: 24rpx;
+}
+.order-buttons-text {
+    width:140rpx;
+    /* height:52rpx; */
+    line-height:52rpx;
+    border:1px solid #ccc;
+    margin-right:20rpx;
+    text-align:center;
+    font-size:12px;
+    border-radius:2px;
+    /* 处理ios冒泡兼容问题 */
+    cursor: pointer;
+}  
+.order-buttons .order-buttons-text:nth-child(1) {
+    margin-right:0;
+    color: #FF3434;
+    border:1px solid #FF3434;
+}
+.order-buttons-more {
+    border:none;
+}  
+.order-buttons-container {
+    position: absolute;
+    left:80rpx;
+    top:80rpx;
+    color:#fff;
+    display: none;
+    z-index:99;
+}
+.order-buttons-container.show {
+    display: block;
+}
+.order-buttons-container::before {
+    content:"";
+    width:24rpx;
+    height:24rpx;
+    position: absolute;
+    left:50%;
+    top:-12rpx;
+    transform:translateX(-50%) rotateZ(45deg);
+    background:#666;
+    z-index:-1;
+}
+.order-buttons-container>.order-buttons-container-a {
+    width:140rpx;
+    height:52rpx;
+    line-height:52rpx;
+    background:#666;
+    display: block;
+    color:#fff;
+    font-size:12px;
+    text-align:center;
+    border-bottom:1px solid #fff;
+}
+
+.p30 {
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+
+
+.order-title-left .ib{
+  color: #333;
+}
+
+
+.fr{
+  float: right;
+}
+
+button{
+  background: #fff;
+}
+button::after{
+  border: none;
+}

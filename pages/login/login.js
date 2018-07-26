@@ -108,14 +108,22 @@ Page({
 				mobile: tel
 			},
 			success: function (res) {
-				that.setData({
-					text:'重新发送'
-				})
-				wx.showToast({
-					title: "发送成功",
-					icon: "success",
-					duration: 2000
-				})
+				if(res.data.errcode == 0) {
+					that.setData({
+						text:'重新发送'
+					})
+					wx.showToast({
+						title: "发送成功",
+						icon: "success",
+						duration: 2000
+					})
+				}else {
+					wx.showToast({
+						title: res.data.msg,
+						icon: "none",
+						duration: 2000
+					})
+				}
 			}
 		})
 

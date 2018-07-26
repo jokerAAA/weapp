@@ -29,7 +29,7 @@
             <view class="server-right">
                 <view class="server-right-search">
                     <image class="server-right-search-icon" src="/img/search.png" alt="" mode="aspectFit"></image>
-                    <input class="server-right-search-input" type="text" confirm-type="search" placeholder="请输入区服名称" bindinput="inputArea"/>
+                    <input class="server-right-search-input" type="text" confirm-type="search" placeholder="请输入区服名称" bindinput="inputArea" maxlength="30"/>
                     <text class="server-right-search-btn" bindtap="searchArea">搜索</text>
                 </view>
                 <scroll-view class="server-right-client" scroll-y='{{true}}' enable-back-to-top='{{true}}' scroll-with-animation='{{true}}'>
@@ -159,7 +159,7 @@
                     关键词搜索
                 </view>
                 <view class="info-top-content">
-                    <input class="info-top-content-search" type="text" confirm-type="search" value="{{wd}}" bindinput="searchKeyWord" />
+                    <input class="info-top-content-search" type="text" confirm-type="search" value="{{wd}}" bindinput="searchKeyWord" maxlength="30"/>
                 </view>
             </scroll-view>
             <view class="info-bottom">
@@ -179,6 +179,14 @@
             <goodstitle item="{{item}}"></goodstitle>
         </navigator>
     </view>
+
+    <!-- 底部提示 -->
+    <view class="bottom" wx:if="{{goodsList && goodsList.length>0}}">
+        <view class="bottom-tips">
+            已经到底了
+        </view>
+    </view>
+
     <!-- 商品列表为空 -->
     <view class="list-blank" hidden="{{goodsList}}">
         <image class="list-blank-img" src="/img/blank.png" mode="aspectFit"></image>

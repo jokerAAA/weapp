@@ -25,7 +25,7 @@
             </view>
         </navigator>
 
-        <buttons item="{{item}}" bind:senddata="onGetBtnData" tempTime='{{tempTime}}' bind:myevent="onGetCode" reason='{{reason}}' showDialog='{{showDialog}}' tradelogid='{{tradelogid}}'></buttons>
+        <buttons item="{{item}}" bind:senddata="onGetBtnData" tempTime='{{tempTime}}' bind:myevent="onGetCode" reason='{{reason}}' showDialog='{{showDialog}}' tradelogid='{{tradelogid}}' servicedate='{{servicedate}}'></buttons>
 
       </view>
     </block>  

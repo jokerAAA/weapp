@@ -1,5 +1,6 @@
 <!--pages/statement/statement.wxml-->
-<form class="container" id="container" bindsubmit="submitForm">
+<view class="container">
+<form id="container" bindsubmit="submitForm">
    <input type="text" name="tradelogid" value="{{tradelogList.id}}" hidden='true'></input>
   <input type="text" name="tradelogno" value="{{tradelogList.tradelogno}}" hidden='true'></input> 
   <input type="text" name="tradelogno" value="{{tradelogList.tradeid}}" hidden='true'></input> 
@@ -96,7 +97,7 @@
               <view class="section">  
                 <picker mode="date" value="{{form.date}}" start="2015-01-01" bindchange="bindDateChange">  
                   <view class="picker"> 
-                    <view wx:if="{{form.dateTime}}"><input type="text" name="bind_time_one" id="find-time" value='{{form.dateTime}}'></input></view> 
+                    <view wx:if="{{form.dateTime}}"><input type="text" name="bind_time_one" id="find-time" value='{{form.dateTime}}' disabled='true'></input></view> 
                     <view wx:else>请选择</view>    
                   </view>  
                 </picker>  
@@ -164,7 +165,7 @@
               <view class="section">  
                 <picker mode="date" value="{{date}}" start="2015-01-01" bindchange="bindIdDateChange">  
                   <view class="picker"> 
-                    <view wx:if="{{form.dateId}}"><input type="text" name="bind_userid_time" id="userid-time" value='{{form.dateId}}'></input></view> 
+                    <view wx:if="{{form.dateId}}"><input type="text" name="bind_userid_time" id="userid-time" value='{{form.dateId}}' disabled='true'></input></view> 
                     <view wx:else>请选择</view>    
                   </view>  
                 </picker>  
@@ -223,3 +224,4 @@
       <button formType="submit">提交申请</button>
   </view>
 </form>
+</view>

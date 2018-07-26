@@ -30,6 +30,19 @@
     color: #FF3434;
 }
 
+.goods-info-left-money {
+    margin-right: 10rpx;
+    font-size: 10px;
+    color: #999;
+    border: 1rpx solid #999;
+    border-radius: 4rpx;
+    line-height: 22rpx;
+    height: 26rpx;
+    margin-top: 23rpx;
+    padding-left: 4rpx;
+    padding-right: 4rpx;
+}
+
 .goods-info-left-sellmode {
     margin-right: 10rpx;
     font-size: 10px;

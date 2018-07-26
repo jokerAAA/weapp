@@ -14,6 +14,8 @@ Page({
 		goodsname: '',
 		mobilesystem: '',
 		reclist: [],
+		extensionAttr:[],
+		hotTrades:[]
 	},
 
 	/**
@@ -93,7 +95,9 @@ Page({
 						goodsname: data.goodsname,
 						mobilesystem: data.mobilesystem,
 						piclist: data.piclist,
-						reclist: data.hotTrades
+						reclist: data.hotTrades,
+						extensionAttr:data.extensionAttr,
+						hotTrades:data.hotTrades
 					})
 				})
 			}
@@ -103,8 +107,18 @@ Page({
 	/* 预览图片 */
 	priviewPics(e) {
 		const that = this;
+		const piclist = this.data.piclist;
+		const index = e.currentTarget.dataset['index'];
+		let urlArr = [];
+		piclist.forEach(function(value,index,arr) {
+			urlArr.push(value.picurl);
+		})
+		/* 调整预览顺序 */
+		for(let i = 0 ; i<index; i++) {
+			urlArr.push(urlArr.shift())
+		}
 		wx.previewImage({
-			urls: this.data.imgUrls
+			urls: urlArr
 		})
 	},
 

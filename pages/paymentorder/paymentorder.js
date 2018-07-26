@@ -79,46 +79,73 @@ Page({
 	/* 支付订单 */
 	pay() {
 		const that = this ;
-		wx.request({
-			url:app.globalData.payHost + '/minipro/pay/payment' ,
-			method:'POST',
-			data:{
-				tradelogid:that.data.tradelogid,
-				app_id:wxf37eea09f65e9bf2,
-				money:+that.data.price,
-				tradename:that.data.tradename,
-				payplatform:56,
-				code:wx.getStorageSync('code')
-			},
-			success:function(res) {
-				console.log(res);
-			},
-			fail:function(res) {
-				console.log(res);
-			},
-			complete() {
-				
+		wx.login({
+			success(res) {
+				if(res.code) {
+					wx.showLoading();
+					tsy.request({
+						url:app.globalData.payHost + '/minipro/pay/payment' ,
+						method:'POST',
+						header: {
+							'Content-Type': 'application/x-www-form-urlencoded'
+						},
+						data:{
+							tradelogid:that.data.tradelogid,
+							app_id:23,
+							money:+that.data.price,
+							tradename:that.data.tradename,
+							payplatform:56,
+							code:res.code
+						},
+						success:function(res) {
+							tsy.success(res,function() {
+								that.wxPay(res.data.data);
+							})
+						},
+						fail:function(res) {
+							console.log(res);
+						},
+						complete(res) {
+							wx.hideLoading();
+						}
+					 })
+				}else {
+					wx.showToast({
+						title:'登陆失败',
+						icon:'none',
+						duration:2000
+					})
+				}
 			}
- 		})
-		// wx.navigateTo({
-		// 	url: '/pages/payresult/payresult'
-		// })
+		})
 	},
 	wxPay: function (config) {
+		const that = this ;
 		wx.requestPayment({
 			timeStamp: config.timeStamp, //当前时间
 			nonceStr: config.nonceStr, //随机字符串
-			package: `prepay_id=${config.prepayid}`, //接口返回id
-			signType: 'MD5', //固定为md5
-			paySign: config.sign, //签名
-			success() {
-
+			package: config.package, //接口返回id
+			signType: config.signType, //固定为md5
+			paySign: config.paySign, //签名
+			success(res) {
+				console.log(res);
+				if(res.errMsg == 'requestPayment:ok') {
+					wx.navigateTo({
+						url: `/pages/payresult/payresult?tradelogid=${that.data.tradelogid}`
+					})
+				}
 			},
 			fail(res) {
-				console.log('onFail')
+				console.log(res);
 				// 不是用户取消弹出提示
 				if (res.errMsg != 'requestPayment:fail cancel') {
-					onFail() && onFail(res)
+					wx.showToast({
+						title:'支付出错'
+					})
+				}else {
+					wx.showToast({
+						title:'取消付款'
+					})
 				}
 			},
 			complete(res) {

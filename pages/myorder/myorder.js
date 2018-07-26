@@ -25,11 +25,13 @@ Page({
       url: app.globalData.host + '/user/trade/bought',
       success: function (res) {
         tsy.success(res, function () {
-          var tempTime = parseInt((res.data.data.serviceDate * 1000 - Date.now()) / 1000);
+          let tempTime = parseInt((res.data.data.serviceDate * 1000 - Date.now()) / 1000),
+          servicedate = res.data.data.serviceDate;
           that.setData({
             orderList: res.data.data.dataProvider,
             tempTime: tempTime,
-            reason: res.data.data.colsedata
+            reason: res.data.data.colsedata,
+            servicedate: servicedate
           })
         })
         
@@ -91,13 +93,13 @@ Page({
   },
 
   onReachBottom: function () {
-    var that = this;
+    const that = this;
     // 显示加载图标
     wx.showLoading({
       title: '加载中...',
     })
     // 页数+1
-    var page = that.data.page + 1;
+    let page = that.data.page + 1;
     that.setData({
       page: page
     }, function () {
@@ -113,7 +115,7 @@ Page({
         },
         success: function (res) {
           tsy.success(res, function () {
-            var newDataList = res.data.data.dataProvider;
+            let newDataList = res.data.data.dataProvider;
 
             that.setData({
               orderList: that.data.orderList.concat(newDataList)
@@ -125,34 +127,12 @@ Page({
 
         }
       })
-      // wx.request({
-      //   url: app.globalData.host + '/user/trade/bought',
-      //   data: {
-      //     page: parseInt(page)
-      //   },
-      //   method: "GET",
-      //   // 请求头部
-      //   header: {
-      //     'content-type': 'application/text'
-      //   },
-      //   success: function (res) {
-      //     // 回调函数
-      //     var newDataList = res.data.data.dataProvider;
-
-      //     that.setData({
-      //       orderList: that.data.orderList.concat(newDataList)
-      //     })
-
-      //     // 隐藏加载框
-      //     wx.hideLoading();
-      //   }
-      // })
     })
 
 
   },
   showTime: function (time, $dom) {
-    var str = '',
+    let str = '',
       min = parseInt((time % 3600) / 60),
       sec = time % 60,
       timeStr = '',
@@ -173,7 +153,7 @@ Page({
   },
   onGetBtnData: function (e) {
     console.log(e.detail)
-    var param = e.detail;
+    let param = e.detail;
     this.setData(
       param
     )

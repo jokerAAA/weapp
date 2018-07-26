@@ -100,6 +100,10 @@
     justify-content: center;
     font-size: 15px;
     color:#333;
+    padding-right:40rpx;
+    text-overflow:ellipise;
+    overflow:hidden;
+    word-break: break-all;
 }
 
 .game-none {

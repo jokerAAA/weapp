@@ -23,6 +23,22 @@
     font-size: 14px;
 }
 
+.arrow-right {
+    position: relative;
+    padding-right:34rpx;
+}
+
+.arrow-right::after {
+    position: absolute;
+    content:'';
+    width:14rpx;
+    height:28rpx;
+    top:38rpx;
+    right:0;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAqCAYAAABcOxDuAAAAAXNSR0IArs4c6QAAA4NJREFUSA2llk1oE1EQx5vNlxrxIOghCp68CjVJPUgQtYmkiJ+0+HHw1OYDKgSC6K0XsUIwh5CPFsGLVahYP/BQaooe1B7agFbQ9maLNkWxhyRFAknjf9qd8NJusrvNwnbemzfzy8x782Zr6OvrCxoMhsFqtZo1m83diUTib1uLjwT/ewDugTxZLpfHQ6HQ7haZbRKinGUI4M5KpfKyv7/fyrrtSIJeheMCOwN8ulQqjYyOjhpZp1dK6XT6F8AevL8F58uZTCYtzHUN16PJZrMrLpdrEp4UNad+1OFw7MJaRhcRxrUUZ2Zmljs6OqaQ/hXoTTLouNPpXAX4kx5wDUpOAC8A/BXDbrxUGfR4AV4E+PPGVP1vHZTMAZ5H2osYnsdrIB2es9DNAjy3MW3+dwuUzOH8BdEVMDwju1OVXAT4I9Z+yLqGQhFK1nCewuFZsMdu2Zv2+RK2ZwLZ5GSdouD0FBdJiWtMpeUXDP4YjUZ3KpWaF3R1Qz6MOqU4sdvtIcyfCbp9uHUTuHUHBV3dUDVSsh4YGLDkcrk32AqP4P0dDcit1IA0QQkUiURs+XyeLsgxATxtMplOJZPJoqCr1aKoUxxHo9FVm83WhSr4Jhi4qAFRJoJOO5ScYrHYCqBeDBcYQg1oaWnpidiAVA+KnVlqaUAN65QhShI1rNiAcGF2Yi2j+aCU4MFg8AT2dBxrO3gd23OzJSiBAD4H8BiGnPWK7j3liJrJliJtlP62Iw0EAu1ra2uvEXFtPzEeHBoaim8rUr/ffxiAD6jR/cI2PBweHu6lue5IEeEBwN5uAj7v7OwM8A/ogobD4b2ATcD5EANQQpNWq/V6T09PhXVcBjxvKKmhFItFArYLRtRQfOhU/wSdtvSpYRQKhRdwFDvUHFqfb3OHIrhq+gBKaBiPkbbYSxeRskepl2qCApiEIX2y+aHPiTcej/9kxWbZNFKc9F04iN+nAoC+Zt8n+oGGdQpgGMX9gKPAKZewBT7U4jvWNZKKUHxBb8DhEV5er0iS1I1eSoel+mwpKeo68BrBW1sDsBfAp6o02aDmSHO5QbzCUPzm3MJ9Tsj2mgSn10YNAnv2Hi/9q77+YB/vA3ib51rlOlStQWiFsZ2k1CAQ4ZjYINhYq5SQLh1AXYOwWCzXxAahFcZ2BD3CE8hpFPcF3JaSoNM9pBt1B+nmIamou5QahF7qf8zlYjoXgYkvAAAAAElFTkSuQmCC) no-repeat;
+    background-size: contain;
+}
+
 /* 商品标题 */
 .title {
     background:#fff;
@@ -174,7 +190,7 @@
 }
 
 .kefu-score-item-left {
-    width:72rpx;
+    width:80rpx;
     margin-right:20rpx;
 }
 

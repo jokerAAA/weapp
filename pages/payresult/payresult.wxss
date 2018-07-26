@@ -13,6 +13,25 @@
     height:190rpx;
     background:#fff;
     margin-bottom:17rpx;
+    padding-top:60rpx;
+}
+
+.status-result {
+    text-align: center;
+}
+
+.status-icon {
+    width:60rpx;
+    height:60rpx;
+    margin-right:40rpx;
+    vertical-align: middle;
+}
+
+.status-text {
+    color:#333;
+    font-size: 18px;
+    vertical-align: middle;
+    line-height: 60rpx;
 }
 
 .info {

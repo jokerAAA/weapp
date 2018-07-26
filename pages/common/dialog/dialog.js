@@ -49,9 +49,8 @@ Component({
    */
   methods: {
     closepop: function(){
-      var that = this;
-      var showinsurance = !this.data.showinsurance; //通过这个传递数据
-      var myEventDetail = {
+      const that = this;
+      let myEventDetail = {
         showDialog: ''
       } // detail对象，提供给事件监听函数
       this.triggerEvent('myevent', myEventDetail) //myevent自定义名称事件，父组件中使用
@@ -64,7 +63,7 @@ Component({
     },
     // 选择保险
     chooseDay: function(e){
-      var that = this;
+      const that = this;
       if (this.data.chooseCurrent === e.currentTarget.dataset.current) {
         return false;
       } else {
@@ -76,8 +75,7 @@ Component({
     },
     // 确认购买保险
     buyinsurance:function(event){
-      var showinsurance = !this.data.showinsurance,
-          that = this,
+      const that = this,
           rateDay = this.data.insuranceArray[0].day;
       
       if(!this.data.baoxiantype){
@@ -110,7 +108,7 @@ Component({
     },
     //选择原因
     reasonClick:function(event){
-      var that = this;
+      const that = this;
       if (this.data.chooseReason === event.currentTarget.dataset.val) {
         return false;
       } else {
@@ -122,7 +120,7 @@ Component({
     },
     //确认原因
     reasonConfirm:function(){
-      var tradelogid = this.data.tradelogid,
+      let tradelogid = this.data.tradelogid,
           val = this.data.reasonVal,
           orderidstatus = tradelogid + '-' + val;
       if (!val) return;

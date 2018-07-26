@@ -22,6 +22,10 @@ Component({
       type: null,
       value: ''
     },
+    'servicedate': {
+      type: null,
+      value: ''
+    },
     'tradelogid': {
       type: null,
       value: ''
@@ -49,11 +53,17 @@ Component({
         // 催单
         this.reminder(event);
       } else if (event.target.dataset.flag == 2) {
-        // 联系客服（小能客服）
-        
+        // 联系客服
+        wx.showModal({
+          content: "亲，我们的客服已经认领订单，正在准备交易资料。请注意查看QQ消息",
+          showCancel: false
+        })
       } else if (event.target.dataset.flag == 5) {
-        // 申请售后（小能客服）
-
+        // 申请售后
+        wx.showModal({
+          content: "等着",
+          showCancel: false
+        })
       } else if (event.target.dataset.flag == 10) {
         // 确认收货
         this.takeGoods(event);
@@ -65,7 +75,7 @@ Component({
     
     // 购买保险
     buyInsurance: function (event) {
-      var price = event.target.dataset.ndanprice,
+      let price = event.target.dataset.ndanprice,
         str = event.target.dataset.insuranceRate,
         insuranceArray = JSON.parse(str),
         that = this,
@@ -75,7 +85,7 @@ Component({
         value.insuranceMoney = value.insuranceMoney.toFixed(2);
       });
 
-      var myEventDetail = {
+      let myEventDetail = {
         showDialog: 'showinsurance',
         insuranceArray: insuranceArray,
         insuranceId: insuranceId
@@ -85,38 +95,43 @@ Component({
     },
     //催单
     reminder: function(event){
-      var goodsparentid = event.target.dataset.goodsparentid,
-          time = event.target.dataset.countdown; //到期时间，以s为单位
-          time = time - parseInt(Date.now() / 1000);
-          time -= this.data.tempTime;
+      
+      wx.showModal({
+        content: "等着",
+        showCancel: false
+      })
      
-      if (time > 0) {
-        var interval = setInterval(function () {
-          // 秒数
-          var second = time;
+      // var goodsparentid = event.target.dataset.goodsparentid,
+      //     time = event.target.dataset.countdown; //到期时间，以s为单位
+      //     time = time - parseInt(Date.now() / 1000);
+      //     time -= this.data.tempTime;
+      // if (time > 0) {
+      //   var interval = setInterval(function () {
+      //     // 秒数
+      //     var second = time;
 
-          // 分钟位
-          var min = Math.floor(second % (60 * 60 * 24) % 3600 / 60);
-          var minStr = min.toString();
-          if (minStr.length == 1) minStr = '0' + minStr;
+      //     // 分钟位
+      //     var min = Math.floor(second % (60 * 60 * 24) % 3600 / 60);
+      //     var minStr = min.toString();
+      //     if (minStr.length == 1) minStr = '0' + minStr;
 
-          // 秒位
-          var sec = Math.floor(second % (60 * 60 * 24) % 3600 % 60);
-          var secStr = sec.toString();
-          if (secStr.length == 1) secStr = '0' + secStr;
+      //     // 秒位
+      //     var sec = Math.floor(second % (60 * 60 * 24) % 3600 % 60);
+      //     var secStr = sec.toString();
+      //     if (secStr.length == 1) secStr = '0' + secStr;
 
-          this.setData({
-            min: minStr,
-            sec: secStr
-          });
-          this.showModal('若客服' + this.data.min + '分' + this.data.sec + '秒后还未联系您，您可以联系客服进行催单', interval)
-          time--;
-        }.bind(this), 1000);
+      //     this.setData({
+      //       min: minStr,
+      //       sec: secStr
+      //     });
+      //     this.showModal('若客服' + this.data.min + '分' + this.data.sec + '秒后还未联系您，您可以联系客服进行催单', interval)
+      //     time--;
+      //   }.bind(this), 1000);
         
-      } else {
-        // 小能客服
+      // } else {
         
-      }
+        
+      // }
     },
     //提示框
     showModal(error, interval) {
@@ -132,7 +147,7 @@ Component({
     },
     //关闭交易
     closeTrade: function (event){
-      var time = event.target.dataset.countdown; 
+      let time = event.target.dataset.countdown; 
           time = time - parseInt(Date.now() / 1000);
           time -= this.data.tempTime;
       if (time > 0) {
@@ -141,7 +156,7 @@ Component({
           showCancel: false
         })
       } else {
-        var myEventDetail = {
+        let myEventDetail = {
           showDialog: 'closeOrder',
           tradelogid: event.target.dataset.id
         } // detail对象，提供给事件监听函数
@@ -151,7 +166,7 @@ Component({
     },
     // 确认收货
     takeGoods:function(event){
-      var price = event.target.dataset.ndanprice,
+      let price = event.target.dataset.ndanprice,
         tradelogid = event.target.dataset.id;
       wx.showModal({
         title:'确认收货后￥'+ price +'直接付款到卖家账户',
@@ -173,17 +188,6 @@ Component({
 
               }
             })
-            // wx.request({
-            //   url: app.globalData.host + '/user/trade/receiptpro',
-            //   data: {
-            //     id: tradelogid
-            //   },
-            //   success: function () {
-            //     wx.navigateTo({
-            //       url: "/pages/orderstate/orderstate?id=" + tradelogid
-            //     })
-            //   }
-            // })
           } else if (res.cancel) {
             console.log('用户点击取消')
           }

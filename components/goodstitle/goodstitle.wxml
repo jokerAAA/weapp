@@ -3,6 +3,7 @@
     <view class="goods-info">
         <view class="goods-info-left">
             <text class="goods-info-left-price">￥{{item.price}}</text>
+            <text class="goods-info-left-money" wx:if="{{item.isfixedprice}}">{{ item.isfixedprice == 1 ? '一口价' : '可议价'}}</text>
             <text class="goods-info-left-sellmode">{{item.sellmode == 1 ? '寄售' : '担保'}}</text>
             <text class="goods-info-left-insurance" wx:if="{{item.insurance_status == 1}}">{{item.insurance_type > 1 ? '找回包赔' : '可投保'}}</text>
         </view>

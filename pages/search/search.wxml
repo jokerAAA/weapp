@@ -3,7 +3,7 @@
   <view class='head-view'>
     <view class='search-content'>
       <image src='/img/search-pic.png' class='search-icon'></image>
-      <input type='text' placeholder='请输入游戏名称' class='search-input' value='{{gameName}}' bindinput='searchGame'></input>
+      <input type='text' placeholder='请输入游戏名称' class='search-input' value='{{gameName}}' bindinput='searchGame' auto-focus='true'></input>
     </view>
     <view class='searchbtn' bindtap='searchClick'>
       搜索

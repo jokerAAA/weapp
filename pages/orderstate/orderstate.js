@@ -18,7 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
+    const that = this;
     tsy.request({
       url: app.globalData.host + '/user/trade/info',
       data: {
@@ -31,11 +31,16 @@ Page({
           } else {
             var time = res.data.data.models.detailStatus.leftTime;
           }
-          var timeid;
+          let timeid;
+
+          const tempTime = parseInt((res.data.data.serviceDate * 1000 - Date.now()) / 1000),
+            servicedate = res.data.data.serviceDate;
           that.setData({
             models: res.data.data.models,
             leftTime: time,
-            reason: res.data.data.colsedata
+            reason: res.data.data.colsedata,
+            tempTime: tempTime,
+            servicedate: servicedate
           })
 
           that.setTime(time, timeid, that);
@@ -43,26 +48,6 @@ Page({
 
       }
     })
-    // wx.request({
-    //   url: app.globalData.host + '/user/trade/info',
-    //   data: {
-    //     id: options.id
-    //   },
-    //   success: function (res) {
-    //     if (res.data.data.models.detailStatus.leftTime == undefined){
-    //       var time = '';
-    //     }else{
-    //       var time = res.data.data.models.detailStatus.leftTime;
-    //     }
-    //     var timeid;
-    //     that.setData({
-    //       models: res.data.data.models,
-    //       leftTime: time
-    //     })
-        
-    //     that.setTime(time,timeid,that);
-    //   }
-    // })
     
   },
 
@@ -116,14 +101,14 @@ Page({
   },
   //切换节点图
   showNode: function(){
-    var that = this;
+    const that = this;
     that.setData({
       showStatePic: !that.data.showStatePic
     })
   },
   //复制
   copyText: function(){
-    var that = this;
+    const that = this;
     wx.setClipboardData({
       data: that.data.models.tradelogno
     })
@@ -131,7 +116,7 @@ Page({
   //倒计时
   setTime: function (time, timeid, that) {
     if (time) {
-      var timeArr = time.match(/\d{2}/g),
+      let timeArr = time.match(/\d{2}/g),
         hour = 0,
         min = 0,
         totalMin = 0;
@@ -143,7 +128,7 @@ Page({
       }
       totalMin = hour * 60 + min * 1;
       timeid = setInterval(function () {
-        var htmlStr = '';
+        let htmlStr = '';
         totalMin--;
         if (totalMin > 0) {
           hour = parseInt(totalMin / 60);
@@ -160,7 +145,6 @@ Page({
           })
         } else {
           timeid && clearInterval(timeid);
-          // location.reload();
         }
       }, 1000 * 60)
 
@@ -174,7 +158,7 @@ Page({
   },
   onGetBtnData: function (e) {
     console.log(e.detail)
-    var param = e.detail;
+    let param = e.detail;
     this.setData(
       param
     )

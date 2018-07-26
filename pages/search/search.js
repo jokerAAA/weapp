@@ -66,7 +66,7 @@ Page({
   },
   // 模糊匹配
   searchGame: function(e){
-    var that = this,
+    const that = this,
       isNum = /^[0-9]{3,}$/,
       gameName = e.detail.value;
     that.setData({
@@ -99,7 +99,7 @@ Page({
   },
   // 点击搜索
   searchClick: function(){
-    var that = this,
+    const that = this,
       isNum = /^[0-9]{3,}$/,
       gameName = this.data.gameName;
 

@@ -71,8 +71,8 @@ Page({
   
   },
   addmore: function(){
-    var that = this,
-      page = this.data.page;
+    const that = this;
+    let  page = this.data.page;
     wx.request({
       url: app.globalData.host + '/indexpage/search/game',
       data: {
@@ -80,7 +80,7 @@ Page({
         keyword: page
       },
       success: function (res) {
-        var newgamelist = res.data.data.list;
+        let newgamelist = res.data.data.list;
         page++;
         that.setData({
           gamelist: that.data.gamelist.concat(newgamelist),

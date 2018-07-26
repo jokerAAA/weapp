@@ -43,7 +43,7 @@
 					"id": 0,
 					"name": "游戏列表页面",
 					"pathName": "pages/gamelist/gamelist",
-					"query": "letter=A"
+					"query": "letter=hot"
 				},
 				{
 					"id": -1,
@@ -61,13 +61,13 @@
 					"id": 3,
 					"name": "商品列表",
 					"pathName": "pages/goodslist/goodslist",
-					"query": "goodsid=1&gameid=6157"
+					"query": "goodsid=1&gameid=6147"
 				},
 				{
 					"id": 4,
 					"name": "商品详情",
 					"pathName": "pages/goodsdetail/goodsdetail",
-					"query": "id=7450960"
+					"query": "id=7450909"
 				},
 				{
 					"id": 5,
@@ -82,10 +82,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 7,
 					"name": "支付结果",
 					"pathName": "pages/payresult/payresult",
-					"query": ""
+					"query": "tradelogid=138286033552280"
 				},
 				{
 					"id": -1,

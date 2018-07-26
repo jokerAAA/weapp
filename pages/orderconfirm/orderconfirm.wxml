@@ -1,4 +1,5 @@
 <!--pages/orderconfirm/orderconfirm.wxml-->
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class="orderconfirm-container">
 
     <!-- 商品标题 -->
@@ -7,7 +8,7 @@
             {{trades.name}}
         </view>
         <view class="title-price red">
-            ￥{{trades.price}}
+            ￥{{filter.formatMoney(trades.price)}}
         </view>
     </view>
 
@@ -21,7 +22,7 @@
             <view class="left">
                 交易安全险
             </view>
-            <view class="right info-item-icon" bindtap="toggleInsurance" wx:if="{{trades.insurance_type == 0}}">
+            <view class="right info-item-icon arrow-right" bindtap="toggleInsurance" wx:if="{{trades.insurance_type == 0}}">
                 {{textInsurance}}
             </view>
             <view class="right info-item-icon" bindtap="toggleNotice" wx:else>
@@ -32,7 +33,7 @@
             <view class="left">
                 专属客服
             </view>
-            <view class="right info-item-icon" bindtap="toggleService">
+            <view class="right info-item-icon arrow-right" bindtap="toggleService">
                 {{service.text}}
             </view>
         </view>
@@ -126,7 +127,7 @@
                         <view class="kefu-score-item">
                             <text class="kefu-score-item-left">好评度</text>
                             <progress class="kefu-score-item-center" percent="{{item.praise}}" stroke-width="6" activeColor="#FF9402" backgroundColor="#eee" active></progress>
-                            <text class="kefu-score-item-right">{{item.praise}}</text>
+                            <text class="kefu-score-item-right">{{item.praise}}%</text>
                         </view>
                     </view>
                 </view>
@@ -148,7 +149,7 @@
                                     <view class="list-right-item-right-name-l">{{value.nickname}}</view>
                                     <view class="list-right-item-right-name-r {{value.workstatus == 1 ? '' : 'busy'}}">{{value.workstatus == 1 ? "空闲" : "忙碌"}}</view>
                                 </view>
-                                <view class="list-right-item-right-rate">好评率99%</view>
+                                <view class="list-right-item-right-rate">好评率:{{( value.comment_positive_num*1 + value.comment_moderate_num*1 + value.comment_negative_num*1 ) > 0 ? filter.formatMoney((100 * value.comment_positive_num/(value.comment_positive_num*1 + value.comment_moderate_num*1 + value.comment_negative_num*1)),0) + '%' : '未评'}}</view>
                                 <view class="list-right-item-right-info">{{value.month}}个月服务{{value.order_num}}笔订单</view>
                             </view>
                         </view>

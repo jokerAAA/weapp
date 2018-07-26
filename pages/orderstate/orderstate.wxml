@@ -65,7 +65,7 @@
             <view>
               <block wx:for='{{models.procedureNodes}}' wx:key=''>
                 <view class="order-flow-list {{item.status == 0 ? 'next' : item.status ==1 ? 'prev' : 'cur'}}">
-                    <view class="order-flow-list-status next">{{item.flag}}</view>
+                    <view class="order-flow-list-status {{item.status > 0? 'blue' : ''}}">{{item.flag}}</view>
                     <block wx:if='{{item.datetime}}'>
                       <view class="order-flow-list-time">{{item.datetime}}</view>
                     </block>
@@ -114,6 +114,7 @@
 
         <!-- 订单价钱展示 -->
         <view class="order-price">
+          <block wx:if="{{models.paytype && models.paydate != null}}">
             <view class="order-price-name">
                 <view class="c9 span">订单号：</view>
                 <view class='ib'> {{models.tradelogno}}</view>
@@ -123,6 +124,7 @@
                 <view class="c9 span">支付方式：</view>
                 <view class='ib'>{{models.paytype}}</view>
             </view>
+          </block>
             <view class="order-price-list">
                
                 <view class="order-price-list-li clearfix buyer">
@@ -165,7 +167,7 @@
         </view>
 
         <!-- <view style="height:.4rem"></view> -->
-        <buttons item="{{models}}" bind:senddata="onGetBtnData" styleclass='{{positionfixed}}' bind:myevent="onGetCode" reason='{{reason}}' showDialog='{{showDialog}}' tradelogid='{{tradelogid}}'></buttons>
+        <buttons item="{{models}}" tempTime='{{tempTime}}' bind:senddata="onGetBtnData" styleclass='{{positionfixed}}' bind:myevent="onGetCode" reason='{{reason}}' showDialog='{{showDialog}}' tradelogid='{{tradelogid}}' servicedate='{{servicedate}}'></buttons>
     </view>
 
     <dialog insuranceId='{{insuranceId}}' insuranceArray='{{insuranceArray}}' bind:myevent="onGetCode" reason='{{reason}}' showDialog='{{showDialog}}' tradelogid='{{tradelogid}}'></dialog>

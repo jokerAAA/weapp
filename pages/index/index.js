@@ -22,11 +22,11 @@ Page({
   },
   //滑动切换
   swiperTab: function (e) {
-    var that = this;
+    const that = this;
     that.setData({
       currentTab: e.detail.current
     });
-    var query = wx.createSelectorQuery()//创建节点查询器 query
+    let query = wx.createSelectorQuery()//创建节点查询器 query
     if (this.data.currentTab == 0) {
       query.select('.goods-container').boundingClientRect()//选择节点，获取节点位置信息的查询请求
     } else {
@@ -42,7 +42,7 @@ Page({
   //点击切换
   clickTab: function (e) {
 
-    var that = this;
+    const that = this;
 
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
@@ -51,7 +51,7 @@ Page({
         currentTab: e.target.dataset.current
       })
     }
-    var query = wx.createSelectorQuery()//创建节点查询器 query
+    let query = wx.createSelectorQuery()//创建节点查询器 query
     if (this.data.currentTab == 0) {
       query.select('.goods-container').boundingClientRect()
     } else {
@@ -93,7 +93,7 @@ Page({
         }
       })
     }
-    var that = this;
+    const that = this;
 
 
     wx.request({
@@ -111,7 +111,7 @@ Page({
             highList: res.data.data.highQualityTradeList,
             hotGame: res.data.data.hotGameList
           })
-          var query = wx.createSelectorQuery()//创建节点查询器 query
+          let query = wx.createSelectorQuery()//创建节点查询器 query
           query.select('.goods-container').boundingClientRect()//
           query.exec(function (res) {
             that.setData({

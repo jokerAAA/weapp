@@ -1,0 +1,9 @@
+
+
+function formatMoney(number=0,count=2) {
+    return number.toFixed(count)/1;
+}
+
+module.exports = {
+	formatMoney:formatMoney
+}

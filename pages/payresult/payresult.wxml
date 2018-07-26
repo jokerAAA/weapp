@@ -3,6 +3,14 @@
 
 
     <view class="status">
+        <view class="status-result" wx:if="{{type == 1}}">
+            <image class="status-icon" src="/img/paySuccess.png" mode="aspectFit"></image>
+            <text class="status-text">付款成功</text>
+        </view>
+        <view class="status-result" wx:else>
+            <image class="status-icon" src="/img/payFail.png" mode="aspectFit"></image>
+            <text class="status-text">付款失败</text>
+        </view>
     </view>
 
     <view class="info">
@@ -11,7 +19,7 @@
                 订单号
             </view>
             <view class="info-item-right">
-                5893548932125698456
+                {{tradelogid}}
             </view>
         </view>
         <view class="info-item">
@@ -19,7 +27,7 @@
                 商品
             </view>
             <view class="info-item-right">
-                王者荣耀【安卓qq】30级账号 18个英王者荣耀【安卓qq】30级账号 18个英王者荣耀【安卓qq】30级账号 18个英...
+                {{tradename}}
             </view>
         </view>
         <view class="info-item">
@@ -27,7 +35,7 @@
                 数量
             </view>
             <view class="info-item-right">
-                1件
+                {{amount}}件
             </view>
         </view>
         <view class="info-item">
@@ -35,7 +43,7 @@
                 价格
             </view>
             <view class="info-item-right red">
-                ￥43.35
+                ￥{{money}}
             </view>
         </view>
     </view>

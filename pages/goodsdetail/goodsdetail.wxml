@@ -1,5 +1,5 @@
 <!-- pages/goodsdetail/goodsdetail.wxml -->
-<view class="goodsdetail-container">
+<view class="goodsdetail-container" wx:if="{{!data}}">
     <!-- 轮播图 -->
     <swiper class="pics" indicator-dots indicator-active-color="#ffffff" wx:if="{{piclist.length>0}}">
         <block wx:for="{{piclist}}" wx:key="{{item}}">
@@ -118,7 +118,8 @@
         <view class="rec-title">
             相关推荐
         </view>
-        <view class="rec-list" wx:for="{{hotTrades}}" wx:key="{{index}}">
+        <navigator wx:for="{{hotTrades}}" wx:key="{{item.id}}" url="/pages/goodsdetail/goodsdetail?id={{item.id}}" hover-class="none">
+            <view class="rec-list" >
             <view class="rec-list-item">
                 <view class="rec-list-item-title">
                     {{item.name}}
@@ -128,6 +129,7 @@
                 </view>
             </view>
         </view>
+        </navigator>
     </view>
 
     <!-- 底部提示 -->
@@ -152,4 +154,33 @@
             立即购买
         </view>
     </view>
+</view>
+
+<!-- 处理商品id不存在 -->
+<view class="goodsdetail-container" wx:else>
+    <view class="header">
+        <navigator url="/pages/search/search" hover-class="none">
+            <view class="header-input">
+                <image class="header-input-img" src="/img/search.png" mode="aspectFit"></image>
+                <view class="header-input-text">{{data.keyword}}</view>
+            </view>
+        </navigator>
+    </view>
+    <view class="tips">
+        <image class="tips-left" src="/img/no-goods.png" mode="aspectFit"></image>
+        <view class="tips-right">
+            <view class="tips-right-text" wx:for="{{data.message}}" wx:key="{{index}}">{{item}}</view>
+        </view>
+    </view>
+    <view class="hot">
+        <view class="hot-title">
+            热门搜索
+        </view>
+        <view class="hot-info">
+            <navigator wx:for="{{data.hotSearchGame}}" wx:key="{{item.id}}" url="/pages/goodslist/goodslist?goodsid=1&gameid={{item.id}}" hover-class="none">
+                <view class="hot-info-item" >{{item.name}}</view>
+            </navigator>
+        </view>
+    </view>
+
 </view>

@@ -1,6 +1,7 @@
 // pages/gamelist/gamelist.js
 const app = getApp();
 const tsy = require('../../utils/util.js').tsy;
+const cache = require('../../utils/util.js').cache;
 Page({
 
     /**
@@ -81,35 +82,51 @@ Page({
     /* 加载页面数据 */
     getGamelist: function () {
         let that = this;
+        const gamename = that.data.gamename;
+        const letter = that.data.letter;
+        const key = `gamename=${gamename}&letter=${letter}`;
+        const item = cache.get(key);
+        if (item) {
+            that.render(item);
+            wx.hideNavigationBarLoading();
+            return;
+        }
         tsy.request({
             url: app.globalData.host + "/games/list/index",
             data: {
-                gamename: that.data.gamename,
-                letter: that.data.letter
+                gamename: gamename,
+                letter: letter
             },
             success: function (res) {
                 wx.hideNavigationBarLoading();
                 tsy.success(res, function () {
                     let data = res.data.data;
-                    if (data.gameList.length > 0) {
-                        that.setData({
-                            hasGamelist: true
-                        })
-                        data.gameList.forEach(function (value, index, arr) {
-                            value.pic = app.globalData.picHost + value.pic;
-                        })
-                        that.setData({
-                            letterArr: data.firstLetterList,
-                            gameArr: data.gameList
-                        })
-                    } else {
-                        that.setData({
-                            hasGamelist: false
-                        })
-                    }
+                    cache.set(key, data);
+                    that.render(data);
                 })
             }
         })
+    },
+
+    /* 渲染页面 */
+    render(data) {
+        const that = this;
+        if (data.gameList.length > 0) {
+            that.setData({
+                hasGamelist: true
+            })
+            data.gameList.forEach(function (value, index, arr) {
+                value.pic = app.globalData.picHost + value.pic;
+            })
+            that.setData({
+                letterArr: data.firstLetterList,
+                gameArr: data.gameList
+            })
+        } else {
+            that.setData({
+                hasGamelist: false
+            })
+        }
     },
 
     /* 切换游戏列表 */

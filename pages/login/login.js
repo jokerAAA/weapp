@@ -118,6 +118,9 @@ Page({
 						duration: 2000
 					})
 				}else {
+					that.setData({
+						text:'重新发送'
+					})
 					wx.showToast({
 						title: res.data.msg,
 						icon: "none",

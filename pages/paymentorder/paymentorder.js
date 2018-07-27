@@ -82,7 +82,6 @@ Page({
 		wx.login({
 			success(res) {
 				if(res.code) {
-					wx.showLoading();
 					tsy.request({
 						url:app.globalData.payHost + '/minipro/pay/payment' ,
 						method:'POST',
@@ -104,9 +103,6 @@ Page({
 						},
 						fail:function(res) {
 							console.log(res);
-						},
-						complete(res) {
-							wx.hideLoading();
 						}
 					 })
 				}else {

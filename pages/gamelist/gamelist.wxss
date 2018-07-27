@@ -6,6 +6,16 @@
     padding:14rpx 26rpx;
     display: flex;
     background:#fff;
+    position: relative;
+}
+
+.search-pic {
+    position: absolute;
+    top:32rpx;
+    left:46rpx;
+    width:24rpx;
+    height:24rpx;
+    vertical-align: middle;
 }
 
 .search-input {
@@ -16,6 +26,7 @@
     border-radius:100rpx;
     flex:1;
     margin-right:28rpx;
+    vertical-align: middle;
 }
 
 .search-input::-webkit-input-placeholder {
@@ -26,7 +37,7 @@
 .search-button {
     font-size: 16px;
     color:#333;
-    width:64rpx;
+    width:76rpx;
     height:60rpx;
     line-height: 60rpx;
     background:#fff;

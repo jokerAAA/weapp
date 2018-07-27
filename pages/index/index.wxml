@@ -68,7 +68,7 @@
                 约定
               </view>
               
-              <view class='toubao'>{{item.insuranceState}}</view>
+              <view class='toubao' wx:if='{{item.insuranceState}}'>{{item.insuranceState}}</view>
             </view> 
             <view class='otherinfo'>
               {{item.belongstoclientname}} | {{item.belongstoserviceareaname}}
@@ -83,7 +83,7 @@
       <swiper-item>
         <view class='game-container'>
           <view class='games-box' wx:for-items="{{hotGame}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
-            <navigator url='/game/{{item.spelling}}-{{item.id}}-20-1'>
+            <navigator url='/pages/goodslist/goodslist?goodsid=1&gameid={{item.id}}'>
               <view class="img-game">
                   <image src="{{picHosts}}{{item.pic}}" class="image" mode="aspectFill" lazy-load="true"/>
               </view>

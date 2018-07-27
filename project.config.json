@@ -61,13 +61,13 @@
 					"id": 3,
 					"name": "商品列表",
 					"pathName": "pages/goodslist/goodslist",
-					"query": "goodsid=1&gameid=6147"
+					"query": "goodsid=1&gameid=6157"
 				},
 				{
 					"id": 4,
 					"name": "商品详情",
 					"pathName": "pages/goodsdetail/goodsdetail",
-					"query": "id=7450909"
+					"query": "id=7450960"
 				},
 				{
 					"id": 5,

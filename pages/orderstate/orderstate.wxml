@@ -1,13 +1,6 @@
 <!--pages/orderstate/orderstate.wxml-->
 <view class='container'>
-    <view class="message"></view>
-
-    <!-- 服务器时间 -->
-    <!-- <input type="hidden" name='time' value=''> -->
-    <!-- $userType为1表示买家，2表示卖家 -->
-    
     <view class="all-main order">
-        <!-- <input type="hidden" id="mobile" value=""> -->
 
         <view class="order-tips clearfix">
             <view class="order-tips-status">
@@ -24,9 +17,9 @@
               {{leftTime}}{{models.detailStatus.afterLeftTime}}
             </view>
 
-            <block wx:if='{{models.closereason}}'>
+            <!-- <block wx:if='{{models.closereason}}'>
               <view class="order-tips-reason">关闭原因:{{models.closereason}}</view>
-            </block>
+            </block> -->
         </view>
 
         
@@ -43,8 +36,8 @@
         
         <!-- 当前订单状态 -->
         <view class="order-status clearfix" bindtap='showNode'>
-            <image src='/img/up.png' wx:if='{{showStatePic}}'></image>
-            <image src='/img/down.png' wx:else></image>
+            <image src='/img/down.png' wx:if='{{showStatePic}}'></image>
+            <image src='/img/up.png' wx:else></image>
             <view class="order-status-view">
                 <block wx:for='{{models.procedureNodes}}' wx:key='' wx:if='{{item.status == 2}}'>
                   <block wx:if='{{item.status == 2}}'>

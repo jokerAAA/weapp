@@ -11,7 +11,7 @@
             <view class="info-item-text" bindtap="goOrder">我的订单</view>
         </view>
         <view class="info-item">
-            <button class="info-item-text button" open-type="contact" session-from="kf_9098_1507537047642" hover-class="button-hover">联系客服</button>
+            <button class="info-item-text button" open-type="contact" session-from="kf_9098_1507537047642" hover-class="none">联系客服</button>
         </view>
     </view>
 

@@ -64,7 +64,7 @@
 .order-title {
     height: 40px;
     line-height: 40px;
-    padding-right: 150px;
+    padding-right: 200rpx;
     position: relative;
 }
 
@@ -80,7 +80,7 @@
 
 .order-title-right {
     font-size: 14px;
-    width: 150px;
+    width: 200rpx;
     position: absolute;
     top: 0;
     right: 15px;

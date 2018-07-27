@@ -1,5 +1,12 @@
 /* pages/goodsdetail/goodsdetail.wxss */
 @import "/lib/animate.wxss";
+page {
+    background:#f5f5f5;
+}
+
+navigator {
+    -webkit-tap-highlight-color: transparent;
+}
 
 .goodsdetail-container {
     background: #f5f5f5;
@@ -327,3 +334,90 @@
     line-height: 100rpx;
     color: #fff;
 }
+
+/* 为搜到商品id */
+.header {
+    height:90rpx;
+    background:#fff;
+    padding:15rpx 0 ;
+}
+
+.header-input {
+    width:90%;
+    margin:0 auto ;
+    background:#f5f5f5;
+    border-radius: 100rpx;
+    height:60rpx;
+    padding:12rpx 0 ;
+    display: flex;
+}
+
+.header-input-img {
+    width:48rpx;
+    height:32rpx;
+    vertical-align: middle;
+    margin-right:8rpx;
+}
+
+.header-input-text {
+    font-size: 14px;
+    color:#333;
+    vertical-align: middle;
+}
+
+.tips {
+    background:#fff;
+    padding:50rpx 60rpx;
+    display: flex;
+    border-bottom:1rpx solid #f5f5f5;
+}
+
+.tips-left {
+    width:130rpx;
+    height:170rpx;
+    margin-right:40rpx;
+}
+
+.tips-right {
+    flex:1;
+    padding:50rpx 0 ;
+    font-size: 14px;
+    color:#333;
+}
+
+.tips-right-text {
+
+}   
+.tips-right-text:nth-last-of-type(1) {
+    font-size: 12px;
+    color:#999;
+} 
+
+.hot {
+    background:#fff;
+    padding:20rpx 30rpx;
+}
+
+.hot-title {
+    height:70rpx;
+    line-height: 70rpx;
+    color:#999;
+    font-size: 16px;
+}
+
+.hot-info {
+    font-size: 12px;
+    color:#333;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top:20rpx;
+}
+
+.hot-info-item {
+    padding:16rpx 28rpx;
+    margin-right:20rpx;
+    margin-bottom:20rpx;
+    border-radius: 6rpx;
+    background:#f5f5f5;
+    border:1rpx solid #f5f5f5;
+}   

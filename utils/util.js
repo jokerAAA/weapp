@@ -83,7 +83,29 @@ const tsy = {
 	}
 }
 
+const cache = {
+	maxAge:3 * 24 * 3600 * 1000,
+	get(key) {
+		const item = wx.getStorageSync(key);
+		if(!item) return undefined ;
+		let tempTime = new Date().getTime() - item.time ;
+		if(tempTime > this.maxAge) {
+			return undefined ;
+		} else {
+			return item.value
+		}
+	},
+	set(key,value) {
+		let date = new Date().getTime();
+		wx.setStorageSync(key,{
+			value:value,
+			time:date
+		})
+	}
+}
+
 module.exports = {
 	formatTime: formatTime,
-	tsy: tsy
+	tsy: tsy,
+	cache:cache 
 }

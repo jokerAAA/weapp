@@ -15,7 +15,8 @@ Page({
 		mobilesystem: '',
 		reclist: [],
 		extensionAttr:[],
-		hotTrades:[]
+		hotTrades:[],
+		data:''
 	},
 
 	/**
@@ -89,16 +90,25 @@ Page({
 				wx.hideNavigationBarLoading();
 				tsy.success(res,function() {
 					let data = res.data.data;
-					that.setData({
-						trade: data.trade,
-						game: data.game,
-						goodsname: data.goodsname,
-						mobilesystem: data.mobilesystem,
-						piclist: data.piclist,
-						reclist: data.hotTrades,
-						extensionAttr:data.extensionAttr,
-						hotTrades:data.hotTrades
-					})
+					if(data.keyword) {
+						that.setData({
+							'data':data
+						},()=>{
+							console.log(that.data.data);
+						})
+					}else {
+						that.setData({
+							trade: data.trade,
+							game: data.game,
+							goodsname: data.goodsname,
+							mobilesystem: data.mobilesystem,
+							piclist: data.piclist,
+							reclist: data.hotTrades,
+							extensionAttr:data.extensionAttr,
+							hotTrades:data.hotTrades
+						})
+					}
+					
 				})
 			}
 		})

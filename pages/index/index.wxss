@@ -151,25 +151,19 @@
   margin-left: 24rpx;
 }
 .sellmode{
-  width: 56rpx;
-  height: 32rpx;
   color: #999;
   border: 1px solid #999;
-  margin: 0 1.3% 0 1.9%;
+  margin: 0 0 0 15rpx;
   font-size: 11px;
-  text-align:center;
-  line-height:32rpx;
+  padding: 0 6rpx;
 
 }
 .toubao{
-  width: 76rpx;
-  height: 32rpx;
   color: #09BB07;
   border: 1px solid #09BB07;
   margin: 0 0 0 15rpx;
   font-size: 11px;
-  text-align:center;
-  line-height:32rpx;
+  padding: 0 6rpx;
 }
 .otherinfo{
   color: #999;

@@ -11,7 +11,7 @@
 }
 
 .left {
-    width:160rpx;
+    width:200rpx;
     color:#333;
     font-size: 15px;
 }
@@ -51,6 +51,11 @@
     line-height: 44rpx;
     height:88rpx;
     margin-bottom:20rpx;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title-price {

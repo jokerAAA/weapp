@@ -77,7 +77,7 @@ Page({
       url: app.globalData.host + '/indexpage/search/game',
       data: {
         page:this.data.page,
-        keyword: page
+        keyword: this.data.keyvalue
       },
       success: function (res) {
         let newgamelist = res.data.data.list;

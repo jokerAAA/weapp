@@ -33,6 +33,13 @@ Page({
             reason: res.data.data.colsedata,
             servicedate: servicedate
           })
+          setInterval(function(){
+            let servicedate = that.data.servicedate + 1;
+            that.setData({
+              servicedate: servicedate
+            })
+          },1000)
+
         })
         
       }

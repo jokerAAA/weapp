@@ -7,6 +7,20 @@
           {{buttons.text}}
         </navigator>
       </block>
+      
+      <block wx:elif="{{buttons.flag-1 == 5}}">
+        <button class='order-buttons-text fr' open-type="contact" session-from="kf_9098_1504930157233">
+          {{buttons.text}}
+        </button>
+      </block>
+      <block wx:elif="{{buttons.flag-1 == 1}}">
+        <block wx:if="{{buttons.attr.countdown - servicedate < 0}}">
+          <button class='order-buttons-text fr' open-type="contact" session-from="kf_9098_1506499510793">
+            {{buttons.text}}
+          </button>
+        </block>
+      </block>
+
       <block wx:else>
         <view class='order-buttons-text fr' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
           {{buttons.text}}
@@ -22,6 +36,20 @@
               {{buttons.text}}
             </navigator>
           </block>
+          
+          <block wx:elif="{{buttons.flag-1 == 5}}">
+            <button class='order-buttons-text fr' open-type="contact" session-from="kf_9098_1504930157233">
+              {{buttons.text}}
+            </button>
+          </block>
+          <block wx:elif="{{buttons.flag-1 == 1}}">
+            <block wx:if="{{buttons.attr.countdown - servicedate < 0}}">
+              <button class='order-buttons-text fr' open-type="contact" session-from="kf_9098_1506499510793">
+                {{buttons.text}}
+              </button>
+            </block>
+          </block>
+
           <block wx:else>
             <view class='order-buttons-container-a' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
               {{buttons.text}}
@@ -40,6 +68,20 @@
           {{buttons.text}}
         </navigator>
       </block>
+
+      <block wx:elif="{{buttons.flag-1 == 5}}">
+        <button class='order-buttons-text fr' open-type="contact" session-from="kf_9098_1504930157233">
+          {{buttons.text}}
+        </button>
+      </block>
+      <block wx:elif="{{buttons.flag-1 == 1}}">
+        <block wx:if="{{buttons.attr.countdown - servicedate < 0}}">
+          <button class='order-buttons-text fr' open-type="contact" session-from="kf_9098_1506499510793">
+            {{buttons.text}}
+          </button>
+        </block>
+      </block>
+
       <block wx:else>
         <view class='order-buttons-text fr' data-flag="{{buttons.flag-1}}" data-goodsnum="{{item.count}}" data-ndanprice="{{item.price}}" data-id="{{item.id}}" data-tradeid="{{item.tradeid}}" data-goodsid="{{item.goodsid}}" data-xndestgroupid="{{item.xn_destgroupid}}" data-xndestid="{{item.xn_destid}}" data-goodsparentid="{{item.goodsparentid}}" data-insurance-rate='{{item.insurance_rate}}' data-account="{{item.accountinfo}}" data-password="{{item.accountpassword}}" data-countdown="{{buttons.attr.countdown}}" data-kefu="{{item.claimuserid}}" bindtap='clickBtn'>
           {{buttons.text}}

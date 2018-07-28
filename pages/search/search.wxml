@@ -20,7 +20,7 @@
         </navigator>
       </view>
     </view>
-     <block wx:if="{{gameName}}"> 
+     <block wx:if="{{gameName && !moreshow}}"> 
       <view class="more-relative" bindtap='searchClick'>更多与“{{gameName}}”相关的游戏<image src="/img/arrow-right.png"></image></view>
      </block> 
   </view>

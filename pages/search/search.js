@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    gameName:''
+    gameName:'',
+    moreshow:false
   },
 
   /**
@@ -73,11 +74,12 @@ Page({
       gameName: gameName
     })
     if(gameName){
-      if (isNum.test(gameName)){
-        that.setData({
-          searchGame: ''
-        })
-      }else{
+      // if (isNum.test(gameName)){
+      //   that.setData({
+      //     searchGame: '',
+      //     moreshow: true
+      //   })
+      // }else{
         wx.request({
           url: app.globalData.host + '/search/game/auto-complete',
           data: {
@@ -89,7 +91,7 @@ Page({
             })
           }
         })
-      }
+      // }
     }else{
       that.setData({
         searchGame: ''
@@ -106,14 +108,15 @@ Page({
     if (!gameName){
       return false;
     }  
-    if (isNum.test(gameName)) {
-      wx.navigateTo({
-        url: "/taoid_" + gameName + ".html"
-      })
-    } else {
+    // if (isNum.test(gameName)) {
+    //   wx.navigateTo({
+    //     url: "/pages/goodsdetail/goodsdetail?id=" + gameName
+    //   })
+    // } 
+    // else {
       wx.navigateTo({
         url: "/pages/gamesearch/gamesearch?page=1&keyword=" + gameName
       })
-    }
+    // }
   }
 })

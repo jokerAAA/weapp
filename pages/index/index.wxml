@@ -55,8 +55,8 @@
                 <image src="{{picHosts}}{{item.pic}}" class="image" mode="aspectFill" lazy-load="true"/>
             </view>
             <view class="goods-title">{{item.tradename}}</view>
-            <view style='display:flex;padding:12rpx 0;'>
-              <view class="goods-price">¥ {{item.trades.price}}</view>
+            <view style='padding:12rpx 0;' class='clearfix'>
+              <view class="goods-price"><view style='font-size:20rpx;position:relative;top:10rpx;'>¥</view><view style='font-size:32rpx'>{{item.trades.price}}</view></view>
               
               <view class='sellmode' wx:if="{{item.sellmode == 1}}">
                 寄售

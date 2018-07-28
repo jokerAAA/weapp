@@ -70,12 +70,12 @@
         </block>
 
         <!-- 视频 -->
-        <view class="info-item video-title" wx:if="{{trade.videourl}}">
+        <!-- <view class="info-item video-title" wx:if="{{trade.videourl}}">
             <text class="info-item-left">视频介绍</text>
         </view>
         <view class="video" wx:if="{{trade.videourl}}">
             <video class="video-player" id="myVideo" src="{{trade.videourl}}" controls></video>
-        </view>
+        </view> -->
     </view>
 
     <!-- 购买流程 -->

@@ -17,7 +17,7 @@
                 <image src="{{item.gamepic}}" class="order-content-img-img"></image>
             </view>
             <view class="order-content-title">
-                <view class="order-content-title-p c3">{{item.gameName}}</view>
+                <view class="order-content-title-p c3">{{item.tradename}}</view>
                 <view class="order-content-title-info c9">
                     <view>￥{{item.price}}</view>
                     <view>{{item.addtime}}</view>

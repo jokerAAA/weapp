@@ -51,4 +51,6 @@
     <view class="tips">
         温馨提示：亲，我们的客服会尽快认领订单为您办理交易，请留意查收手机短信或客服消息哦~
     </view>
+
+    <navigator class="btn" url="/pages/myorder/myorder" hover-class="none">查看我的订单</navigator>
 </view>

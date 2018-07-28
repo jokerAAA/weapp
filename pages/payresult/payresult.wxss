@@ -67,4 +67,16 @@
     line-height: 34rpx;
     padding:0 24rpx;
     margin-top:20rpx;
+    margin-bottom:30rpx;
+}
+
+.btn {
+    background:#09BB07;
+    width:700rpx;
+    height:88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    color:#fff;
+    margin:0 auto;
 }

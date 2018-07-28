@@ -149,6 +149,8 @@
   font-size: 24rpx;
   color:#e64340;
   margin-left: 24rpx;
+  display: flex;
+  float: left
 }
 .sellmode{
   color: #999;
@@ -156,7 +158,10 @@
   margin: 0 0 0 15rpx;
   font-size: 11px;
   padding: 0 6rpx;
-
+  height:34rpx;
+  position:relative;
+  top:4rpx;
+  float: left
 }
 .toubao{
   color: #09BB07;
@@ -164,6 +169,10 @@
   margin: 0 0 0 15rpx;
   font-size: 11px;
   padding: 0 6rpx;
+  height:34rpx;
+  position:relative;
+  top:4rpx;
+  float: left
 }
 .otherinfo{
   color: #999;

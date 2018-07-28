@@ -45,7 +45,7 @@
         </view>
         <view class="info-item">
             <view class="left">
-                联系qq
+                联系QQ
             </view>
             <input class="right info-item-input" type="number" maxlength="10" placeholder='请输入' bindinput="handleInput" data-name="buyerqq"></input>
         </view>

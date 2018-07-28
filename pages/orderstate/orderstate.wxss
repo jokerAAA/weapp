@@ -106,9 +106,12 @@ body {
 }
 
 .order-status-tips {
-    display: none;
     margin-top: 20rpx;
     padding-right: 40rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0.04px;
 }
 
 .order-status-tips.show {
@@ -119,7 +122,9 @@ body {
     font-size: 12px;
     line-height: 17px;
 }
-
+.order-status-tips-p:nth-of-type(1){
+    margin-bottom: 20rpx;
+}
 /* 点亮图 */
 
 .order-flow {

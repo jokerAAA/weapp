@@ -16,12 +16,12 @@
 .left {
   width: 200rpx;
   color: #333;
-  font-size: 15px;
+  font-size: 30rpx;
 }
 .right {
   flex: 1;
   color: #999;
-  font-size: 14px;
+  font-size: 28rpx;
   text-align: right;
 }
 input {
@@ -147,7 +147,7 @@ input {
 .bank-pic-p {
   height: 100rpx;
   line-height: 100rpx;
-  font-size: 15px;
+  font-size: 30rpx;
 }
 .bank-pic-ul {
   border-bottom: 1px solid #f1f1f1;
@@ -214,7 +214,7 @@ input {
   text-align: left;
   height: 100rpx;
   line-height: 100rpx;
-  font-size: 15px;
+  font-size: 30rpx;
   color: #333333;
 }
 .explain .explain-textarea {

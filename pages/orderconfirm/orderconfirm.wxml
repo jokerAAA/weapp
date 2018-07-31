@@ -41,13 +41,13 @@
             <view class="left">
                 联系手机
             </view>
-            <input class="right info-item-input" type="number" maxlength="11" placeholder='请输入' bindinput="handleInput" data-name="buyermobile"></input>
+            <input class="right info-item-input" type="number" maxlength="11" placeholder='请输入' bindinput="handleInput" data-name="buyermobile" value="{{formData.buyermobile}}"></input>
         </view>
         <view class="info-item">
             <view class="left">
                 联系QQ
             </view>
-            <input class="right info-item-input" type="number" maxlength="10" placeholder='请输入' bindinput="handleInput" data-name="buyerqq"></input>
+            <input class="right info-item-input" type="number" maxlength="10" placeholder='请输入' bindinput="handleInput" data-name="buyerqq" value="{{formData.buyerqq}}"></input>
         </view>
     </view>
 
@@ -105,7 +105,7 @@
                         <view class="kefu-score-title-left">该星级客服指标</view>
                         <view class="kefu-score-title-right">
                             <text class="red">{{item.selected}}%</text>的本地用户选择
-                            <text class="red">{{index}}元</text>客服进行服务
+                            <text class="red">{{service.list.keys[index]}}元</text>客服进行服务
                         </view>
                     </view>
                     <view class="kefu-score-items">
@@ -135,11 +135,11 @@
 
             <view class="list">
                 <view class="list-left">
-                    <view class="list-left-item {{activeLeftMenu == index ? 'list-left-active' : ''}}" data-index='{{index}}' catchtap="chooseType" wx:for="{{service.list}}" wx:key="{{index}}">{{index}}元客服</view>
+                    <view class="list-left-item {{activeLeftMenu == index ? 'list-left-active' : ''}}" data-index='{{index}}' catchtap="chooseType" wx:for="{{service.list.keys}}" wx:key="{{item}}">{{item == 0 ? '实习客服' : (item + '元客服')}}</view>
                     
                 </view>
-                <scroll-view class="list-right"  scroll-y wx:for="{{service.list}}" wx:for-item="item" wx:for-index="index" wx:key="{{index}}" hidden="{{!(activeLeftMenu == index) }}">
-                    <view class="list-right-items " wx:for="{{item}}" wx:for-item="value" wx:for-index="key" wx:key="{{value.id}}" data-id="{{value.id}}" data-status="{{value.workstatus}}" data-index="{{index}}" bindtap="chooseService" data-text="{{value.nickname}}">
+                <scroll-view class="list-right"  scroll-y wx:for="{{service.list.values}}" wx:for-item="item" wx:for-index="index" wx:key="{{index}}" hidden="{{!(activeLeftMenu == index) }}">
+                    <view class="list-right-items " wx:for="{{item}}" wx:for-item="value" wx:for-index="key" wx:key="{{value.id}}" data-id="{{value.id}}" data-status="{{value.workstatus}}" data-index="{{value.price}}" bindtap="chooseService" data-text="{{value.nickname}}">
                         <view class="list-right-item {{activeService == value.id ? 'activeService' : ''}}">
                             <view class="list-right-item-left">
                                 <image class="list-right-item-left-img" src="{{app.globalData.picHost}}{{value.head_img}}" mode="aspectFit"></image>

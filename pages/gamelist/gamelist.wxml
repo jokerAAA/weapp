@@ -8,15 +8,15 @@
         <button class="search-button" bindtap="searchGame">搜索</button>
     </view>
 
-    <view class="main">
+    <view class="main" style="height:{{scrollHeight}}px;">
 
-        <scroll-view class="letter" scroll-y='true' enable-back-to-top='true' scroll-with-animation='true' scroll-into-view="{{scrollId}}">
+        <scroll-view class="letter" scroll-y='true' enable-back-to-top='true' scroll-with-animation='true' scroll-into-view="{{scrollId}}" >
             <view class="letter-list {{item == letter? 'active' : '' }}" wx:for="{{letterArr}}" wx:key="{{item}}" bindtap='changeLetter' data-letter="{{item}}"  id="{{item}}">
                 <text class="letter-list-letter">{{item == 'hot' ? '热' : item}}</text>
             </view>
         </scroll-view>
 
-        <scroll-view class="game" scroll-y enable-back-to-top>
+        <scroll-view class="game" scroll-y enable-back-to-top >
             <view class="game-list" wx:for="{{gameArr}}" wx:key="{{item.id}}" wx:if="{{hasGamelist}}">
                 <view class="game-list-item" bindtap="chooseGame" data-goodsid="{{1}}" data-gameid="{{item.id}}">
                     <image class="game-list-item-pic" src="{{item.pic}}" lazy-load='true'></image>

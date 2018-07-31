@@ -77,7 +77,8 @@ Page({
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
 	onPullDownRefresh: function () {
-
+		this.getGoodslist();
+		wx.stopPullDownRefresh();
 	},
 
 	/**
@@ -96,13 +97,6 @@ Page({
 		}, function () {
 			that.getGoodslist();
 		});
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
 	},
 
 	/* 获取页面数据 */

@@ -86,27 +86,6 @@ Page({
 
 	},
 
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
-	},
-
 	/* 获取页面数据 */
 	getData(obj) {
 		const that = this;
@@ -118,16 +97,42 @@ Page({
 			},
 			success: function (res) {
 				wx.hideNavigationBarLoading();
+				console.log(res.data.data);
 				tsy.success(res, function () {
+					/* 特殊处理客服 */
+					let list = res.data.data.servicelist;
+					let info = res.data.data.complaintgroup;
+					let sortList = {};
+					let sortInfo = [];
+					let valueArr = [];
+					let keyArr = Object.keys(list).sort(function(prev,next){
+						return (next-prev)
+					});
+					keyArr.forEach(function(value,index,arr) {
+						valueArr.push(list[value]);
+						sortInfo.push(info[value]);
+					})
+					sortList = {
+						keys:keyArr,
+						values:valueArr
+					}
+
+					/*  */
+					let formData = that.data.formData;
+					formData = Object.assign({},formData,{
+						buyermobile:res.data.data.user.mobile,
+						buyerqq:res.data.data.user.qq
+					})
 					that.setData({
 						trades: res.data.data.trademodel,
 						price: res.data.data.trademodel.price,
 						service: {
-							list: res.data.data.servicelist,
-							info: res.data.data.complaintgroup,
+							list: sortList,
+							info: sortInfo,
 							text: "请选择"
 						},
-						insuranceList: res.data.data.baoxianList
+						insuranceList: res.data.data.baoxianList,
+						formData:formData
 					})
 				})
 			}
@@ -237,8 +242,21 @@ Page({
 		});
 	},
 
+	debounce:{
+		flag : true ,
+		time : 0 ,
+		maxTime : 1000
+	},
+
 	/* 提交订单 */
 	submitOrder() {
+		const that = this ;
+		let flag = that.debounce.flag;
+		// if(!flag) return ;
+		if((new Date().getTime() - that.debounce.time) < that.debounce.maxTime ) return ;
+		that.debounce.time = new Date().getTime();
+		that.debounce.flag = false ;
+
 		let formData = this.data.formData;
 		const _csrf = wx.getStorageSync('cookie')._csrf;
 		formData = Object.assign({},formData,{_csrf:_csrf});
@@ -251,6 +269,7 @@ Page({
 				},
 				data:formData,
 				success:function(res) {
+					that.debounce.flag = true ;
 					tsy.success(res,function(){
 						const data = res.data.data;
 						wx.navigateTo({

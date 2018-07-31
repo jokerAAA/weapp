@@ -2,8 +2,9 @@
 <view class="center-container">
     
     <view class="user">
-        <image class="user-pic" mode="aspectFit" src="{{user.pic}}"></image>
-        <view class="user-name">{{user.name}}</view>
+        <image class="user-pic" mode="aspectFit" src="{{pic}}" wx:if="{{pic}}"></image>
+        <image class="user-pic" mode="aspectFit" src='/img/userpic.png' wx:else></image>
+        <view class="user-name">{{username}}</view>
     </view>
 
     <view class="info">

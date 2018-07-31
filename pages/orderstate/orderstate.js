@@ -18,6 +18,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      options: options
+    })
+    this.getData(options);
+    
+  },
+  getData: function(options){
     const that = this;
     tsy.request({
       url: app.globalData.host + '/user/trade/info',
@@ -48,9 +55,7 @@ Page({
 
       }
     })
-    
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -83,7 +88,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.getData(this.data.options);
+    wx.stopPullDownRefresh();
   },
 
   /**

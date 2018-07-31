@@ -3,6 +3,7 @@
 
     "usingComponents": {
         "goodstitle": "/components/goodstitle/goodstitle"
-    }
+    },
+    "enablePullDownRefresh": false
 
 }

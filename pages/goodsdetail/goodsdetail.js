@@ -16,7 +16,10 @@ Page({
 		reclist: [],
 		extensionAttr:[],
 		hotTrades:[],
-		data:''
+		data:'',
+		flag:{
+			buy:true
+		}
 	},
 
 	/**
@@ -61,7 +64,9 @@ Page({
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
 	onPullDownRefresh: function () {
-
+		const id = this.data.trade.id ;
+		this.getData(id);
+		wx.stopPullDownRefresh();
 	},
 
 	/**
@@ -140,13 +145,26 @@ Page({
 		})
 	},
 
+	debounce:{
+		flag : true ,
+		time : 0 ,
+		maxTime : 1000
+	},
+
 	/* 立即购买 */
-	buyGoods() {
+	buyGoods(e) {
 		const that = this ;
-		const csrf = wx.getStorageSync('cookie')._csrf;
+		let flag = that.debounce.flag;
+		// if(!flag) return ;
+		if((new Date().getTime() - that.debounce.time) < that.debounce.maxTime ) return ;
+		that.debounce.time = new Date().getTime();
+		that.debounce.flag = false ;
+		
+		// const csrf = wx.getStorageSync('cookie')._csrf;
 		tsy.request({
 			url:app.globalData.host + "/user/verify/check-login",
 			success:function(res) {
+				that.debounce.flag = true ;
 				tsy.success(res,function() {
 					tsy.request({
 						url:app.globalData.host + '/user/buy/check-trade-state',

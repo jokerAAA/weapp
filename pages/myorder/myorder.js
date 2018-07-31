@@ -20,41 +20,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getData();
+  },
+  getData: function(){
     const that = this;
     tsy.request({
       url: app.globalData.host + '/user/trade/bought',
       success: function (res) {
         tsy.success(res, function () {
           let tempTime = parseInt((res.data.data.serviceDate * 1000 - Date.now()) / 1000),
-          servicedate = res.data.data.serviceDate;
+            servicedate = res.data.data.serviceDate;
           that.setData({
             orderList: res.data.data.dataProvider,
             tempTime: tempTime,
             reason: res.data.data.colsedata,
             servicedate: servicedate
           })
-          setInterval(function(){
+          setInterval(function () {
             let servicedate = that.data.servicedate + 1;
             that.setData({
               servicedate: servicedate
             })
-          },1000)
+          }, 1000)
 
         })
-        
+
       }
     })
-    // wx.request({
-    //   url: app.globalData.host + '/user/trade/bought',
-    //   success: function (res) {
-    //     var tempTime = parseInt((res.data.data.serviceDate * 1000 - Date.now()) / 1000);
-    //     that.setData({
-    //       orderList: res.data.data.dataProvider,
-    //       tempTime: tempTime,
-    //       reason: res.data.data.colsedata
-    //     })
-    //   }
-    // })
   },
 
   /**
@@ -89,7 +81,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getData();
+    wx.stopPullDownRefresh();
   },
 
   /**

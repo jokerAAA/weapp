@@ -150,7 +150,8 @@
   color:#e64340;
   margin-left: 24rpx;
   display: flex;
-  float: left
+  float: left;
+  position: relative;
 }
 .sellmode{
   color: #999;
@@ -158,10 +159,12 @@
   margin: 0 0 0 15rpx;
   font-size: 11px;
   padding: 0 6rpx;
-  height:34rpx;
+  /* height:34rpx; */
   position:relative;
   top:4rpx;
-  float: left
+  float: left;
+  border-radius:8rpx;
+
 }
 .toubao{
   color: #09BB07;
@@ -169,10 +172,12 @@
   margin: 0 0 0 15rpx;
   font-size: 11px;
   padding: 0 6rpx;
-  height:34rpx;
+  /* height:34rpx; */
   position:relative;
   top:4rpx;
-  float: left
+  float: left;
+  border-radius:8rpx;
+
 }
 .otherinfo{
   color: #999;

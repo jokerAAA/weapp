@@ -50,27 +50,26 @@
 
 .goods-info-left-sellmode {
     margin-right: 10rpx;
-    font-size: 10px;
+    font-size: 20rpx;
     border: 1rpx solid #999;
-    border-radius: 4rpx;
+    border-radius: 8rpx;
     color: #999;
-    line-height: 22rpx;
-    height: 26rpx;
+    line-height: 30rpx;
+    height: 30rpx;
     margin-top: 23rpx;
-    padding-left: 4rpx;
-    padding-right: 4rpx;
+    padding: 0 6rpx;
 }
 
 .goods-info-left-insurance {
-    font-size: 10px;
+    font-size: 20rpx;
     color: #09bb07;
     border: 1rpx solid #09bb07;
-    border-radius: 4rpx;
-    line-height: 22rpx;
-    height: 26rpx;
+    border-radius: 8rpx;
+    line-height: 30rpx;
+    height: 30rpx;
     margin-top: 23rpx;
-    padding-left: 4rpx;
-    padding-right: 4rpx;
+    padding-left: 6rpx;
+    padding-right: 6rpx;
 }
 
 .goods-info-right {

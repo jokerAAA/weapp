@@ -14,7 +14,8 @@ Page({
         letter: '',
         hasGamelist: true,
         goodsid: '',
-        scrollId: ''
+        scrollId: '',
+        scrollHeight: 560
     },
 
     /**
@@ -24,6 +25,7 @@ Page({
         wx.showNavigationBarLoading();
         const goodsid = options.goodsid || '1';
         const letter = options.letter || '';
+        this.setScrollHeight();
         this.setData({
             goodsid: goodsid,
             letter: letter
@@ -58,27 +60,6 @@ Page({
 
     },
 
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    },
-
     /* 加载页面数据 */
     getGamelist: function () {
         let that = this;
@@ -106,6 +87,27 @@ Page({
                 })
             }
         })
+    },
+
+    /* 设置scroll-view高度 */
+    setScrollHeight() {
+        const that = this ;
+        wx.getSystemInfo({
+            success: function (res) {
+                let windowHeight = res.windowHeight;
+                wx.createSelectorQuery().selectAll('.search').boundingClientRect(function (rects) {
+                    let searchHeight = 0 ;
+                    rects.forEach(function (rect) {
+                        searchHeight += rect.height;
+                        
+                    })
+                    that.setData({
+                        scrollHeight: windowHeight - searchHeight
+                    });
+                }).exec();
+            }
+        });
+
     },
 
     /* 渲染页面 */

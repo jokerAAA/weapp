@@ -7,17 +7,17 @@
         <input type='text' placeholder='请输入游戏名称' class='search-input' disabled='true'></input>
       </view>
     </navigator>
-    <view class='p-center'>
-      <navigator url='/pages/center/center'>
+    <view class='p-center' bindtap="goCenter">
+      
         <image src='/img/user.png' class='user-icon'></image>
-      </navigator>
+      
     </view>
   </view>
   <view class='swiper-container'>
     <swiper class='swiper_box' autoplay='true' bindchange='swiperchange'>
       <block wx:for='{{banners}}' wx:key='id'>
         <swiper-item>
-          <navigator url='{{picHosts}}{{item.mobileurl}}'>
+          <navigator url='{{item.mobileurl}}'>
             <image src='{{picHosts}}{{item.mobilesrc}}' class='slide-image'></image>
           </navigator>
         </swiper-item>
@@ -56,17 +56,11 @@
             </view>
             <view class="goods-title">{{item.tradename}}</view>
             <view style='padding:12rpx 0;' class='clearfix'>
-              <view class="goods-price"><view style='font-size:20rpx;position:relative;top:10rpx;'>¥</view><view style='font-size:32rpx'>{{item.trades.price}}</view></view>
+              <view class="goods-price"><view style='font-size:20rpx;position:absolute;bottom:6rpx;'>¥</view><view style='font-size:32rpx;margin-left:14rpx'>{{item.trades.price}}</view></view>
               
-              <view class='sellmode' wx:if="{{item.sellmode == 1}}">
-                寄售
-              </view>
-              <view class='sellmode' wx:if="{{item.sellmode == 2}}">
-                担保
-              </view>
-              <view class='sellmode' wx:if="{{item.sellmode == 3}}">
-                约定
-              </view>
+              <view class='sellmode' wx:if="{{item.sellmode == 1}}">寄售</view>
+              <view class='sellmode' wx:elif="{{item.sellmode == 2}}">担保</view>
+              <view class='sellmode' wx:elif="{{item.sellmode == 3}}">约定</view>
               
               <view class='toubao' wx:if='{{item.insuranceState}}'>{{item.insuranceState}}</view>
             </view> 

@@ -1,5 +1,6 @@
 // pages/login/login.js
 const app = getApp();
+const tsy = require('../../utils/util.js').tsy;
 Page({
 
 	/**
@@ -9,9 +10,10 @@ Page({
 		tel: '',
 		code: '',
 		timeId: '',
-		text:'发送验证码',
+		text: '发送验证码',
 		activeCode: false,
-		activeLogin: false
+		activeLogin: false,
+		timeCount:60
 	},
 
 	/**
@@ -72,33 +74,38 @@ Page({
 
 	handleTel(e) {
 		const tel = e.detail.value;
-		let activeCode = tel.length == 11 ? true : false ;
+		let activeCode = tel.length == 11 ? true : false;
 		this.setData({
 			tel: tel,
-			activeCode : activeCode 
+			activeCode: activeCode
 		})
 	},
 
 	handleCode(e) {
 		const code = e.detail.value;
-		let activeLogin = code.length == 6 ? true : false ;
+		let activeLogin = code.length == 6 ? true : false;
 		this.setData({
-			code: code ,
-			activeLogin:activeLogin
+			code: code,
+			activeLogin: activeLogin
 		})
 	},
 
 	/* 获取验证码 */
 	getCode() {
+		const text = this.data.text ;
+		console.log(text);
+		if(text != '发送验证码' && text != '重新发送') {
+			return ;
+		}
 		const tel = this.data.tel;
-		const that = this ;
+		const that = this;
 		if (!this.checkTel(tel)) {
 			return;
 		}
 		that.setData({
-			text:'发送中...'
+			text: '发送中...'
 		})
-		wx.request({
+		tsy.request({
 			url: app.globalData.passportHost + "/api/user/send-login-sms",
 			method: "POST",
 			header: {
@@ -108,38 +115,83 @@ Page({
 				mobile: tel
 			},
 			success: function (res) {
-				if(res.data.errcode == 0) {
+				if(res.data.errcode != 0) {
 					that.setData({
 						text:'重新发送'
+					})
+				}
+				tsy.success(res,function() {
+					that.setData({
+						text: `${that.data.timeCount}后重发`
+					},()=> {
+						that.countTime();
 					})
 					wx.showToast({
 						title: "发送成功",
 						icon: "success",
 						duration: 2000
 					})
-				}else {
-					that.setData({
-						text:'重新发送'
-					})
-					wx.showToast({
-						title: res.data.msg,
-						icon: "none",
-						duration: 2000
-					})
-				}
+				})
+				// if (res.data.errcode == 0) {
+					
+				// } else {
+				// 	that.setData({
+				// 		text: '重新发送'
+				// 	})
+				// 	wx.showToast({
+				// 		title: res.data.msg,
+				// 		icon: "none",
+				// 		duration: 2000
+				// 	})
+				// }
 			}
 		})
 
 	},
 
+	/* 倒计时 */
+	countTime() {
+		const that = this ;
+		let time = that.data.timeCount ;
+		that.data.timeId = setInterval(function() {
+			if(time > 0) {
+				that.setData({
+					text: `${time}s后重发`
+				},()=> {
+					time-- ;
+				});
+				
+			}else {
+				clearInterval(that.data.timeId);
+				that.data.timeId = 0 ;
+				that.setData({
+					text:'重新发送'
+				})
+			}
+		},1000)
+
+	},
+
+	debounce:{
+		flag : true ,
+		time : 0 ,
+		maxTime : 1000
+	},
+
 	/* login */
 	login() {
-		const that = this;
-		const tel = this.data.tel;
-		const code = this.data.code;
-		if (!this.checkTel(tel)) return;
-		if (!this.checkCode(code)) return;
-		wx.request({
+		const that = this ;
+		let flag = that.debounce.flag;
+		// if(!flag) return ;
+		if((new Date().getTime() - that.debounce.time) < that.debounce.maxTime ) return ;
+		that.debounce.time = new Date().getTime();
+		that.debounce.flag = false ;
+
+		const tel = that.data.tel;
+		const code = that.data.code;
+		if (!that.checkTel(tel)) return;
+		if (!that.checkCode(code)) return;
+		tsy.request({
 			url: app.globalData.passportHost + "/api/miniprogram/login-by-sms",
 			method: "POST",
 			header: {
@@ -150,24 +202,31 @@ Page({
 				smsverifycode: code
 			},
 			success: function (res) {
-				let cookie;
-				let returnurl;
-				if (res.data.errcode == 0) {
-					cookie = res.data.manualCookie;
+				that.debounce.flag = true ;
+				tsy.success(res, function () {
+					let cookie = res.data.manualCookie;
 					wx.setStorageSync('cookie', cookie);
 					// app.globalData.cookie = cookie ;
-					returnurl = wx.getStorageSync("returnurl");
-					returnurl = '/' + returnurl ;
-					wx.navigateTo({
-						url: returnurl
-					})
-				} else {
+					let returnurl = wx.getStorageSync("returnurl");
+					returnurl = '/' + returnurl;
+					// wx.navigateTo({
+					// 	url: returnurl
+					// })
 					wx.showToast({
-						title: res.data.msg,
-						icon: "none",
-						duration: 2000
+						title: '登陆成功',
+						icon: 'none',
+						duration: 2000,
+						success() {
+							setTimeout(function () {
+								wx.redirectTo({
+									url: returnurl
+								})
+							}, 2000)
+						}
 					})
-				}
+
+
+				})
 
 			}
 

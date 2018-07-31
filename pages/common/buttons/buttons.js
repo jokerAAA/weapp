@@ -60,10 +60,6 @@ Component({
         })
       } else if (event.target.dataset.flag == 5) {
         // 申请售后
-        wx.showModal({
-          content: "等着",
-          showCancel: false
-        })
       } else if (event.target.dataset.flag == 10) {
         // 确认收货
         this.takeGoods(event);
@@ -96,11 +92,6 @@ Component({
     //催单
     reminder: function(event){
       
-      wx.showModal({
-        content: "等着",
-        showCancel: false
-      })
-     
       // var goodsparentid = event.target.dataset.goodsparentid,
       //     time = event.target.dataset.countdown; //到期时间，以s为单位
       //     time = time - parseInt(Date.now() / 1000);
@@ -169,8 +160,8 @@ Component({
       let price = event.target.dataset.ndanprice,
         tradelogid = event.target.dataset.id;
       wx.showModal({
-        title:'确认收货后￥'+ price +'直接付款到卖家账户',
-        content: '小心点击“确定”，否则可能钱货两空～',
+        // title: '确认收货后￥1000000直接付款到卖家账户',
+        content: '确认收货后￥' + price +'直接付款到卖家账户\r\n\r\n小心点击“确定”，否则可能钱货两空',
         showCancel: true,
         success:function(res){
           if (res.confirm) {

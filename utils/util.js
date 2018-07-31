@@ -42,7 +42,7 @@ const tsy = {
 		/* 处理returnurl */
 		wx.hideLoading();
 		const url = this.getUrl();
-		wx.setStorageSync('returnurl', url);
+		
 		/* res中有新的cookie则更新cookie */
 		let cookieNew = res.data.manualCookie;
 		let cookie = wx.getStorageSync("cookie");
@@ -56,6 +56,7 @@ const tsy = {
 		if (res.data.errcode == 0) {
 			fn && fn();
 		} else if (res.data.errcode == 100001) {
+			wx.setStorageSync('returnurl', url);
 			wx.navigateTo({
 				url: `/pages/login/login`
 			})

@@ -2,5 +2,6 @@
   "usingComponents": {
     "dialog": "/pages/common/dialog/dialog",
     "buttons": "/pages/common/buttons/buttons"
-  }
+  },
+  "enablePullDownRefresh": true
 }

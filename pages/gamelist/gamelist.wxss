@@ -54,6 +54,7 @@
 
 .letter {
     width: 108rpx;
+    height:100%;
 }
 
 
@@ -81,6 +82,7 @@
 .game {
     flex: 1;
     padding-left:24rpx;
+    height:100%;
 }
 
 .game-list {

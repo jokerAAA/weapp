@@ -297,7 +297,7 @@ page {
     font-size: 10px;
     color:#fff;
     background:#09BB07;
-    margin-top:6rpx;
+    margin-top:9rpx;
     line-height: 28rpx;
 }
 

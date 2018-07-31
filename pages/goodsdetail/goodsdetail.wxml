@@ -91,7 +91,7 @@
             </view>
             <view class="process-list-step">
                 <text class="process-list-step-text">客服确认</text>
-                <text class="process-list-step-text">收到手机短信后，在个人中心-订单列表，点击'联系客服'，排队等待客服回复，并与客服确认订单信息</text>
+                <text class="process-list-step-text red">收到手机短信后，在个人中心-订单列表，点击'联系客服'，排队等待客服回复，并与客服确认订单信息</text>
             </view>
             <view class="process-list-step">
                 <text class="process-list-step-text">买家验号</text>
@@ -107,7 +107,7 @@
             </view>
             <view class="process-list-step">
                 <text class="process-list-step-text">交易完成</text>
-                <text class="process-list-step-text">买家确认游戏账号无误后，可以在订单列表操作确认收货，若未操作，系统会在24小时后自动确认收货，淘手游转账给卖家，普通账号24小时自动确认收货，淘手游转账给卖家</text>
+                <text class="process-list-step-text">买家确认游戏账号无误后，可以在订单列表操作确认收货，若未操作，系统会在24小时后自动确认收货，淘手游转账给卖家</text>
                 <text class="process-list-step-text">普通账号24小时自动确认收货，网易账号48小时，腾讯账号7天</text>
             </view>
         </view>

@@ -1,5 +1,10 @@
 /* pages/myorder/myorder.wxss */
-
+.container{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
 .module {
     padding-bottom: 0;
 }
@@ -56,11 +61,16 @@
 }
 
 .order-nodata {
-    background: #fff;
+    /* background: #fff; */
     text-align: center;
     padding-top: 10px;
+    color:#999;
+    font-size: 12px;
 }
-
+.nodata{
+  width: 176rpx;
+  height: 228rpx;
+}
 .order-title {
     height: 40px;
     line-height: 40px;

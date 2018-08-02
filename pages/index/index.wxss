@@ -181,7 +181,7 @@
 }
 .otherinfo{
   color: #999;
-  font-size: 12px;
+  font-size: 24rpx;
   margin-left: 24rpx;
   margin-bottom: 10rpx;
 }
@@ -230,10 +230,30 @@
 
 }
 .moregame{
-  color: #fff;
-  background: #FF3434;
-  width: 340rpx;
-  height: 228rpx;
-  line-height: 228rpx;
+  color: #666;
+  background: #fff;
+  width: 750rpx;
+  height: 88rpx;
+  line-height: 88rpx;
   text-align: center;
+  font-size: 14px;
+}
+
+.games-box-more{
+  width: 750rpx;
+  height: 88rpx;
+  background: #fff;
+  border-radius: 0;
+  position:absolute;
+  bottom:0;
+  left:0;
+
+}
+.games-box-more image{
+  width: 28rpx;
+  height: 28rpx;
+  position: relative;
+  top:5rpx;
+  left:6rpx;
+
 }

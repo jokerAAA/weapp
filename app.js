@@ -46,12 +46,15 @@ App({
 	},
 	globalData: {
 		userInfo: null,
-		// host: 'http://wx.tsy.com',
-		host: 'http://cdt0-wxmn.taoshouyou.com',
-		picHost: 'http://img-test.taoshouyou.com',
-		// passportHost: 'http://passport.tsy.com',
-		passportHost: 'http://cdt0-passport.taoshouyou.com',
-		payHost: 'http://cdt0-pay.taoshouyou.com',
+		// host: 'http://cdt0-wxmn.taoshouyou.com',
+		// picHost: 'http://img-test.taoshouyou.com',
+		// passportHost: 'http://cdt0-passport.taoshouyou.com',
+		// payHost: 'http://cdt0-pay.taoshouyou.com',
+		/* 以上为测试域名 */
+		host: 'https://wxmn.taoshouyou.com',
+		picHost: 'https://img.taoshouyou.com',
+		passportHost: 'https://passport.taoshouyou.com',
+		payHost: 'https://pay.taoshouyou.com',
 		cookie:''
 	}
 })

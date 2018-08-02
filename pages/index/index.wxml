@@ -84,9 +84,10 @@
               <view class="game-title">{{item.name}}</view>
             </navigator>
           </view>
-          <view class='games-box'>
+          <view class='games-box games-box-more'>
             <navigator url='/pages/gamelist/gamelist?letter=hot' class='moregame'>
-              更多游戏
+              查看更多游戏
+              <image src="/img/more.png"></image>
             </navigator>
           </view>
         </view>

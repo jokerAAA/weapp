@@ -44,7 +44,7 @@ Page({
 
 		query.exec(function (res) {
 			that.setData({
-				clientHeight: res[0].height
+				clientHeight: res[0].height+45
 			})
 		})
 	},
@@ -70,7 +70,7 @@ Page({
 
 		query.exec(function (res) {
 			that.setData({
-				clientHeight: res[0].height
+				clientHeight: res[0].height+45
 			})
 		})
 
@@ -131,7 +131,7 @@ Page({
             query.select('.goods-container').boundingClientRect() //
             query.exec(function (res) {
               that.setData({
-                clientHeight: res[0].height
+                clientHeight: res[0].height+45
               })
             })
           }

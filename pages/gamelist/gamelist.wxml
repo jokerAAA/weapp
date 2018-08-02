@@ -16,7 +16,7 @@
             </view>
         </scroll-view>
 
-        <scroll-view class="game" scroll-y enable-back-to-top >
+        <scroll-view class="game" scroll-y enable-back-to-top scroll-top="{{scrollY}}">
             <view class="game-list" wx:for="{{gameArr}}" wx:key="{{item.id}}" wx:if="{{hasGamelist}}">
                 <view class="game-list-item" bindtap="chooseGame" data-goodsid="{{1}}" data-gameid="{{item.id}}">
                     <image class="game-list-item-pic" src="{{item.pic}}" lazy-load='true'></image>

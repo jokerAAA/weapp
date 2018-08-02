@@ -24,7 +24,9 @@ Page({
       game_role: '',
       textarea: '',
     },
-    tradelogList:''
+    tradelogList:'',
+    flag:true,
+    areafocus:false
   },
 
   /**
@@ -157,9 +159,24 @@ Page({
       }
     })
   },
+  addHeight:function(){
+    this.setData({
+      areafocus:true
+    })
+    console.log("add" + this.data.areafocus)
+  },
+  redHeight: function () {
+    this.setData({
+      areafocus: false
+    })
+    console.log("red" + this.data.areafocus)
+  },
   // 表单提交
   submitForm: function(event){
+    const that = this
     const params = event.detail.value
+    let flag = this.data.flag;
+    
     console.log(params)
     // 传入表单数据，调用验证方法
     if (!this.WxValidate.checkForm(event)) {
@@ -167,7 +184,12 @@ Page({
       this.showModal(error)
       return false
     }
-    const that = this;
+    if (!flag) return;
+
+    this.setData({
+      flag: false
+    })
+   
     //提交
     tsy.request({
       url: app.globalData.host + '/user/insurance/save',
@@ -177,8 +199,11 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (res) {
+        that.setData({
+          flag: true
+        })
         tsy.success(res, function () {
-          wx.navigateTo({
+          wx.redirectTo({
             url: res.data.data.url
           })
         })
@@ -211,6 +236,7 @@ Page({
       },
       bind_bank: {
         required: true,
+        digits: true
       },
       bind_bank_user: {
         required: true,
@@ -257,7 +283,8 @@ Page({
         required: '请输入开户行',
       },
       bind_bank: {
-        required: '请输入银行卡号'
+        required: '请输入银行卡号',
+        digits: '请输入正确的银行卡号'
       },
       bind_bank_user: {
         required: '请输入真实姓名',

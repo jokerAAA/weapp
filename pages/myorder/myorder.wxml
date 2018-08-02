@@ -2,7 +2,7 @@
 <view class="container {{showinsurance ? '': 'noscroll'}}">
   <view class="tips-info">若想看完整订单，请前往淘手游App！</view>
   <view class="payparent" data-mobile="111">
-    <block wx:if="{{orderList}}">
+    <block wx:if="{{orderList != ''}}">
       <view class="mar-10 order" wx:for="{{orderList}}" wx:key="{{item.id}}" wx:for-index="orderindex">
         <view class="order-title p15">
             <view class="order-title-left c9">
@@ -33,7 +33,8 @@
     
 
     <block wx:else>
-      <view class="order-nodata">抱歉，暂无数据。</view>
+      <view style='text-align:center;margin-top:300rpx'><image class='nodata' src='/img/no-goods.png'></image></view>
+      <view class="order-nodata">暂时没有您的订单信息</view>
     </block>
       
   </view>

@@ -1,8 +1,9 @@
 {
-  "enablePullDownRefresh": true,
+  "enablePullDownRefresh": false,
   "onReachBottomDistance": 0,
   "usingComponents": {
     "dialog": "/pages/common/dialog/dialog",
     "buttons": "/pages/common/buttons/buttons"
-  }
+  },
+  "navigationBarTitleText": "我的订单"
 }

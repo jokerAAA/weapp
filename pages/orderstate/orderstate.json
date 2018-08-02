@@ -3,5 +3,6 @@
     "dialog": "/pages/common/dialog/dialog",
     "buttons": "/pages/common/buttons/buttons"
   },
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "订单详情"
 }

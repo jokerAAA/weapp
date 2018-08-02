@@ -54,7 +54,7 @@
     border: 1rpx solid #999;
     border-radius: 8rpx;
     color: #999;
-    line-height: 30rpx;
+    line-height: 26rpx;
     height: 30rpx;
     margin-top: 23rpx;
     padding: 0 6rpx;
@@ -65,7 +65,7 @@
     color: #09bb07;
     border: 1rpx solid #09bb07;
     border-radius: 8rpx;
-    line-height: 30rpx;
+    line-height: 26rpx;
     height: 30rpx;
     margin-top: 23rpx;
     padding-left: 6rpx;

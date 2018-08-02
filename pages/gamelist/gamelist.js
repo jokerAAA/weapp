@@ -15,7 +15,8 @@ Page({
         hasGamelist: true,
         goodsid: '',
         scrollId: '',
-        scrollHeight: 560
+        scrollHeight: 560,
+        scrollY:0
     },
 
     /**
@@ -72,6 +73,9 @@ Page({
             wx.hideNavigationBarLoading();
             return;
         }
+        this.setData({
+            scrollY:0
+        })
         tsy.request({
             url: app.globalData.host + "/games/list/index",
             data: {

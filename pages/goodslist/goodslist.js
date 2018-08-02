@@ -85,9 +85,9 @@ Page({
 	 * 页面上拉触底事件的处理函数
 	 */
 	onReachBottom: function () {
-		const goodslist = this.goodsList;
+		const goodslist = this.data.goodsList;
 		if (!goodslist) return;
-		const length = this.goodsList.length;
+		const length = this.data.goodsList.length;
 		if (length && length % 15 != 0) {
 			return;
 		}

@@ -1,8 +1,14 @@
 /* pages/orderstate/orderstate.wxss */
+
 body {
     min-height: 667px;
 }
-
+.container{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
 .all-main {
     clear: both;
     background: #f1f1f1;

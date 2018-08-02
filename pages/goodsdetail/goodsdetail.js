@@ -13,7 +13,6 @@ Page({
 		game: {},
 		goodsname: '',
 		mobilesystem: '',
-		reclist: [],
 		extensionAttr:[],
 		hotTrades:[],
 		data:'',
@@ -108,7 +107,6 @@ Page({
 							goodsname: data.goodsname,
 							mobilesystem: data.mobilesystem,
 							piclist: data.piclist,
-							reclist: data.hotTrades,
 							extensionAttr:data.extensionAttr,
 							hotTrades:data.hotTrades
 						})

@@ -1,0 +1,36 @@
+
+.withdraw-container {
+    padding:30rpx 24rpx 0 ;
+    color:#666;
+    border-top: 1rpx solid #C8C8C8 ;
+}
+
+.title {
+    font-size: 14px;
+    line-height: 40rpx;
+    margin-bottom: 30rpx;
+}
+
+.money {
+    margin-bottom:10rpx;
+    background:#f7f7f7;
+    height:100rpx;
+    line-height: 100rpx;
+    display: flex;
+}
+
+.money-left {
+    width:70rpx;
+    font-size: 30px;
+}
+
+.money-right {
+    flex:1;
+    font-size: 14px;
+}
+
+.tips {
+    font-size: 12px;
+    color: #C8C8C8;
+    margin-top: 10rpx;
+}

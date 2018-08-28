@@ -1,0 +1,47 @@
+<!--pages/common/gamearea/gamearea.wxml-->
+<view class='area-content' hidden='{{showarea?false:true}}'>
+  <view class='title'>
+    <text class="title-info">游戏区服</text>
+    <image class='close' src='/img/close-icon.png' bindtap='closeArea'></image>
+  </view>
+  <view class="tabs">
+    <view class="tabstol {{curHdIndex=='0'? 'tab-active' : ''}}" data-id="0" bindtap="tab">搜索区服</view>
+    <view class="tabstol {{curHdIndex=='1'? 'tab-active' : ''}}" data-id="1" bindtap="tab">全部区服</view>
+    <view class="tabstol {{curHdIndex=='2'? 'tab-active' : ''}}" data-id="2" bindtap="tab">其他区服</view>
+  </view>
+  <view class='area-info'>
+    <view class="search" hidden="{{curBdIndex=='0'? flase : true}}">
+      <view class='search-top'>
+        <view class='search-box'>
+          <image src='/img/search.png' class='search-pic'></image>
+          <input placeholder='更多区服请快速搜索' class='search-input'></input>
+        </view>
+        <view class='search-btn'>
+          搜索
+        </view>
+      </view>
+
+
+    </view>
+    <view class="all" hidden="{{curBdIndex=='1'? flase : true}}">
+    2
+    </view>
+    <view class="other" hidden="{{curBdIndex=='2'? flase : true}}">
+      <view class='search-top'>
+        <view class='search-box'>
+          <image src='/img/search.png' class='search-pic'></image>
+          <input placeholder='更多区服请快速搜索' class='search-input'></input>
+        </view>
+        <view class='search-btn'>
+          搜索
+        </view>
+      </view>
+      <view class='search-tip'>
+        注：请填写游戏内标准的区服名称。若填错，将无法通过审核！
+      </view>
+    </view>
+  </view>
+  <button class='area-btn'>
+    <text>确　定</text>
+  </button>
+</view>

@@ -1,0 +1,164 @@
+.orderlist-container {}
+
+.green {
+    color: #44B500;
+}
+
+.list {
+    background: #f8f8f8;
+}
+
+.order {
+    padding: 0 24rpx;
+    font-size: 14px;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.order-top {
+    height: 72rpx;
+    line-height: 72rpx;
+    display: flex;
+    color: #666;
+    border-bottom: 1rpx solid #E6E6E6;
+}
+
+.order-top-left {
+    flex: 1;
+}
+
+.order-top-right {
+    width: 170rpx;
+    text-align: right;
+}
+
+.order-info {
+    padding-top: 12rpx;
+    padding-bottom: 12rpx;
+    display: flex;
+    border-bottom: 1rpx solid #E6E6E6;
+}
+
+.order-info-left {
+    width: 108rpx;
+    margin-right: 30rpx;
+}
+
+.order-info-left-pic {
+    width: 108rpx;
+    height: 108rpx;
+    margin-top: 10rpx;
+    border-radius: 16rpx;
+}
+
+.order-info-right {
+    flex: 1;
+}
+
+.order-info-right-title {
+    line-height: 40rpx;
+    height: 80rpx;
+    margin-bottom: 6rpx;
+    color: #333;
+}
+
+.order-info-right-price {
+    display: flex;
+    font-size: 12px;
+}
+
+.order-info-right-price-count {
+    flex: 1;
+    font-size: 18px;
+}
+
+.money {
+    font-size: 10px;
+}
+
+.order-info-right-price-time {
+    width: 260rpx;
+    line-height: 48rpx;
+    color: #999;
+}
+
+.order-bottom {
+    height: 80rpx;
+    line-height: 80rpx;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    padding-top: 20rpx;
+}
+
+.order-bottom-buttons {
+    background: #fff;
+    padding: 4rpx 24rpx;
+    height: 40rpx;
+    line-height: 30rpx;
+    border-radius: 8rpx;
+    border: 1prx solid #999;
+    color: #999;
+    margin-right: 20rpx;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.order-bottom-buttons::after {
+    border: none;
+    outline: none;
+}
+
+/* 价格dialog */
+
+.mask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.price {
+    width: 84%;
+    border-radius: 14px;
+    padding-top: 40rpx;
+    font-size: 18px;
+    background: #fff;
+}
+
+.price-title {
+    text-align: center;
+}
+
+.price-input {
+    margin: 30rpx 40rpx 40rpx;
+    border: 1rpx solid #f1f1f1;
+    height: 72rpx;
+    line-height: 72rpx;
+    border-radius: 8rpx;
+    font-size: 14px;
+    padding-left: 30rpx;
+}
+
+.price-input::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+.price-btns {
+    border-top: 1rpx solid #f1f1f1;
+    color: #F74B3D;
+    display: flex;
+}
+
+.price-btns-btn {
+    width: 50%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+}
+
+.price-btns-btn:nth-of-type(1) {
+    border-right: 1rpx solid #f1f1f1;
+    color: #999;
+}

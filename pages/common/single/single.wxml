@@ -1,0 +1,20 @@
+<!--pages/common/single/single.wxml-->
+<view class="flex arrow">
+    <span class="left">
+        {{title}}
+    </span>
+    
+    <span class="right">
+        <view class="section">  
+          <picker mode="selector" range="{{pick}}" range-key='name' bindchange="bindSureChange">  
+            <view class="picker"> 
+              <view wx:if="{{choosename}}"><input type="text" name="{{inputname}}" value='{{choosename}}' disabled='true' class="picker-choose"></input></view> 
+              <view wx:else>请选择</view>    
+
+            </view>  
+          </picker>  
+        </view> 
+    </span>
+    <image src='/img/arrow-right.png'></image>
+    <text wx:if="{{title == '安全保障'}}" class="info-tips">服务费</text>
+</view>

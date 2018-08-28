@@ -295,6 +295,15 @@ navigator {
     width:100%;
 }
 
+.blank {
+    background: #FA7F7F;
+    color:#fff;
+    text-align: center;
+    display: block;
+    line-height: 100rpx;
+
+}
+
 .btn-left {
     font-size: 10px;
     color: #999;

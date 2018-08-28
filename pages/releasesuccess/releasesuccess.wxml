@@ -1,0 +1,28 @@
+<!--pages/releasesuccess/releasesuccess.wxml-->
+<view class="success-wrap">
+	<view class="success-title">
+		<view class='succ-header'>
+      <image src='/img/relsucc.png'></image>
+			<view>编辑成功，客服会尽快审核商品！ 恭喜您，商品发布成功！</view>
+		</view>
+	</view>
+	<view class="success-content">
+		<view class="goodsinfo">
+			<span class="goodstitle">商品名称</span>
+			<span class="goodsname"></span>
+		</view>
+		<view class="goodsinfo">
+			<span class="goodstitle">交易暗号</span>
+			<span class="goodscode"></span>
+		</view>
+	</view>
+	<view class="success-tips">
+		<view>温馨提示:</view>
+		<view>1.请牢记您的交易暗号，淘手游客服不会以任何理由向您索取交易暗号！</view>
+		<view>2.商品被拍下后，会有客服联系您，并向您提供交易暗号，无法提供或提供错误的都是骗子！</view>
+	  <view>3.更多优质游戏账号，尽在淘手游，<navigator href="/game" class="blue-word">点击此处</navigator>马上去挑选适合自己的账号！</view>
+	</view>
+	<navigator href="/user/sellertrade/index" class="success-btn">
+		查看已发布的商品
+	</navigator>
+</view>

@@ -18,7 +18,15 @@
     "pages/gamesearch/gamesearch",
     "pages/notfound/notfound",
     "pages/certpic/certpic",
-    "pages/statementinfo/statementinfo"
+    "pages/statementinfo/statementinfo",
+    "pages/selltrade/selltrade",
+    "pages/traderelease/traderelease",
+    "pages/sellsuccess/sellsuccess",
+    "pages/withdraw/withdraw",
+    "pages/freeze/freeze",
+    "pages/orderlist/orderlist",
+    "pages/orderdetail/orderdetail",
+    "pages/releasesuccess/releasesuccess"
   ],
   "window": {
     "backgroundTextStyle": "light",

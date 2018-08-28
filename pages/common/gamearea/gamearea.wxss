@@ -1,0 +1,129 @@
+/* pages/common/gamearea/gamearea.wxss */
+
+.area-content{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+}
+
+.title{
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    background-color: #fff;
+    position: relative;
+    font-size: 18px;
+    color: #333;
+    letter-spacing: -.43px;
+    border-bottom: 1px solid #f1f1f1;
+    text-align: center;
+}
+
+.title .title-info{
+  font-family: PingFangSC-Medium;
+  font-size: 18px;
+  color: #333333;
+  letter-spacing: 0.07px;
+}
+
+.title .close{
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-size: contain;
+  float: left;
+  position: absolute;
+  top: 14px;
+  right: 15px;
+}
+
+.tabs{
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+.tabstol{
+  width: 200rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+  background: #F5F5F5;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #999999;
+  margin: 20rpx;
+
+}
+
+.tab-active{
+  background: #FF3434;
+  color:#fff;
+}
+
+.search-top{
+  background: #F2F3F6;
+  border-radius: 100px;
+  width: 702rpx;
+  height: 60rpx;
+  display: flex;
+  margin: 0 auto;
+}
+
+.search-box{
+  display: flex;
+  width: 586rpx;
+}
+
+.search-pic{
+  width: 28rpx;
+  height: 28rpx;
+  margin:15rpx 10rpx 3rpx 30rpx;
+
+}
+
+.search-input{
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #CCCCCC;
+  letter-spacing: 0;
+}
+
+.search-btn{
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+  width: 110rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-left: 1px solid #d8d8d8;
+}
+
+.search-tip{
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #FF7979;
+  letter-spacing: 0.05px;
+  text-align:center;
+  margin-top:20rpx;
+}
+
+.area-btn{
+  background: #FF3434;
+  border-radius: 4px;
+  width: 702rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 16px;
+  color: #FFFFFF;
+  letter-spacing: -0.35px;
+  margin-top: 136rpx;
+}

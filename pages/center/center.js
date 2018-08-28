@@ -7,8 +7,9 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		pic:'',
-		username:''
+		pic: '',
+		username: '',
+		app
 	},
 
 	/**
@@ -58,17 +59,33 @@ Page({
 				tsy.success(res, function () {
 					const data = res.data.data;
 					that.setData({
-						pic:data.pic,
-						username:data.username
+						pic: data.pic,
+						username: data.username
 					})
 				})
 			}
 		})
 	},
 
-	goOrder() {
+	/* 冻结资金 */
+	freezeMoney() {
 		wx.navigateTo({
-			url: `/pages/myorder/myorder`,
+			url: "/pages/freeze/freeze"
+		})
+	},
+
+	/* 充值 */
+	recharge() {
+		wx.showToast({
+			title: '请使用淘手游app进行充值',
+			icon: 'none'
+		})
+	},
+
+	/* 提现 */
+	withdraw() {
+		wx.navigateTo({
+			url: "/pages/withdraw/withdraw"
 		})
 	}
 })

@@ -1,0 +1,18 @@
+<!--pages/login/login.wxml-->
+<view class="withdraw-container">
+    <view class="title">
+        提现金额
+    </view>
+
+    <view class="money">
+        <view class="money-left">￥</view>
+        <view class="money-right">
+            可提现金额  ￥ {{money}}
+        </view>
+    </view>
+
+    <view class="tips">
+        请使用淘手游app进行提现！
+    </view>
+    
+</view>

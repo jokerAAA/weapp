@@ -1,0 +1,205 @@
+<!--pages/traderelease/traderelease.wxml-->
+<view class="container">
+  <form id="container" bindsubmit="submitForm">
+    <gamearea showarea="{{showarea}}" bind:senddata="onGetAreaCode"></gamearea>
+    <view class="tips">寄售类三无账号，买家购买时，无需联系卖家，请须知～</view>
+    <view class='step-1' hidden='{{showstepone?false:true}}'>
+      <view class="info">
+        <view class="flex noarrow goods-title">
+            <span class="left">
+                商品标题
+            </span>
+            
+            <span class="right">
+                <view class="section">  
+                  <input type="text" name="parentid" placeholder='请输入' class="input-style"></input>
+                </view> 
+            </span>
+            <text class="info-tips">标题内无需填写游戏及客户端名称</text>
+        </view>
+
+        <view class="flex arrow">
+            <span class="left">
+                所属区服
+            </span>
+            
+            <span class="right">
+                <view class="section" bindtap='chooseArea'>  
+                  <view wx:if="{{sell.parentid}}"><input type="text" name="parentid" value='{{datasell[sell.parentid]}}' disabled='true' class="picker-choose"></input></view> 
+                  <view wx:else>请选择</view>   
+                </view> 
+            </span>
+            <image src='/img/arrow-right.png'></image>
+        </view>
+        
+        <single title="售价类型" pick="{{pricemode}}" bind:sendchooseval="onGetChooseCode"></single>
+
+        <block wx:if="{{mychooseval == 1}}">
+          <view class="flex noarrow goods-title">
+              <span class="left">
+                  商品价格
+              </span>
+              
+              <span class="right">
+                  <view class="section">  
+                    <input type="text" name="parentid" placeholder='请输入' class="input-style"></input>
+                  </view> 
+              </span>
+              <text class="info-tips">服务费</text>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="flex noarrow">
+              <span class="left">
+                  最高价格
+              </span>
+              
+              <span class="right">
+                  <view class="section">  
+                    <input type="text" name="parentid" placeholder='请输入最高价格' class="input-style"></input>
+                  </view> 
+              </span>
+          </view>
+          <view class="flex noarrow goods-title">
+              <span class="left">
+                  最低价格
+              </span>
+              
+              <span class="right">
+                  <view class="section">  
+                    <input type="text" name="parentid" placeholder='请输入最低价格' class="input-style"></input>
+                  </view> 
+              </span>
+              <text class="info-tips">服务费</text>
+          </view>
+        </block>
+
+        <single title="到期日期" pick="{{tradedata}}" bind:sendchooseval="onGetdataCode" inputname="enddata"></single>
+      </view>
+
+      <view class='title-info'>
+        <view class='title-block'></view>验证信息
+      </view>
+
+      <view class='info'>
+        <view class="flex noarrow">
+            <span class="left">
+                绑定身份证
+            </span>
+            
+            <span class="right">
+              <switch bindchange="switch1Change" class='switch-right'/>
+            </span>
+        </view>
+        <view class="flex noarrow">
+            <span class="left">
+                绑定手机
+            </span>
+            
+            <span class="right">
+              <switch bindchange="switch1Change" class='switch-right'/>
+            </span>
+        </view>
+        <view class="flex noarrow">
+            <span class="left">
+                绑定邮箱
+            </span>
+            
+            <span class="right">
+              <switch bindchange="switch1Change" class='switch-right'/>
+            </span>
+        </view>
+
+        <view class="flex noarrow">
+            <span class="left">
+                交易暗号
+            </span>
+            
+            <span class="right">
+                <view class="section">  
+                  <input type="text" name="parentid" placeholder='请输入' class="input-style"></input>
+                </view> 
+            </span>
+        </view>
+
+        <view class="flex noarrow">
+            <span class="left">
+                手机号码
+            </span>
+            
+            <span class="right">
+                <view class="section">  
+                  <input type="text" name="parentid" placeholder='请输入' class="input-style"></input>
+                </view> 
+            </span>
+        </view>
+
+        <view class="flex noarrow">
+            <span class="left">
+                QQ号码
+            </span>
+            
+            <span class="right">
+                <view class="section">  
+                  <input type="text" name="parentid" placeholder='请输入' class="input-style"></input>
+                </view> 
+            </span>
+        </view>
+
+        <view class="flexpic noarrow">
+            <span class="left picture-left">
+                上传图片
+            </span>
+            <text class="picture-tips">最多可上传14张图片</text>
+            <view class='pic-box'>
+              <block wx:for="{{picUrl}}">
+                <view class='pic-new'>
+                  <view class='deletepic'>
+                    <image src='/img/delete3.png' bindtap='deletePic' data-index='{{index}}'></image>
+                  </view>
+                  <image src="{{item}}" alt="" class='uppicid'></image>
+                </view>
+              </block>
+              <view bindtap='choosegameimage' class='addpic'>
+                <image src='/img/add.png'></image>
+              </view>
+            </view>
+        </view>
+
+      </view>
+
+      <view class='title-bx'>
+        <image src='/img/baoxian.png'></image>
+        <view>投保《卖家险》商品优先显示，售出率提高80%</view>
+      </view>
+
+      <view class='info'>
+        <single title="安全保障" pick="{{pricemode}}" bind:sendchooseval="onGetChooseCode"></single>
+
+        <!-- <view class="flex noarrow goods-title">
+            <span class="left">
+                安全保障
+            </span>
+            
+            <span class="right">
+                <view class="section">  
+                  <picker mode="selector" range="{{pick}}" range-key='name' bindchange="bindSureChange">  
+                    <view class="picker"> 
+                      <view wx:if="{{choosename}}"><input type="text" name="{{inputname}}" value='{{choosename}}' disabled='true' class="picker-choose"></input></view> 
+                      <view wx:else>请选择</view>    
+
+                    </view>  
+                  </picker>  
+                </view> 
+            </span>
+            <image src='/img/arrow-right.png'></image>
+            <text class="info-tips">服务费</text>
+        </view> -->
+      </view>
+
+      <view class="submit" id="submit">
+        <button formType="submit">下一步</button>
+      </view>
+    </view>
+  </form>
+</view>

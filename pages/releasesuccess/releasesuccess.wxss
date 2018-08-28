@@ -1,0 +1,106 @@
+/* pages/releasesuccess/releasesuccess.wxss */
+
+.success-wrap{
+	background: #f5f5f5;
+	position: absolute;
+    bottom: 0;
+    top: 0;
+}
+.succ-header{
+  text-align: center;
+}
+.success-title{
+	font-family: PingFangSC-Regular;
+	font-size: 18px;
+	color: #FF3434;
+	letter-spacing: 0.07px;
+	padding: 7% 0% 8%;
+	margin-bottom: 10px;
+	background: #fff;
+}
+.success-title image{
+  width: 72px;
+  height: 72px;
+  margin-bottom: 22px;
+}
+.success-title>div{
+}
+.success-title span{
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background: url(home:static/img/selltrade/success.png) no-repeat;
+	background-size: contain;
+	position: relative;
+    left: -10px;
+    top: 7px;
+}
+.success-title p{
+    position: relative;
+	margin: 0;
+	text-align: center;
+}
+.success-content{
+	background: #fff;
+	padding: 10px;
+}
+.goodsinfo{
+	overflow: hidden;
+
+}
+.goodsinfo:nth-of-type(1){
+	margin-bottom: 16px;	
+}
+.goodstitle{
+	font-family: PingFangSC-Regular;
+	font-size: 15px;
+	color: #999999;
+	letter-spacing: 0;
+	float: left;
+}
+.goodsname,.goodscode{
+	font-family: PingFangSC-Regular;
+	font-size: 15px;
+	color: #333333;
+	letter-spacing: 0;
+	text-align: right;
+	display: inline-block;
+	max-width: 225px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	float: right;
+}
+.goodscode{
+	color: #FF3434;
+}
+.success-tips{
+	font-size: 12px;
+	color: #999999;
+	padding: 10px;
+	margin-bottom: 40px;
+}
+.success-tips p{
+	margin: 0;
+}
+.success-btn{
+	background: #FF3434;
+	border-radius: 5px;
+	width: 93%;
+	height: 44px;
+	display: block;
+	color: #fff;
+	text-align: center;
+	line-height: 44px;
+	margin: 0 auto;
+}
+.success-wrap .success-btn:visited,.success-wrap .success-btn:active{
+	color: #fff;
+}
+.blue-word{
+	color: #4a90e2; 
+  display: inline-block;
+}
+.success-tips .blue-word:visited,.success-tips .blue-word:active{
+	color: #4a90e2;
+}

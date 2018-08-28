@@ -93,7 +93,6 @@ Page({
 	/* 获取验证码 */
 	getCode() {
 		const text = this.data.text ;
-		console.log(text);
 		if(text != '发送验证码' && text != '重新发送') {
 			return ;
 		}

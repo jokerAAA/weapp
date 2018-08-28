@@ -16,6 +16,7 @@ Page({
         goodsid: '',
         scrollId: '',
         scrollHeight: 560,
+        type:'',
         scrollY:0
     },
 
@@ -25,11 +26,13 @@ Page({
     onLoad: function (options) {
         wx.showNavigationBarLoading();
         const goodsid = options.goodsid || '1';
-        const letter = options.letter || '';
+        const letter = options.letter || 'hot';
+        const type = options.type || 'buy';
         this.setScrollHeight();
         this.setData({
             goodsid: goodsid,
-            letter: letter
+            letter: letter,
+            type: type
         }, () => this.getGamelist());
     },
 
@@ -153,9 +156,17 @@ Page({
     chooseGame: function (e) {
         const goodsid = e.currentTarget.dataset['goodsid'] || 1;
         const gameid = e.currentTarget.dataset['gameid'];
-        wx.navigateTo({
-            url: `/pages/goodslist/goodslist?goodsid={goodsid}&gameid=${gameid}`,
-        })
+        const type = this.data.type;
+        if(type == 'buy') {
+            wx.navigateTo({
+                url: `/pages/goodslist/goodslist?goodsid=${goodsid}&gameid=${gameid}`,
+            })
+        }else {
+            wx.navigateTo({
+                url: `/pages/selltrade/selltrade?&gameid=${gameid}`,
+            })
+        }
+        
     },
 
     /* 处理搜索 */
@@ -174,6 +185,5 @@ Page({
         this.setData({
             letter: ""
         }, () => this.getGamelist())
-
     }
 })

@@ -26,7 +26,8 @@ Page({
 		isCertificationShop: "2",
 		wd: '',
 		price: '0',
-		page: 1
+		page: 1,
+		app:app
 	},
 
 	/**

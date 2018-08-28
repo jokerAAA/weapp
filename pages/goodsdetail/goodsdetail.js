@@ -98,7 +98,7 @@ Page({
 						that.setData({
 							'data':data
 						},()=>{
-							console.log(that.data.data);
+							
 						})
 					}else {
 						that.setData({

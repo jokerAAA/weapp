@@ -1,0 +1,86 @@
+<!--pages/login/login.wxml-->
+<view class="freeze-container">
+    <!-- tab -->
+    <view class="tab">
+        <view class="tab-item" data-index="0" bindtap="changeTab">
+             <view class="tab-item-text {{ activeTab == 0 ? 'active-tab' : ''}}">
+                 订单冻结
+             </view>
+        </view>
+        <view class="tab-item" data-index="1" bindtap="changeTab">
+             <view class="tab-item-text {{ activeTab == 1 ? 'active-tab' : ''}}">
+                 手动冻结
+             </view>
+        </view>
+    </view>
+
+    <!-- 订单冻结 -->
+    <view class="list" wx:if="{{activeTab == 0}}">
+        <view class="tips">
+            冻结倒计时结束后，资金会自动转入余额中！
+        </view>
+         <view class="order" wx:if="{{orderList.length > 0}}" wx:for="{{orderList}}" wx:key="{{item.id}}">
+             <view class="order-top">
+                 <view class="order-top-left">
+                     订单编号  {{item.tradelogno}}
+                 </view>
+                 <view class="order-top-right red">
+                     倒计时  {{item.leftfrozentime}}
+                 </view>
+             </view>
+             <view class="order-info">
+                 <view class="order-info-left">
+                    <image class="order-info-left-pic" mode="aspectFit" src="{{app.globalData.picHost}}{{item.gameIcon}}"></image>
+                 </view>
+                 <view class="order-info-right">
+                     <view class="order-info-right-title">
+                            {{item.tradename}}
+                     </view>
+                     <view class="order-info-right-bottom">
+                         <view class="order-info-right-bottom-left">
+                             {{item.clientNames}} {{item.areaNames}}
+                         </view>
+                         <view class="order-info-right-bottom-right">
+                             ¥{{item.price}} ×{{item.count}}
+                         </view>
+                     </view>
+                 </view>
+             </view>
+             <view class="order-price">
+                  <view class="order-price-text">冻结金额</view>   
+                  <view class="order-price-text red">￥</view>   
+                  <view class="order-price-money red">{{item.unitPrice}}</view>   
+             </view>
+         </view>
+         <view class="none" wx:if="{{orderList.length == 0}}">
+             <view class="none-tips">
+                 <image class="none-tips-pic" mode="aspectFit" src="/img/center/none.png"></image>
+                 <text class="none-tips-text">抱歉！暂无任何冻结信息！</text>
+             </view>
+         </view>
+    </view>
+
+    <!-- 手动冻结 -->
+    <view class="hand" wx:if="{{activeTab == 1}}">
+        <view class="tips">
+            冻结倒计时结束后，资金会自动转入余额中！
+        </view>
+        <view class="hand-item" wx:if="{{freezeList.length > 0}}">
+            <view class="hand-item-left">冻结金额</view>
+            <view class="hand-item-center">冻结金额</view>
+            <view class="hand-item-right">冻结金额</view>
+        </view>
+        <view class="hand-item" wx:if="{{freezeList.length > 0}}" wx:for="{{freezeList}}" wx:key="{{item.id}}">
+            <view class="hand-item-left c3">￥{{item.tradesmoney}}</view>
+            <view class="hand-item-center c3">{{item.leftfrozentime}}</view>
+            <view class="hand-item-right check" bindtap="check" data-reason="{{item.reason}}">查看原因</view>
+        </view>
+        <view class="none" wx:if="{{freezeList.length == 0}}">
+             <view class="none-tips">
+                 <image class="none-tips-pic" mode="aspectFit" src="/img/center/none.png"></image>
+                 <text class="none-tips-text">抱歉！暂无任何冻结信息！</text>
+             </view>
+         </view>
+    </view>
+    
+</view>

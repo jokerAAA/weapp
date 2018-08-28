@@ -1,0 +1,89 @@
+<!--pages/statement/statement.wxml-->
+<view class="container">
+<form id="container" bindsubmit="submitForm">
+ 
+ 
+  <view class="info">
+      
+      <view class="flex arrow">
+          <span class="left">
+              交易分类
+          </span>
+          
+          <span class="right">
+              <view class="section">  
+                <picker mode="selector" range="{{goodsparent}}" range-key="goodsname" bindchange="bindParentidChange">  
+                  <view class="picker"> 
+                    <view wx:if="{{sell.parentid}}"><input type="text" value='{{goodsparent[sell.parentindex].goodsname}}' disabled='true' class="picker-choose"></input></view> 
+                    <view wx:else>请选择</view>    
+                    <input type="hidden" name="parentid" value='{{sell.parentid}}' disabled='true' class="hidden"></input>
+                  </view>  
+                </picker>  
+              </view> 
+          </span>
+          <image src='/img/arrow-right.png'></image>
+      </view>
+      <view class="flex arrow">
+          <span class="left">
+              交易类型
+          </span>
+          
+          <span class="right">
+              <view class="section">  
+                <picker mode="selector" range="{{goodsList[sell.parentid]}}" range-key="goodsname" bindchange="bindGoodsidChange" disabled="{{sell.parentid?false:true}}">  
+                  <view class="picker"> 
+                    <view wx:if="{{sell.goodsid}}"><input type="text" value='{{goodsList[sell.parentid][sell.goodsindex].goodsname}}' disabled='true' class="picker-choose"></input></view> 
+                    <view wx:else>请选择</view> 
+                    <input type="hidden" name="goodsid" value='{{sell.goodsid}}' disabled='true' class="hidden"></input>   
+                  </view>  
+                </picker>  
+              </view> 
+          </span>
+          <image src='/img/arrow-right.png'></image>
+      </view>
+      <view class="flex arrow">
+          <span class="left">
+              出售方式
+          </span>
+          
+          <span class="right">
+              <view class="section">  
+                <picker mode="selector" range="{{sellmodeList}}" range-key="goodsname" bindchange="bindSellmodeChange" disabled="{{sell.goodsid?false:true}}">  
+                  <view class="picker"> 
+                    <view wx:if="{{sell.sellmode}}"><input type="text" value='{{sellmodeList[sell.sellmode].goodsname}}' disabled='true' class="picker-choose"></input></view> 
+                    <view wx:else>请选择</view> 
+                    <input type="hidden" name="sellmode" value='{{sell.sellmodeid}}' disabled='true' class="hidden"></input>   
+                  </view>  
+                </picker>  
+              </view> 
+          </span>
+          <image src='/img/arrow-right.png'></image>
+      </view>
+      <view class="flex arrow">
+          <span class="left">
+              客户端
+          </span>
+          
+          <span class="right">
+              <view class="section">  
+                <picker mode="selector" range="{{clientList}}" range-key="clientname" bindchange="bindClientChange" disabled="{{sell.sellmodeid?false:true}}">  
+                  <view class="picker"> 
+                    <view wx:if="{{sell.clientname}}"><input type="text" value='{{sell.clientname}}' disabled='true' class="picker-choose"></input></view> 
+                    <view wx:else>请选择</view> 
+                    <input type="hidden" name="clientid" value='{{sell.clientid}}' disabled='true' class="hidden"></input>   
+                    <input type="hidden" name="clientname" value='{{sell.clientname}}' disabled='true' class="hidden"></input>
+                  </view>  
+                </picker>  
+              </view> 
+          </span>
+          <image src='/img/arrow-right.png'></image>
+      </view>
+  </view> 
+
+  
+
+  <view class="submit" id="submit">
+      <button formType="submit">下一步</button>
+  </view>
+</form>
+</view>

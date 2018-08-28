@@ -97,7 +97,6 @@ Page({
 			},
 			success: function (res) {
 				wx.hideNavigationBarLoading();
-				console.log(res.data.data);
 				tsy.success(res, function () {
 					/* 特殊处理客服 */
 					let list = res.data.data.servicelist;

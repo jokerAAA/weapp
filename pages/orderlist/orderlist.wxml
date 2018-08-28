@@ -1,0 +1,57 @@
+<!--pages/login/login.wxml-->
+<view class="orderlist-container">
+    
+    <view class="list">
+        <view class="order" wx:for="{{orderList}}" wx:if="{{orderList.length > 0}}" wx:key="{{item.id}}" >
+            <view class="order-top">
+                <view class="order-top-left">
+                    商品编号  {{item.id}}
+                </view>
+                <view class="order-top-right {{item.color}}}">
+                    {{item.statusname}}
+                </view>
+            </view>
+            <view class="order-info" bindtap="handleOrder" data-id="{{item.id}}">
+                <view class="order-info-left">
+                    <image class="order-info-left-pic" src="{{item.gamepic}}" mode="aspectFit"></image>
+                </view>
+                <view class="order-info-right">
+                    <view class="order-info-right-title">
+                        {{item.tradename}}
+                    </view>
+                    <view class="order-info-right-price">
+                        <view class="order-info-right-price-count red">
+                            <text class="money">￥</text>
+                            {{item.price}}
+                        </view>
+                        <view class="order-info-right-price-time">{{item.addtime}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="order-bottom">
+                <block wx:for="{{item.buttons}}" wx:for-index="key" wx:for-item="value" wx:key="{{value.flag}}">
+                    <!-- 售前为固定客服 -->
+                    <button class='order-bottom-buttons' open-type="contact" session-from="kf_9098_1505715359156" hover-class="none" wx:if="{{value.flag == 105}}">
+                        联系客服
+                    </button>
+                    <!-- 售后客服根据客服认领情况 -->
+                    <button class='order-bottom-buttons' open-type="contact" session-from="{{item.xn_destgroupid}}" hover-class="none" wx:elif="{{value.flag == 204}}">
+                        联系客服
+                    </button>
+                    <view class="order-bottom-buttons" bindtap="handleButton" data-flag="{{value.flag}}" data-price="{{item.price}}" data-url="{{item.edit_url}}" data-id="{{item.id}}" wx:else>{{value.text}}</view>
+                </block>
+            </view>
+        </view>
+    </view>
+    
+    <view class="mask" hidden="{{isShowPrice}}">
+        <view class="price">
+            <view class="price-title">修改价格</view>
+            <input class="price-input" type="digit" maxlength="9" placeholder="请输入修改后的价格" bindinput="handlePrice"></input>
+            <view class="price-btns">
+                <view class="price-btns-btn" bindtap="togglePrice">取消</view>
+                <view class="price-btns-btn" bindtap="confirmPrice">确认</view>
+            </view>
+        </view>
+    </view>
+</view>

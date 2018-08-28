@@ -1,18 +1,55 @@
 <!--pages/center/center.wxml-->
 <view class="center-container">
-    
+    <!-- 用户信息 -->
     <view class="user">
-        <image class="user-pic" mode="aspectFit" src="{{pic}}" wx:if="{{pic}}"></image>
+        <image class="user-pic" mode="aspectFit" src="{{app.globalData.picHost}}{{pic}}" wx:if="{{pic}}"></image>
         <image class="user-pic" mode="aspectFit" src='/img/userpic.png' wx:else></image>
         <view class="user-name">{{username}}</view>
+        <view class="user-money">
+            <view class="user-money-item">
+                <text class="user-money-icon">￥</text>
+                <text class="user-money-count">2233.22</text>
+                <view class="user-money-text">余额</view>
+            </view>
+            <view class="user-money-item" bindtap="freezeMoney">
+                <text class="user-money-icon">￥</text>
+                <text class="user-money-count">1123.11</text>
+                <view class="user-money-text">
+                    <image class="user-money-text-img" src="/img/center/freeze.png" mode="aspectFit"></image>
+                    冻结
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- nav栏 -->
+    <view class="nav">
+        <navigator class="nav-item" url="/pages/orderlist/orderlist?type=release" hover-class="none">
+            <image class="nav-item-pic" src="/img/center/release.png" mode="aspectFit"></image>
+            <view class="nav-item-text">我发布的</view>
+        </navigator>
+        <navigator class="nav-item" url="/pages/myorder/myorder" hover-class="none">
+            <image class="nav-item-pic" src="/img/center/buy.png" mode="aspectFit"></image>
+            <view class="nav-item-text">我买到的</view>
+        </navigator>
+        <navigator class="nav-item" url="/pages/orderlist/orderlist?type=sell" hover-class="none">
+            <image class="nav-item-pic" src="/img/center/sell.png" mode="aspectFit"></image>
+            <view class="nav-item-text">我卖出的</view>
+        </navigator>
+        <button class="nav-item button" open-type="contact" session-from="kf_9098_1507537047642" hover-class="none">
+            <image class="nav-item-pic" src="/img/center/kefu.png" mode="aspectFit"></image>
+            <view class="nav-item-text">联系客服</view>
+        </button>
     </view>
 
     <view class="info">
-        <view class="info-item">
-            <view class="info-item-text" bindtap="goOrder">我的订单</view>
+        <view class="info-item" bindtap="recharge">
+            <image class="info-item-pic" mode="aspectFit" src="/img/center/recharge.png"></image>
+            <view class="info-item-text">充值</view>
         </view>
-        <view class="info-item">
-            <button class="info-item-text button" open-type="contact" session-from="kf_9098_1507537047642" hover-class="none">联系客服</button>
+        <view class="info-item" bindtap="withdraw">
+            <image class="info-item-pic" mode="aspectFit" src="/img/center/tixian.png"></image>
+            <view class="info-item-text">提现</view>
         </view>
     </view>
 

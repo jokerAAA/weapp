@@ -29,7 +29,8 @@ const tsy = {
 			str = str.slice(0, -1);
 		}
 		let header = {
-			cookie : str 
+			cookie : str ,
+			'X-Requested-With':'XMLHttpRequest'
 		};
 		header = Object.assign({},header,config.header);
 		const obj = Object.assign({}, config, {

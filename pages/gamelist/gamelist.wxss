@@ -53,7 +53,7 @@
 }
 
 .letter {
-    width: 108rpx;
+    width: 154rpx;
     height:100%;
 }
 
@@ -75,13 +75,13 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-    height: 80rpx;
-    line-height: 80rpx;
+    height: 88rpx;
+    line-height: 88rpx;
 }
 
 .game {
     flex: 1;
-    padding-left:24rpx;
+    padding-left:48rpx;
     height:100%;
 }
 
@@ -91,23 +91,21 @@
 
 .game-list-item {
     border-bottom:1rpx solid #f2f3f6;
-    height:116rpx;
-    line-height: 116rpx;
-    padding-top:14rpx;
-    padding-bottom:14rpx;
+    padding-top:28rpx;
+    padding-bottom:28rpx;
     display: flex;
 }
 
 .game-list-item-pic {
-    width:88rpx;
-    height:88rpx;
+    width:100rpx;
+    height:100rpx;
     margin-right:20rpx;
     vertical-align: middle;
     border-radius:16rpx;
 }
 
 .game-list-item-name {
-    line-height: 88rpx;
+    line-height: 100rpx;
     flex:1;
     align-items: center;
     justify-content: center;

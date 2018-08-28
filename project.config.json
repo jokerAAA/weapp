@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 20,
 			"list": [
 				{
 					"id": 0,
@@ -140,6 +140,48 @@
 					"name": "个人中心",
 					"pathName": "pages/center/center",
 					"query": ""
+				},
+				{
+					"id": 17,
+					"name": "我要卖",
+					"pathName": "pages/selltrade/selltrade",
+					"query": "gameid=2256"
+				},
+				{
+					"id": -1,
+					"name": "提现",
+					"pathName": "pages/withdraw/withdraw",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "冻结",
+					"pathName": "pages/freeze/freeze",
+					"query": ""
+				},
+				{
+					"id": 20,
+					"name": "订单列表",
+					"pathName": "pages/orderlist/orderlist",
+					"query": "type=release"
+				},
+				{
+					"id": -1,
+					"name": "发布商品",
+					"pathName": "pages/traderelease/traderelease",
+					"query": "gameid=2256"
+				},
+				{
+					"id": 22,
+					"name": "发布成功",
+					"pathName": "pages/releasesuccess/releasesuccess",
+					"query": "gameid=2256"
+				},
+				{
+					"id": 23,
+					"name": "订单详情",
+					"pathName": "pages/orderdetail/orderdetail",
+					"query": "id=138286033551722"
 				}
 			]
 		}

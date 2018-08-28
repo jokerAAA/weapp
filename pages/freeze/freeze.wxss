@@ -1,0 +1,181 @@
+.freeze-container {}
+
+/* tab */
+
+.tab {
+    height: 84rpx;
+    line-height: 84rpx;
+    font-size: 16px;
+    color: #666;
+    display: flex;
+}
+
+.tab-item {
+    width: 50%;
+    text-align: center;
+}
+
+.tab-item-text {
+    width: 176rpx;
+    margin: 0 auto;
+}
+
+.active-tab {
+    color: #FF3434;
+    border-bottom: 4rpx solid #FF3434;
+}
+
+/* tips */
+
+.tips {
+    font-size: 12px;
+    color: #E2A300;
+    background: #F9F6EF;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+}
+
+/* 订单冻结 */
+.list {
+    background:#f8f8f8;
+}
+
+.order {
+    padding:0 24rpx;
+    background:#fff;
+    margin-bottom: 10rpx;
+}
+
+.order-top {
+    height:72rpx;
+    line-height: 72rpx;
+    border-bottom:1rpx solid #e6e6e6;
+    display:flex;
+    font-size: 14px;
+}
+
+.order-top-left {
+    width:452rpx;
+    color: #666;
+}
+
+.order-top-right {
+    flex:1;
+}
+
+.order-info {
+    padding:12rpx 0 20rpx; 
+    display: flex ;
+    border-bottom:1rpx solid #E6E6E6;
+}
+
+.order-info-left {
+    width:108rpx;
+    
+    margin-right: 28rpx;
+}
+
+.order-info-left-pic {
+    width:108rpx;
+    height:108rpx;
+}
+
+.order-info-right {
+    flex:1;
+}
+
+.order-info-right-title {
+    height:80rpx;
+    line-height: 40rpx;
+    color:#333;
+    font-size: 14px;
+    margin-bottom: 6rpx;
+}
+
+.order-info-right-bottom {
+    color:#999;
+    font-size: 12px;
+    line-height: 17px;
+    display: flex ;
+}
+
+.order-info-right-bottom-left {
+    flex:1;
+}
+
+.order-info-right-bottom-right {
+    width:200rpx;
+    text-align: right;
+}
+
+.order-price {
+    height:80rpx;
+    line-height: 80rpx;
+    display: flex ;
+    font-size: 12px;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+}
+
+.order-price-text {
+    margin-right: 10rpx;
+}
+
+.order-price-money {
+    font-size: 18px; 
+}
+
+/* 手动冻结 */
+.hand {
+
+}
+
+.hand-item {
+    height:72rpx;
+    line-height: 72rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    padding:0 24rpx;
+    font-size: 12px; 
+}
+
+.hand-item-left {
+    width:33.33%;
+    text-align: left;
+}
+
+.hand-item-center {
+    width:33.33%;
+    text-align: center;
+}
+
+.hand-item-right {
+    width:33.33%;
+    text-align: right; 
+}
+
+.check {
+    color: #004BFF;
+}
+
+/* 订单未空 */
+.none {
+    padding-top: 100rpx;
+    background:#fff;
+}
+
+.none-tips {
+    text-align: center;
+}
+
+.none-tips-pic {
+    width:126rpx;
+    height:108rpx;
+    margin-right: 20rpx;
+}
+
+.none-tips-text {
+    color:#999;
+    font-size: 14px;
+}

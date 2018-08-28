@@ -277,6 +277,101 @@ page {
     position: relative;
 }
 
+.goods {
+    background:#fff;
+    margin-bottom:20rpx;
+    padding:30rpx 30rpx 0 ;
+}
+
+.goods-title {
+    font-size: 14px;
+    color:#333;
+    line-height: 40rpx;
+    height:80rpx;
+    margin-bottom:12rpx;
+    display: flex;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.goods-title-left {
+    flex:1;
+}
+
+.goods-title-right {
+    width:170rpx;
+    text-align: right;
+    color:#FF5858 ;
+}
+
+.goods-pic {
+    width:100%;
+    height:127rpx;
+    margin-bottom: 10rpx;
+    overflow-x:scroll;
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.goods-pic-item {
+    width:226rpx;
+    height:127rpx;
+    margin-right:12rpx;
+    flex:1;
+}
+
+.goods-info {
+    height:60rpx;
+    line-height: 60rpx;
+    display: flex;
+}
+
+.goods-info-left {
+    width:440rpx;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+    color:#999;
+    margin-right: 60rpx;
+}
+
+.goods-info-left-area {
+    font-size: 12px;
+   
+}
+
+.goods-info-left-area:nth-of-type(1) {
+    margin-right:20rpx;
+}
+
+.goods-info-right {
+    flex:1;
+    display: flex;
+    padding-top: 20rpx;
+}
+
+.goods-info-right-text {
+    font-size: 10px;
+    line-height: 26rpx;
+    height:28rpx;
+    padding:0 10rpx;
+    display: inline-block;
+    border-radius: 16rpx ;
+    border:1px solid #FF5858;
+}
+
+.sellmode {
+    color:#FF5858;
+    margin-right:10rpx;
+}
+
+.insurance {
+    color:#269E00;
+    border-color: #269E00;
+}
+
 /* 商品列表底部 */
 /* 底部提示 */
 

@@ -8,7 +8,8 @@ Page({
 		swiperCurrent: 0,
 		currentTab: 0,
 		picHosts: app.globalData.picHost,
-		hosts: app.globalData.host
+		hosts: app.globalData.host,
+		navArr: []
 	},
 
 	onPullDownRefresh: function () {
@@ -44,7 +45,7 @@ Page({
 
 		query.exec(function (res) {
 			that.setData({
-				clientHeight: res[0].height+45
+				clientHeight: res[0].height + 45
 			})
 		})
 	},
@@ -70,7 +71,7 @@ Page({
 
 		query.exec(function (res) {
 			that.setData({
-				clientHeight: res[0].height+45
+				clientHeight: res[0].height + 45
 			})
 		})
 
@@ -110,35 +111,35 @@ Page({
 	/* 获取数据 */
 	getData() {
 		const that = this;
-    tsy.request({
-      url: app.globalData.host + '/indexpage/index/index',
-      success: function (res) {
-        tsy.success(res, function () {
-          
-          if (res.data.errcode != 0) {
-            wx.showModal({
-              title: '提示',
-              content: '请在后台添加banner图片',
-              showCancel: false
-            })
-          } else {
-            that.setData({
-              banners: res.data.data.bannerlist,
-              highList: res.data.data.highQualityTradeList,
-              hotGame: res.data.data.hotGameList
-            })
-            let query = wx.createSelectorQuery() //创建节点查询器 query
-            query.select('.goods-container').boundingClientRect() //
-            query.exec(function (res) {
-              that.setData({
-                clientHeight: res[0].height+45
-              })
-            })
-          }
-        })
+		tsy.request({
+			url: app.globalData.host + '/indexpage/index/index',
+			success: function (res) {
+				tsy.success(res, function () {
+					if (res.data.errcode != 0) {
+						wx.showModal({
+							title: '提示',
+							content: '请在后台添加banner图片',
+							showCancel: false
+						})
+					} else {
+						that.setData({
+							banners: res.data.data.bannerlist,
+							highList: res.data.data.highQualityTradeList,
+							hotGame: res.data.data.hotGameList,
+							navArr: res.data.data.spreadArr
+						})
+						let query = wx.createSelectorQuery() //创建节点查询器 query
+						query.select('.goods-container').boundingClientRect() //
+						query.exec(function (res) {
+							that.setData({
+								clientHeight: res[0].height + 45
+							})
+						})
+					}
+				})
 
-      }
-    })
+			}
+		})
 	},
 
 	getUserInfo: function (e) {

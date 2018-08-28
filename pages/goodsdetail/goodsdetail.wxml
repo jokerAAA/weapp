@@ -139,7 +139,7 @@
         </view>
     </view>
 
-    <view class="btn">
+    <view class="btn" wx:if="{{trade.states == 2}}">
         
         <button class="btn-left share" open-type='share'>
             <image class="btn-left-img" src="/img/share.png" mode="aspectFit"></image>
@@ -153,6 +153,10 @@
         <view class="btn-buy" bindtap="buyGoods">
             立即购买
         </view>
+    </view>
+
+    <view class="btn blank" wx:else>
+        商品已售空
     </view>
 </view>
 

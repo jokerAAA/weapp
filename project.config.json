@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 20,
+			"current": 17,
 			"list": [
 				{
 					"id": 0,
@@ -166,16 +166,16 @@
 					"query": "type=release"
 				},
 				{
-					"id": -1,
+					"id": 21,
 					"name": "发布商品",
 					"pathName": "pages/traderelease/traderelease",
-					"query": "gameid=2256"
+					"query": "gameid=352&goodsid=1&parentgoodsid=20&sellmode=0&gamename=梦幻西游&clientname=安卓91&clientid=1"
 				},
 				{
 					"id": 22,
 					"name": "发布成功",
 					"pathName": "pages/releasesuccess/releasesuccess",
-					"query": "gameid=2256"
+					"query": "parentgoodsid=20&id=7451626"
 				},
 				{
 					"id": 23,

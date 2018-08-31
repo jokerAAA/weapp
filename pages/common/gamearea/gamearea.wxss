@@ -92,6 +92,7 @@
   font-size: 14px;
   color: #CCCCCC;
   letter-spacing: 0;
+  width: 100%;
 }
 
 .search-btn{
@@ -126,4 +127,35 @@
   color: #FFFFFF;
   letter-spacing: -0.35px;
   margin-top: 136rpx;
+}
+.area-box{
+  display: flex;
+  flex-wrap: wrap;
+}
+.area-block{
+  background: #F5F5F5;
+  border-radius: 4px;
+  font-family: PingFangSC-Regular;
+  font-size: 16px;
+  color: #999999;
+  letter-spacing: 0.07px;
+  width: 200rpx;
+  height: 72rpx;
+  text-align: center;
+  line-height: 72rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  margin: 24rpx;
+}
+
+.block-active{
+  background: #FFEDED;
+  color: #FF3434;
+}
+
+
+
+.hidden{
+  display: none;
 }

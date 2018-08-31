@@ -30,6 +30,22 @@ Page({
 		})
 	},
 
+	/* 设置高度 */
+	setHeight() {
+		const that = this ;
+		let query = wx.createSelectorQuery(); 
+		if (this.data.currentTab == 1) {
+			query.select('.goods-container').boundingClientRect() //选择节点，获取节点位置信息的查询请求
+		} else {
+			query.select('.game-container').boundingClientRect() //选择节点，获取节点位置信息的查询请求
+		}
+		query.exec(function (res) {
+			that.setData({
+				clientHeight: res[0].height
+			})
+		})
+	},
+
 	//滑动切换
 	swiperTab: function (e) {
 		const that = this;
@@ -37,7 +53,7 @@ Page({
 			currentTab: e.detail.current
 		});
 		let query = wx.createSelectorQuery() //创建节点查询器 query
-		if (this.data.currentTab == 0) {
+		if (this.data.currentTab == 1) {
 			query.select('.goods-container').boundingClientRect() //选择节点，获取节点位置信息的查询请求
 		} else {
 			query.select('.game-container').boundingClientRect() //选择节点，获取节点位置信息的查询请求
@@ -45,14 +61,13 @@ Page({
 
 		query.exec(function (res) {
 			that.setData({
-				clientHeight: res[0].height + 45
+				clientHeight: res[0].height 
 			})
 		})
 	},
 
 	//点击切换
 	clickTab: function (e) {
-
 		const that = this;
 
 		if (this.data.currentTab === e.target.dataset.current) {
@@ -60,25 +75,14 @@ Page({
 		} else {
 			that.setData({
 				currentTab: e.target.dataset.current
+			},()=> {
+				that.setHeight();
 			})
 		}
-		let query = wx.createSelectorQuery() //创建节点查询器 query
-		if (this.data.currentTab == 0) {
-			query.select('.goods-container').boundingClientRect()
-		} else {
-			query.select('.game-container').boundingClientRect()
-		}
-
-		query.exec(function (res) {
-			that.setData({
-				clientHeight: res[0].height + 45
-			})
-		})
-
-
 	},
 
 	onLoad: function () {
+    wx.showShareMenu()
 		if (app.globalData.userInfo) {
 			this.setData({
 				userInfo: app.globalData.userInfo,
@@ -127,14 +131,10 @@ Page({
 							highList: res.data.data.highQualityTradeList,
 							hotGame: res.data.data.hotGameList,
 							navArr: res.data.data.spreadArr
+						},()=> {
+							that.setHeight();
 						})
-						let query = wx.createSelectorQuery() //创建节点查询器 query
-						query.select('.goods-container').boundingClientRect() //
-						query.exec(function (res) {
-							that.setData({
-								clientHeight: res[0].height + 45
-							})
-						})
+						
 					}
 				})
 
@@ -162,5 +162,18 @@ Page({
 				})
 			}
 		})
-	}
+	},
+
+  goSell(){
+    tsy.request({
+      url: app.globalData.host + "/user/verify/check-login",
+      success(res) {
+        tsy.success(res, function () {
+          wx.navigateTo({
+            url: "/pages/gamelist/gamelist?goodsid=1&type=sell&letter=hot"
+          })
+        })
+      }
+    })
+  }
 })

@@ -60,6 +60,10 @@
     height: 80rpx;
     margin-bottom: 6rpx;
     color: #333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 540rpx;
 }
 
 .order-info-right-price {
@@ -161,4 +165,16 @@
 .price-btns-btn:nth-of-type(1) {
     border-right: 1rpx solid #f1f1f1;
     color: #999;
+}
+
+.order-nodata {
+    /* background: #fff; */
+    text-align: center;
+    padding-top: 10px;
+    color:#999;
+    font-size: 12px;
+}
+.nodata{
+  width: 176rpx;
+  height: 228rpx;
 }

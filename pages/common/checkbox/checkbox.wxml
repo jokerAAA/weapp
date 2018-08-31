@@ -1,0 +1,37 @@
+<!--pages/common/checkbox/checkbox.wxml-->
+<view class="newcheckbox" hidden='{{index == currentIndex? false : true}}'>
+  <view class="checkbox-mask" catchtap='closePop'></view>	
+  <view class="checkbox-choose" catchtap='stop'>
+    <view class="choose-header">
+      <view class="header-title">
+        选择
+      </view>
+    </view>
+    <view class="choose-content">
+      <view class="checkbox-list">
+        <checkbox-group class="checkbox-click" bindchange="checkboxChange">
+      
+      
+        <label class="new-checkbox" wx:for="{{pick}}" wx:key="unique">
+      
+          <checkbox value="{{item.index}}" hidden='true' checked="{{item.val}}"/>{{item.name}}
+      
+            <block wx:if="{{item.val}}">
+              <image class='list-choose' src='/img/check.png'></image>
+            </block>
+      
+            <block wx:else>
+              <image class='list-choose' src='/img/noradius.png'></image>
+            </block>
+      
+        </label>
+        
+      </checkbox-group>
+      </view>
+      
+      
+
+
+    </view>
+  </view>
+</view>

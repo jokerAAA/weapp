@@ -1,4 +1,6 @@
 // pages/releasesuccess/releasesuccess.js
+const tsy = require('../../utils/util.js').tsy;
+const app = getApp();
 Page({
 
   /**
@@ -14,24 +16,31 @@ Page({
   onLoad: function (options) {
     const that = this;
     this.setData({
-      gameid: options.gameid
+      parentgoodsid: options.parentgoodsid,
+      id: options.id
     })
     tsy.request({
       url: app.globalData.host + '/user/sell-trade-factory/ok',
       data: {
-        gameid: options.gameid
+        parentgoodsid: options.parentgoodsid || 20,
+        id: options.id
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded', // 默认值
         'X-Requested-With': 'XMLHttpRequest'
       },
-      method: 'GET',
+      method: 'POST',
       success: function (res) {
         tsy.success(res, function () {
           that.setData({
-            goodsparent: res.data.data.goodsparent,
-            goodsList: res.data.data.goodsList
+            goodsname: res.data.data.tradeArr.name,
+            goodscode: res.data.data.tradeArr.transactioncode
           })
+          if (res.data.data.tradeArr.edit){
+            that.setData({
+              edit: res.data.data.tradeArr.edit
+            })
+          }
         })
 
       }

@@ -1,7 +1,9 @@
 <!--pages/statement/statement.wxml-->
 <view class="container">
 <form id="container" bindsubmit="submitForm">
- 
+  <input type="hidden" name="parentgoodsid" value='{{parentgoodsid}}' disabled='true' class="hidden"></input>
+  <input type="hidden" name="gameid" value='{{gameid}}' disabled='true' class="hidden"></input>
+  <input type="hidden" name="gamename" value='{{gamename}}' disabled='true' class="hidden"></input>
  
   <view class="info">
       
@@ -16,7 +18,7 @@
                   <view class="picker"> 
                     <view wx:if="{{sell.parentid}}"><input type="text" value='{{goodsparent[sell.parentindex].goodsname}}' disabled='true' class="picker-choose"></input></view> 
                     <view wx:else>请选择</view>    
-                    <input type="hidden" name="parentid" value='{{sell.parentid}}' disabled='true' class="hidden"></input>
+                    <input type="hidden" name="parentgoodsid" value='{{sell.parentid}}' disabled='true' class="hidden"></input>
                   </view>  
                 </picker>  
               </view> 
@@ -43,30 +45,12 @@
       </view>
       <view class="flex arrow">
           <span class="left">
-              出售方式
-          </span>
-          
-          <span class="right">
-              <view class="section">  
-                <picker mode="selector" range="{{sellmodeList}}" range-key="goodsname" bindchange="bindSellmodeChange" disabled="{{sell.goodsid?false:true}}">  
-                  <view class="picker"> 
-                    <view wx:if="{{sell.sellmode}}"><input type="text" value='{{sellmodeList[sell.sellmode].goodsname}}' disabled='true' class="picker-choose"></input></view> 
-                    <view wx:else>请选择</view> 
-                    <input type="hidden" name="sellmode" value='{{sell.sellmodeid}}' disabled='true' class="hidden"></input>   
-                  </view>  
-                </picker>  
-              </view> 
-          </span>
-          <image src='/img/arrow-right.png'></image>
-      </view>
-      <view class="flex arrow">
-          <span class="left">
               客户端
           </span>
           
           <span class="right">
               <view class="section">  
-                <picker mode="selector" range="{{clientList}}" range-key="clientname" bindchange="bindClientChange" disabled="{{sell.sellmodeid?false:true}}">  
+                <picker mode="selector" range="{{clientList}}" range-key="clientname" bindchange="bindClientChange" disabled="{{sell.goodsid?false:true}}">  
                   <view class="picker"> 
                     <view wx:if="{{sell.clientname}}"><input type="text" value='{{sell.clientname}}' disabled='true' class="picker-choose"></input></view> 
                     <view wx:else>请选择</view> 
@@ -78,6 +62,25 @@
           </span>
           <image src='/img/arrow-right.png'></image>
       </view>
+      <view class="flex arrow">
+          <span class="left">
+              出售方式
+          </span>
+          
+          <span class="right">
+              <view class="section">  
+                <picker mode="selector" range="{{sellmodeList}}" range-key="sellmodename" bindchange="bindSellmodeChange" disabled="{{sell.clientid?false:true}}">  
+                  <view class="picker"> 
+                    <view wx:if="{{sell.sellmode}}"><input type="text" value='{{sellmodeList[sell.sellmode].sellmodename}}' disabled='true' class="picker-choose"></input></view> 
+                    <view wx:else>请选择</view> 
+                    <input type="hidden" name="sellmode" value='{{sell.sellmodeid}}' disabled='true' class="hidden"></input>   
+                  </view>  
+                </picker>  
+              </view> 
+          </span>
+          <image src='/img/arrow-right.png'></image>
+      </view>
+      
   </view> 
 
   

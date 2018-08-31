@@ -39,66 +39,94 @@
 	<!-- tab栏 -->
 	<view class="swiper-tab">
 		<view class="swiper-tab-item {{currentTab==0?'active-tab-col':''}}" data-current="0" bindtap="clickTab">
-			性价比推荐
-		<view class="{{currentTab==0?'active-tab':''}}"></view>
+			热门游戏
+			<view class="{{currentTab==0?'active-tab':''}}"></view>
 		</view>
 		<view class="swiper-tab-item {{currentTab==1?'active-tab-col':''}}" data-current="1" bindtap="clickTab">
-			热门游戏
-		<view class="{{currentTab==1?'active-tab':''}}"></view>
+			性价比推荐
+			<view class="{{currentTab==1?'active-tab':''}}"></view>
 		</view>
 	</view>
 	<!-- tab内容 -->
-	<swiper current="{{currentTab}}" duration="300" bindchange="swiperTab" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+	<swiper current="{{currentTab}}" duration="300" bindchange="swiperTab" style="height: {{clientHeight?clientHeight+'px':'auto'}};background:#fff;">
+		
+		<!-- 热门游戏 -->
 		<swiper-item>
-		<!-- <view class='goods-content'> -->
-		<view class="goods-container">
-			<view class="goods-box" wx:for-items="{{highList}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
-			<navigator url='/pages/goodsdetail/goodsdetail?id={{item.tradeid}}'>
-				<view class="img-box">
-					<image src="{{picHosts}}{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
-				</view>
-				<view class="goods-title">{{item.tradename}}</view>
-					<view style='padding:12rpx 0;' class='clearfix'>
-						<view class="goods-price">
-							<view style='font-size:20rpx;position:absolute;bottom:6rpx;'>¥</view>
-							<view style='font-size:32rpx;margin-left:14rpx'>{{item.trades.price}}</view>
+			<view class='game-container'>
+				<view class='games-box' wx:for-items="{{hotGame}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+					<navigator url='/pages/goodslist/goodslist?goodsid=1&gameid={{item.id}}'>
+						<view class="img-game">
+							<image src="{{picHosts}}{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
 						</view>
-						<view class='sellmode' wx:if="{{item.sellmode == 1}}">寄售</view>
-						<view class='sellmode' wx:elif="{{item.sellmode == 2}}">担保</view>
-						<view class='sellmode' wx:elif="{{item.sellmode == 3}}">约定</view>
-					<view class='toubao' wx:if='{{item.insuranceState}}'>{{item.insuranceState}}</view>
+						<view class="game-title">{{item.name}}</view>
+					</navigator>
 				</view>
-				<view class='otherinfo'>
-				{{item.belongstoclientname}} | {{item.belongstoserviceareaname}}
+				<view class='games-box games-box-more'>
+					<navigator url='/pages/gamelist/gamelist?letter=hot' class='moregame'>
+						查看更多游戏
+						<image src="/img/more.png"></image>
+					</navigator>
 				</view>
-			</navigator>
+        <view style="height:100px"></view>
 			</view>
-		</view>
-		<!-- </view> -->
 		</swiper-item>
+    <!-- 性价比推荐 -->
 		<swiper-item>
-		<view class='game-container'>
-			<view class='games-box' wx:for-items="{{hotGame}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
-			<navigator url='/pages/goodslist/goodslist?goodsid=1&gameid={{item.id}}'>
-				<view class="img-game">
-					<image src="{{picHosts}}{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
+			<view class="goods-container">
+				<view class="goods-box" wx:for-items="{{highList}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+					<navigator url='/pages/goodsdetail/goodsdetail?id={{item.tradeid}}' class="goodsurl">
+						<!-- <view class="img-box">
+							<image src="{{picHosts}}{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
+						</view>
+						<view class="goods-title">{{item.tradename}}</view>
+							<view style='padding:12rpx 0;' class='clearfix'>
+								<view class="goods-price">
+									<view style='font-size:20rpx;position:absolute;bottom:6rpx;'>¥</view>
+									<view style='font-size:32rpx;margin-left:14rpx'>{{item.trades.price}}</view>
+								</view>
+								<view class='sellmode' wx:if="{{item.sellmode == 1}}">寄售</view>
+								<view class='sellmode' wx:elif="{{item.sellmode == 2}}">担保</view>
+								<view class='sellmode' wx:elif="{{item.sellmode == 3}}">约定</view>
+							<view class='toubao' wx:if='{{item.insuranceState}}'>{{item.insuranceState}}</view>
+						</view>
+						<view class='otherinfo'>
+						{{item.belongstoclientname}} | {{item.belongstoserviceareaname}}
+						</view> -->
+            <view class="img-box">
+							<image src="{{picHosts}}{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
+						</view>
+            <view class="content-box">
+              <view class="goods-title">{{item.tradename}}</view>
+              <view class='otherinfo'>
+                {{item.belongstoclientname}}  {{item.belongstoserviceareaname}}
+              </view>
+            </view>
+            <view class="goods-price">
+              <view class='price-box'>
+                <view style='font-size:28rpx;position:relative;top:32rpx;'>¥</view>
+                <view style='font-size:36rpx;margin-left:20rpx'>{{item.trades.price}}</view>
+              </view>
+              
+              <view>
+                <view wx:if="{{item.isfixedprice == 1}}" class='fixedprice1'>
+                  一口价
+                </view>
+                <view wx:else class='fixedprice2'>
+                  可议价
+                </view>
+              </view>
+            </view>
+
+					</navigator>
 				</view>
-				<view class="game-title">{{item.name}}</view>
-			</navigator>
 			</view>
-			<view class='games-box games-box-more'>
-			<navigator url='/pages/gamelist/gamelist?letter=hot' class='moregame'>
-				查看更多游戏
-				<image src="/img/more.png"></image>
-			</navigator>
-			</view>
-		</view>
 		</swiper-item>
 	</swiper>
 
 	<!-- 我要卖 -->
-	<navigator class="sell" hover-class="none" url="/pages/gamelist/gamelist?goodsid=1&type=sell&letter=hot">
+	<view class="sell" hover-class="none" bindtap='goSell'>
+    <view class='radius'></view>
 		<image class="sell-img" src="/img/index/sell.png" mode="aspectFit"></image>
 		<view class="sell-text">我要卖号</view>
-	</navigator>
+	</view>
 </view>

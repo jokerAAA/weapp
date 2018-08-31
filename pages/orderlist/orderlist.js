@@ -158,7 +158,9 @@ Page({
 				break;
 			case 104:
 				/* 编辑商品 */
-				this.editGoods();
+				this.editGoods({
+					id:id
+				});
 				break;
 			default:
 				break;
@@ -170,14 +172,13 @@ Page({
 	handleGoods(config) {
 		const type = config.type;
 		const editUrl = config.url;
+		const id = config.id;
 		if (type == 'up' && editUrl) {
-			wx.showToast({
-				title: "编辑商品",
-				icon: 'none'
-			});
+			wx.navigateTo({
+				url:`/pages/traderelease/traderelease?id=${id}`
+			})
 			return;
 		};
-		const id = config.id;
 		let url = type == 'down' ? '/user/sellertrade/putoffsale' : '/user/sellertrade/putonsale';
 		let str = type == 'down' ? '下架' : '上架';
 		const that = this;
@@ -306,8 +307,11 @@ Page({
 	},
 
 	/* 编辑商品 */
-	editGoods() {
-
+	editGoods(config) {
+		const id = config.id ;
+		wx.navigateTo({
+			url:`/pages/traderelease/traderelease?id=${id}`
+		})
 	}
 
 })

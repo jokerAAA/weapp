@@ -6,9 +6,9 @@
     
     <span class="right">
         <view class="section">  
-          <picker mode="selector" range="{{pick}}" range-key='name' bindchange="bindSureChange">  
+          <picker mode="selector" range="{{pick}}" range-key='name' bindchange="{{methodchoose}}">  
             <view class="picker"> 
-              <view wx:if="{{choosename}}"><input type="text" name="{{inputname}}" value='{{choosename}}' disabled='true' class="picker-choose"></input></view> 
+              <view wx:if="{{choosename || value}}"><input type="text" name="{{inputname}}" value='{{choosename || value}}' disabled='true' class="picker-choose"></input></view> 
               <view wx:else>请选择</view>    
 
             </view>  

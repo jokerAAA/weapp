@@ -1,205 +1,215 @@
-<!--pages/traderelease/traderelease.wxml-->
+<!-- pages/traderelease/traderelease.wxml -->
 <view class="container">
-  <form id="container" bindsubmit="submitForm">
-    <gamearea showarea="{{showarea}}" bind:senddata="onGetAreaCode"></gamearea>
-    <view class="tips">寄售类三无账号，买家购买时，无需联系卖家，请须知～</view>
-    <view class='step-1' hidden='{{showstepone?false:true}}'>
-      <view class="info">
-        <view class="flex noarrow goods-title">
-            <span class="left">
-                商品标题
-            </span>
-            
-            <span class="right">
-                <view class="section">  
-                  <input type="text" name="parentid" placeholder='请输入' class="input-style"></input>
-                </view> 
-            </span>
-            <text class="info-tips">标题内无需填写游戏及客户端名称</text>
-        </view>
-
-        <view class="flex arrow">
-            <span class="left">
-                所属区服
-            </span>
-            
-            <span class="right">
-                <view class="section" bindtap='chooseArea'>  
-                  <view wx:if="{{sell.parentid}}"><input type="text" name="parentid" value='{{datasell[sell.parentid]}}' disabled='true' class="picker-choose"></input></view> 
-                  <view wx:else>请选择</view>   
-                </view> 
-            </span>
-            <image src='/img/arrow-right.png'></image>
-        </view>
-        
-        <single title="售价类型" pick="{{pricemode}}" bind:sendchooseval="onGetChooseCode"></single>
-
-        <block wx:if="{{mychooseval == 1}}">
-          <view class="flex noarrow goods-title">
-              <span class="left">
-                  商品价格
-              </span>
-              
-              <span class="right">
-                  <view class="section">  
-                    <input type="text" name="parentid" placeholder='请输入' class="input-style"></input>
-                  </view> 
-              </span>
-              <text class="info-tips">服务费</text>
-          </view>
+    <form id="container" bindsubmit="submitForm">
+        <block wx:for="{{gameattrs[0]}}" wx:key="">
+            <input name="gameattr_{{item.id}}" value='{{}}' class='hidden'></input>
         </block>
-        <block wx:else>
-          <view class="flex noarrow">
-              <span class="left">
-                  最高价格
-              </span>
-              
-              <span class="right">
-                  <view class="section">  
-                    <input type="text" name="parentid" placeholder='请输入最高价格' class="input-style"></input>
-                  </view> 
-              </span>
-          </view>
-          <view class="flex noarrow goods-title">
-              <span class="left">
-                  最低价格
-              </span>
-              
-              <span class="right">
-                  <view class="section">  
-                    <input type="text" name="parentid" placeholder='请输入最低价格' class="input-style"></input>
-                  </view> 
-              </span>
-              <text class="info-tips">服务费</text>
-          </view>
-        </block>
-
-        <single title="到期日期" pick="{{tradedata}}" bind:sendchooseval="onGetdataCode" inputname="enddata"></single>
-      </view>
-
-      <view class='title-info'>
-        <view class='title-block'></view>验证信息
-      </view>
-
-      <view class='info'>
-        <view class="flex noarrow">
-            <span class="left">
-                绑定身份证
-            </span>
-            
-            <span class="right">
-              <switch bindchange="switch1Change" class='switch-right'/>
-            </span>
-        </view>
-        <view class="flex noarrow">
-            <span class="left">
-                绑定手机
-            </span>
-            
-            <span class="right">
-              <switch bindchange="switch1Change" class='switch-right'/>
-            </span>
-        </view>
-        <view class="flex noarrow">
-            <span class="left">
-                绑定邮箱
-            </span>
-            
-            <span class="right">
-              <switch bindchange="switch1Change" class='switch-right'/>
-            </span>
-        </view>
-
-        <view class="flex noarrow">
-            <span class="left">
-                交易暗号
-            </span>
-            
-            <span class="right">
-                <view class="section">  
-                  <input type="text" name="parentid" placeholder='请输入' class="input-style"></input>
-                </view> 
-            </span>
-        </view>
-
-        <view class="flex noarrow">
-            <span class="left">
-                手机号码
-            </span>
-            
-            <span class="right">
-                <view class="section">  
-                  <input type="text" name="parentid" placeholder='请输入' class="input-style"></input>
-                </view> 
-            </span>
-        </view>
-
-        <view class="flex noarrow">
-            <span class="left">
-                QQ号码
-            </span>
-            
-            <span class="right">
-                <view class="section">  
-                  <input type="text" name="parentid" placeholder='请输入' class="input-style"></input>
-                </view> 
-            </span>
-        </view>
-
-        <view class="flexpic noarrow">
-            <span class="left picture-left">
-                上传图片
-            </span>
-            <text class="picture-tips">最多可上传14张图片</text>
-            <view class='pic-box'>
-              <block wx:for="{{picUrl}}">
-                <view class='pic-new'>
-                  <view class='deletepic'>
-                    <image src='/img/delete3.png' bindtap='deletePic' data-index='{{index}}'></image>
-                  </view>
-                  <image src="{{item}}" alt="" class='uppicid'></image>
+        <gamearea showarea="{{showarea}}" bind:senddata="onGetAreaCode" areaList="{{areaList}}" bind:sendareaname="onGetAreaNameCode"></gamearea>
+        <view class="tips">寄售类三无账号，买家购买时，无需联系卖家，请须知～</view>
+        <view class='step-1' hidden='{{showstepone?false:true}}'>
+            <view class="info">
+                <view class="flex noarrow goods-title">
+                    <span class="left">商品标题</span>
+                    <span class="right">
+                        <view class="section">
+                            <input name="name" type="text" placeholder='请输入' class="input-style" value="{{sellinfo.name}}"></input>
+                        </view>
+                    </span>
+                    <text class="info-tips">标题内无需填写游戏及客户端名称</text>
                 </view>
-              </block>
-              <view bindtap='choosegameimage' class='addpic'>
-                <image src='/img/add.png'></image>
-              </view>
+                <view class="flex arrow">
+                    <span class="left">所属区服</span>
+                    <span class="right">
+                        <view class="section" bindtap='chooseArea'>
+                            <view wx:if="{{sellinfo.belongstoserviceareaname}}">
+                                <input type="text" name="areaname" value='{{sellinfo.belongstoserviceareaname}}' disabled='true' class="picker-choose"></input>
+                                <input type="text" name="areaid" value="{{sellinfo.belongstoserviceareaid}}" class="hidden"></input>
+                            </view>
+                            <view wx:else>请选择</view>
+                        </view>
+                    </span>
+                    <image src='/img/arrow-right.png'></image>
+                </view>
+                <single title="售价类型" pick="{{pricemode}}" bind:sendchooseval="onGetChooseCode" inputname="isfixedprice" value="{{sellinfo.isfixedprice == 1 ? '一口价' : '可议价'}}"></single>
+                <input type="text" name="isfixedprice" value='{{sellinfo.isfixedprice}}' disabled='true' class="hidden"></input>
+                <block wx:if="{{mychooseval == 1}}">
+                    <view class="flex noarrow goods-title">
+                        <span class="left">商品价格</span>
+                        <span class="right">
+                            <view class="section">
+                                <input type="text" name="price" placeholder='请输入' class="input-style" bindinput='changeSerPrice' value='{{sellinfo.price}}'></input>
+                            </view>
+                        </span>
+                        <view class="info-tips serveprice">
+                            服务费:
+                            <text style="color:red">{{serveprice?serveprice:0}}</text>元
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="flex noarrow">
+                        <span class="left">最高价格</span> 
+                        <span class="right">
+                            <view class="section">
+                                <input type="text" name="highprice" placeholder='请输入最高价格' class="input-style" bindinput='changeSerPrice' value="{{ sellinfo.highprice}}"></input>
+                            </view>
+                        </span>
+                    </view>
+                    <view class="flex noarrow goods-title">
+                        <span class="left">最低价格</span>
+                        <span class="right">
+                            <view class="section">
+                                <input type="text" name="lowprice" placeholder='请输入最低价格' class="input-style" value="{{sellinfo.lowprice}}"></input>
+                            </view>
+                        </span>
+                        <view class="info-tips serveprice">
+                            服务费:<view style="color:red">{{serveprice?serveprice:0}}</view>元
+                        </view>
+                    </view>
+                </block>
+                <single title="到期日期" pick="{{tradedata}}" bind:sendchooseval="onGetChooseCode" inputname="enddate" value="{{sellinfo.validitydate}}天"></single>
+                <input type="text" name="enddate" value='{{enddate || sellinfo.validitydate}}' disabled='true' class="hidden"></input>
+            </view>
+            <view class='title-info'>
+                <view class='title-block'></view>
+                验证信息
+            </view>
+            <view class='info'>
+                <view class="flex noarrow">
+                    <span class="left">
+                        绑定身份证
+                    </span>
+                    
+                    <span class="right">
+                        <switch bindchange="switch1Change" class='switch-right' checked="{{sellinfo.isbindcertificate == 1 ? true : false}}"/>
+                        <input type="text" name="isbindcertificate" value='{{sellinfo.isbindcertificate}}' disabled='true' class="hidden"></input>
+                    </span>
+                </view>
+                <view class="flex noarrow">
+                    <span class="left">
+                        绑定手机
+                    </span>
+                    
+                    <span class="right">
+                        <switch bindchange="switch2Change" class='switch-right' checked="{{sellinfo.isbindmobile == 1 ? true : false}}"/>
+                        <input type="text" name="isbindmobile" value='{{isbindmobile}}' disabled='true' class="hidden"></input>
+                    </span>
+                </view>
+                <view class="flex noarrow">
+                    <span class="left">
+                        绑定邮箱
+                    </span>
+                    
+                    <span class="right">
+                        <switch bindchange="switch3Change" class='switch-right' checked="{{sellinfo.isbindemail == 1 ? true : false}}"/>
+                        <input type="text" name="isbindemail" value='{{isbindemail}}' disabled='true' class="hidden"></input>
+                    </span>
+                </view>
+                <view class="flex noarrow">
+                    <span class="left">交易暗号</span>
+                    <span class="right">
+                        <view class="section">
+                            <input type="text" name="transactioncode" placeholder='只支持数字' class="input-style" value="{{sellinfo.transactioncode}}"></input>
+                        </view>
+                    </span>
+                </view>
+                <view class="flex noarrow">
+                    <span class="left">手机号码</span>
+                    <span class="right">
+                        <view class="section">
+                            <input type="text" name="mobile" placeholder='请输入' class="input-style" value="{{sellinfo.mobile}}"></input>
+                        </view>
+                    </span>
+                </view>
+                <view class="flex noarrow">
+                    <span class="left">QQ号码</span>
+                    <span class="right">
+                        <view class="section">
+                            <input type="text" name="qq" placeholder='请输入' class="input-style" value="{{sellinfo.qq}}"></input>
+                        </view>
+                    </span>
+                </view>
+                <view class="flexpic noarrow">
+                    <span class="left picture-left">上传图片</span>
+                    <text class="picture-tips">最多可上传14张图片</text>
+                    <view class='pic-box'>
+                        <block wx:for="{{sellinfo.pic}}" wx:key="">
+                            <view class='pic-new'>
+                                <view class='deletepic'>
+                                    <image src='/img/delete3.png' bindtap='deletePic' data-index='{{index}}'></image>
+                                </view>
+                                <image src="{{picHosts}}{{item.picurl}}" alt="" class='uppicid'></image>
+                                <input type="text" name="picurl[]" value='{{item}}' disabled='true' class="hidden"></input>
+                            </view>
+                        </block>
+                        <view bindtap='choosegameimage' class='addpic'>
+                            <image src='/img/add.png'></image>
+                        </view>
+                    </view>
+                    
+                </view>
+            </view>
+            <view class='title-bx'>
+                <image src='/img/baoxian.png'></image>
+                <view>投保《卖家险》商品优先显示，售出率提高80%</view>
+            </view>
+            <view class='info'>
+                <!-- <single title="安全保障" pick="{{pricemode}}" bind:sendchooseval="onGetChooseCode"></single> -->
+                <view class="flex arrow goods-title">
+                    <span class="left">安全保障</span>
+                    <span class="right" wx:if="{{sellinfo.insurance_type}}">{{sellinfo.insurance_type}}天保险</span>
+                    <span class="right" wx:else>
+                        <view class="section">
+                            <picker mode="selector" range="{{insuranceInfo}}" range-key='day' bindchange="bindBxChange">
+                                <view class="picker">
+                                    <view>
+                                        <input type="text" value='{{bxrate == "0"? "不购买": bxday + "天保险"}}' disabled='true' class="picker-choose"></input>
+                                    </view>
+                                    <input type="text" name="insurance_type" value='{{bxday}}' disabled='true' class="hidden"></input>
+                                </view>
+                            </picker>
+                        </view>
+                    </span>
+                    <image src='/img/arrow-right.png'></image>
+                    <view class="info-tips serveprice">
+                        服务费:
+                        <text style="color:red">{{bxprice?bxprice:0}}</text>
+                        元
+                    </view>
+                </view>
+            </view>
+            <view class="submit" id="">
+                <button formType="submit">下一步</button>
             </view>
         </view>
-
-      </view>
-
-      <view class='title-bx'>
-        <image src='/img/baoxian.png'></image>
-        <view>投保《卖家险》商品优先显示，售出率提高80%</view>
-      </view>
-
-      <view class='info'>
-        <single title="安全保障" pick="{{pricemode}}" bind:sendchooseval="onGetChooseCode"></single>
-
-        <!-- <view class="flex noarrow goods-title">
-            <span class="left">
-                安全保障
-            </span>
-            
-            <span class="right">
-                <view class="section">  
-                  <picker mode="selector" range="{{pick}}" range-key='name' bindchange="bindSureChange">  
-                    <view class="picker"> 
-                      <view wx:if="{{choosename}}"><input type="text" name="{{inputname}}" value='{{choosename}}' disabled='true' class="picker-choose"></input></view> 
-                      <view wx:else>请选择</view>    
-
-                    </view>  
-                  </picker>  
-                </view> 
-            </span>
-            <image src='/img/arrow-right.png'></image>
-            <text class="info-tips">服务费</text>
-        </view> -->
-      </view>
-
-      <view class="submit" id="submit">
-        <button formType="submit">下一步</button>
-      </view>
-    </view>
-  </form>
+        <view class='step-2' hidden='{{showsteptwo?false:true}}'>
+            <block wx:for="{{gamelist}}" wx:key="item.id">
+                <gameattr gamelist="{{item}}" bind:sendinputval="onGetTextData" index="{{index}}" bindmyevent="handleEvent"></gameattr>
+                <input name="gameattr_{{item.id}}" value='' class='hidden'></input>
+            </block>
+            <block wx:for="{{newgamelist}}" wx:key="">
+                <gameattr gamelist="{{item}}" bind:sendinputval="onGetTextData" index="{{index}}"></gameattr>
+                <input name="gameattr_{{item.id}}" value='' class='hidden'></input>
+            </block>
+            <view class='title-info' wx:if="{{clientlist.length > 0}}">
+                <view class='title-block'></view>
+                密保信息
+            </view>
+            <view class='info' wx:if="{{clientlist.length > 0}}">
+                <block wx:for="{{clientlist}}" wx:key="">
+                    <view class="flex noarrow">
+                        <span class="left">{{item.name}}</span>
+                        <span class="right">
+                            <view class="section">
+                                <input type="text" data-name="clientattr_{{item.id}}" placeholder='请输入' class="input-style" bindinput="handleClient" value="{{item.chooseval}}"></input>
+                            </view>
+                        </span>
+                    </view>
+                </block>
+            </view>
+            <view class="submit" id="submit">
+                <button  bindtap="release">确认并发布</button>
+            </view>
+        </view>
+    </form>
 </view>

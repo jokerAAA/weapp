@@ -5,35 +5,38 @@
     <image class='close' src='/img/close-icon.png' bindtap='closeArea'></image>
   </view>
   <view class="tabs">
-    <view class="tabstol {{curHdIndex=='0'? 'tab-active' : ''}}" data-id="0" bindtap="tab">搜索区服</view>
-    <view class="tabstol {{curHdIndex=='1'? 'tab-active' : ''}}" data-id="1" bindtap="tab">全部区服</view>
-    <view class="tabstol {{curHdIndex=='2'? 'tab-active' : ''}}" data-id="2" bindtap="tab">其他区服</view>
+    <view class="tabstol {{curHdIndex=='0'? 'tab-active' : ''}}" data-id="0" bindtap="tab" data-val="-2">搜索区服</view>
+    <view class="tabstol {{curHdIndex=='1'? 'tab-active' : ''}}" data-id="1" bindtap="tab" data-val="0">全部区服</view>
+    <view class="tabstol {{curHdIndex=='2'? 'tab-active' : ''}}" data-id="2" bindtap="tab" data-val="-1">其他区服</view>
+    <input type='text' name="areaID" value='{{areaid?areaid:"0"}}' class='hidden'></input>
+    <input type='text' name="areaname" value='{{areaname?areaname:"全部区服"}}' class='hidden'></input>
   </view>
   <view class='area-info'>
     <view class="search" hidden="{{curBdIndex=='0'? flase : true}}">
       <view class='search-top'>
         <view class='search-box'>
           <image src='/img/search.png' class='search-pic'></image>
-          <input placeholder='更多区服请快速搜索' class='search-input'></input>
+          <input placeholder='更多区服请快速搜索' class='search-input' bindinput='searchName'></input>
         </view>
-        <view class='search-btn'>
+        <view class='search-btn' bindtap='searchArea'>
           搜索
         </view>
       </view>
-
+      <view class='area-box'>
+        <view wx:for="{{areaList}}" wx:key="" data-id="{{index}}" class="area-block {{curAreaIndex==index? 'block-active' : ''}}" bindtap='chooseArea' data-areagameid="{{item.id}}" data-areaname="{{item.name}}">
+          {{item.name}}
+        </view>
+      </view>
 
     </view>
     <view class="all" hidden="{{curBdIndex=='1'? flase : true}}">
-    2
+    
     </view>
     <view class="other" hidden="{{curBdIndex=='2'? flase : true}}">
       <view class='search-top'>
         <view class='search-box'>
           <image src='/img/search.png' class='search-pic'></image>
-          <input placeholder='更多区服请快速搜索' class='search-input'></input>
-        </view>
-        <view class='search-btn'>
-          搜索
+          <input placeholder='若没有您的区服请在此输入' value='{{otherarea}}' class='search-input' bindinput='inputOther'></input>
         </view>
       </view>
       <view class='search-tip'>
@@ -41,7 +44,7 @@
       </view>
     </view>
   </view>
-  <button class='area-btn'>
-    <text>确　定</text>
+  <button class='area-btn' bindtap='areaSure'>
+    <text data-val="{{}}">确　定</text>
   </button>
 </view>

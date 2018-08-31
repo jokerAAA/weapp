@@ -297,6 +297,9 @@ page {
 
 .goods-title-left {
     flex:1;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
 }
 
 .goods-title-right {
@@ -350,6 +353,7 @@ page {
     flex:1;
     display: flex;
     padding-top: 20rpx;
+    justify-content: flex-end;
 }
 
 .goods-info-right-text {
@@ -359,7 +363,7 @@ page {
     padding:0 10rpx;
     display: inline-block;
     border-radius: 16rpx ;
-    border:1px solid #FF5858;
+    border:1.4rpx solid #FF5858;
 }
 
 .sellmode {

@@ -5,7 +5,7 @@
         <view class="order" wx:for="{{orderList}}" wx:if="{{orderList.length > 0}}" wx:key="{{item.id}}" >
             <view class="order-top">
                 <view class="order-top-left">
-                    商品编号  {{item.id}}
+                    订单编号  {{item.tradelogno}}
                 </view>
                 <view class="order-top-right {{item.color}}}">
                     {{item.statusname}}
@@ -13,7 +13,7 @@
             </view>
             <view class="order-info" bindtap="handleOrder" data-id="{{item.id}}">
                 <view class="order-info-left">
-                    <image class="order-info-left-pic" src="{{item.gamepic}}" mode="aspectFit"></image>
+                    <image class="order-info-left-pic" src="{{item.gamepic}}" ></image>
                 </view>
                 <view class="order-info-right">
                     <view class="order-info-right-title">
@@ -41,6 +41,10 @@
                     <view class="order-bottom-buttons" bindtap="handleButton" data-flag="{{value.flag}}" data-price="{{item.price}}" data-url="{{item.edit_url}}" data-id="{{item.id}}" wx:else>{{value.text}}</view>
                 </block>
             </view>
+        </view>
+        <view class="order" wx:if="{{orderList.length == 0}}">
+          <view style='text-align:center;margin-top:300rpx'><image class='nodata' src='/img/no-goods.png'></image></view>
+          <view class="order-nodata">暂时没有您的商品信息</view>
         </view>
     </view>
     

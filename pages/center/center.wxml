@@ -8,12 +8,12 @@
         <view class="user-money">
             <view class="user-money-item">
                 <text class="user-money-icon">￥</text>
-                <text class="user-money-count">2233.22</text>
+                <text class="user-money-count">{{accountSum}}</text>
                 <view class="user-money-text">余额</view>
             </view>
             <view class="user-money-item" bindtap="freezeMoney">
                 <text class="user-money-icon">￥</text>
-                <text class="user-money-count">1123.11</text>
+                <text class="user-money-count">{{frozenSum}}</text>
                 <view class="user-money-text">
                     <image class="user-money-text-img" src="/img/center/freeze.png" mode="aspectFit"></image>
                     冻结
@@ -36,7 +36,7 @@
             <image class="nav-item-pic" src="/img/center/sell.png" mode="aspectFit"></image>
             <view class="nav-item-text">我卖出的</view>
         </navigator>
-        <button class="nav-item button" open-type="contact" session-from="kf_9098_1507537047642" hover-class="none">
+        <button class="nav-item button positiontop" open-type="contact" session-from="kf_9098_1507537047642" hover-class="none">
             <image class="nav-item-pic" src="/img/center/kefu.png" mode="aspectFit"></image>
             <view class="nav-item-text">联系客服</view>
         </button>

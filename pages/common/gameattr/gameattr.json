@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "single": "/pages/common/single/single",
+    "popcheckbox": "/pages/common/checkbox/checkbox"
+  }
+}

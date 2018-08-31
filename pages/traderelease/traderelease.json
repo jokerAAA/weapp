@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "gamearea": "/pages/common/gamearea/gamearea",
-    "single": "/pages/common/single/single"
+    "single": "/pages/common/single/single",
+    "gameattr": "/pages/common/gameattr/gameattr"
   }
 }

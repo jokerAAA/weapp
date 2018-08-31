@@ -1,0 +1,61 @@
+<!-- pages/common/gameattr/gameattr.wxml -->
+<block wx:if="{{gamelist.attrtype == 1}}">
+    <view class='info'>
+        <view class="flex noarrow">
+            <span class="left">{{gamelist.name}}</span>
+            <span class="right">
+                <view class="section">
+                    <block wx:if="{{gamelist.texttype == 1}}">
+                        <input type="number" data-name="gameattr_{{gamelist.id}}" placeholder='请输入' class="input-style" bindinput='inputText' value="{{gamelist.chooseval}}"></input>
+                    </block>
+                    <block wx:elif="{{gamelist.texttype == 2}}">
+                        <input type="text" data-name="gameattr_{{gamelist.id}}" placeholder='请输入' class="input-style" bindinput='inputEnglish' value="{{english ||gamelist.chooseval}}"></input>
+                    </block>
+                    <block wx:elif="{{gamelist.texttype == 3}}">
+                        <input type="text" data-name="gameattr_{{gamelist.id}}" placeholder='请输入' class="input-style" bindinput='inputChinese' value="{{chinese || gamelist.chooseval}}"></input>
+                    </block>
+                    <block wx:else>
+                        <input type="text" data-name="gameattr_{{gamelist.id}}" placeholder='请输入' class="input-style" bindinput='inputText' value="{{gamelist.chooseval}}"></input>
+                    </block>
+                </view>
+            </span>
+        </view>
+    </view>
+</block>
+<!-- 单选框 -->
+<block wx:if="{{gamelist.attrtype == 2 || gamelist.attrtype == 4}}">
+    <view class='info'>
+        <single title="{{gamelist.name}}" pick="{{gamelist.val}}" bind:sendchooseval="onGetChooseCode" inputname="gameattr_{{gamelist.id}}" methodchoose="bindSureChangetwo" value="{{gamelist.chooseval}}"></single>
+    </view>
+</block>
+<!-- 多选 -->
+<block wx:if="{{gamelist.attrtype == 3}}">
+    <view class='info'>
+        <view class="flex arrow">
+            <span class="left">{{gamelist.name}}</span>
+            <span class="right" bindtap="showCheckPop" data-current="{{index}}">
+                <view class="section">
+                    <view wx:if="{{gamelist.chooseval}}">
+                        <input type="text" name="" value='{{checkboxValue || gamelist.chooseval}}' disabled='true' class="picker-choose checkboxvalue"></input>
+                    </view>
+                    <view wx:else>请选择</view>
+                </view>
+            </span>
+            <image src='/img/arrow-right.png'></image>
+            <popcheckbox pick="{{gamelist.val}}" attrname="gameattr_{{gamelist.id}}" attrid="{{gamelist.id}}" index="{{index}}" currentIndex="{{currentIndex}}" bind:myeventdata="onGetAttrCode"></popcheckbox>
+        </view>
+    </view>
+</block>
+<!-- 文本域 -->
+<block wx:if="{{gamelist.attrtype == 5}}">
+    <view class='info'>
+        <view class="flexarea noarrow">
+            <span class="left" style="flex:1">{{gamelist.name}}</span>
+            <span class="right">
+                <view class="section">
+                    <textarea style='width:auto;height:100px' data-name="gameattr_{{gamelist.id}}" placeholder='请输入' bindinput='inputText' value="{{gamelist.chooseval}}"></textarea>
+                </view>
+            </span>
+        </view>
+    </view>
+</block>

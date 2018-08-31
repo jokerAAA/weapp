@@ -60,7 +60,9 @@ Page({
 					const data = res.data.data;
 					that.setData({
 						pic: data.pic,
-						username: data.username
+						username: data.username,
+            accountSum: data.accountSum,
+            frozenSum: data.frozenSum
 					})
 				})
 			}

@@ -16,6 +16,14 @@ Component({
       type: null,
       value: ''
     },
+    'methodchoose':{
+      type: null,
+      value: 'bindSureChange'
+    },
+    'value':{
+      type:String,
+      value:''
+    }
   },
 
   /**
@@ -34,14 +42,30 @@ Component({
         'choosename': this.data.pick[e.detail.value].name,
         'chooseval': this.data.pick[e.detail.value].value
       })
-      if(this.data.title == "售价类型"){
-        let mychooseval = {
-          chooseval: this.data.chooseval
-        } // detail对象，提供给事件监听函数
+      // if(this.data.title == "售价类型"){
+        let sendInputName = this.data.inputname;
+        
+        var mychooseval = {}
+        mychooseval[sendInputName] = this.data.chooseval;
         console.log(mychooseval)
         this.triggerEvent('sendchooseval', mychooseval)
-      }
+      // }
       
+    },
+    bindSureChangetwo: function (e) {
+      this.setData({
+        'choosename': this.data.pick[e.detail.value].name,
+        'chooseval': this.data.pick[e.detail.value].value
+      })
+      // if(this.data.title == "售价类型"){
+      let sendInputName = this.data.inputname;
+
+      var mychooseval = {}
+      mychooseval[sendInputName] = this.data.choosename;
+      console.log(mychooseval)
+      this.triggerEvent('sendchooseval', mychooseval)
+      // }
+
     }
   }
 })

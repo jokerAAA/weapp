@@ -1,13 +1,20 @@
 /* pages/common/single/single.wxss */
+.info {
+  background: #fff;
+  padding: 0 24rpx;
+}
 .flex {
   display: flex;
   height: 100rpx;
   line-height: 100rpx;
 }
 .left {
-  width: 200rpx;
+  width: 300rpx;
   color: #333;
   font-size: 30rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .right {
   flex: 1;
@@ -28,7 +35,7 @@ input {
   position: absolute;
   width: 14rpx;
   height: 28rpx;
-  top: 36rpx;
+  top: 42rpx;
   right: 0;
   background-size: contain;
   z-index: 10;

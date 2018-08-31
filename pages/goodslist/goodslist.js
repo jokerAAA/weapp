@@ -123,15 +123,16 @@ Page({
 	},
 
 	/* 获取商品列表 */
-	getGoodslist() {
+  getGoodslist(pagefrom) {
 		const that = this;
+    let page = pagefrom ? pagefrom : this.data.page;
 		tsy.request({
 			url: app.globalData.host + "/trades/list/indexpager",
 			method: "GET",
 			data: {
 				goodsid: that.data.goodsid,
 				gameid: that.data.gameid,
-				page: that.data.page,
+				page: page,
 				sort: that.data.sortid || '0',
 				areaid: that.data.areaid,
 				clientid: that.data.clientid,
@@ -202,7 +203,8 @@ Page({
 			areaid: areaid,
 			showType: ''
 		}, () => {
-			this.getGoodslist();
+      const page = 1;
+			this.getGoodslist(page);
 		})
 	},
 
@@ -270,8 +272,8 @@ Page({
 			sortText: text,
 			showType: ""
 		}, () => {
-
-			this.getGoodslist();
+      const page = 1;
+			this.getGoodslist(page);
 		})
 	},
 
